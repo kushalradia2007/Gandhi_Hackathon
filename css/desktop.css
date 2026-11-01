@@ -1,6 +1,7 @@
 /* Desktop, icons, taskbar, tray, boot screens */
 
-#screen { position: fixed; inset: 0; overflow: hidden; background: var(--desk); }
+#screen { position: fixed; left: 0; top: 0; width: 1024px; height: 768px; overflow: hidden; background: var(--desk); }
+html, body { background: var(--desk); }
 #desktop { position: absolute; left: 0; top: 0; right: 0; bottom: 28px; }
 #icons { position: absolute; inset: 0; outline: none; }
 #screen.booting #icons, #screen.booting #taskbar { visibility: hidden; }

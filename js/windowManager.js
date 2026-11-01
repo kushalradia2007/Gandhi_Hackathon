@@ -1,4 +1,5 @@
 // Window manager: Win98 frames, outline move/size, z-order, modality, taskbar sync, Alt+Tab.
+import { lx, ly, ld, sw as screenW, sh as screenH } from './screen.js';
 import { icon } from './icons.js';
 import { ding } from './sound.js';
 import { openMenu } from './menu.js';
@@ -220,7 +221,7 @@ function rectOf(w) { return { x: w.el.offsetLeft, y: w.el.offsetTop, w: w.el.off
 function drag(e, onMove, onDone) {
   e.preventDefault();
   const sx = e.clientX, sy = e.clientY;
-  const move = ev => onMove(ev.clientX - sx, ev.clientY - sy);
+  const move = ev => onMove(ld(ev.clientX - sx), ld(ev.clientY - sy));
   const up = () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); onDone(); };
   window.addEventListener('pointermove', move);
   window.addEventListener('pointerup', up);
@@ -229,9 +230,9 @@ function drag(e, onMove, onDone) {
 function startMove(e, w) {
   if (e.button !== 0 || w.maximized) return;
   const r = rectOf(w), d = desk();
-  let o = null, nr = r, px = e.clientX, py = e.clientY;
+  let o = null, nr = r, px = lx(e.clientX), py = ly(e.clientY);
   drag(e, (dx, dy) => {
-    px = e.clientX + dx; py = e.clientY + dy;
+    px = lx(e.clientX) + dx; py = ly(e.clientY) + dy;
     if (!o) { if (Math.abs(dx) + Math.abs(dy) < 2) return; o = outline(r); }
     nr = { ...r, x: Math.min(Math.max(r.x + dx, 40 - r.w), d.w - 40), y: Math.min(Math.max(r.y + dy, 0), d.h - 20) };
     placeOutline(o, nr);
@@ -239,8 +240,8 @@ function startMove(e, w) {
     if (!o) return;
     o.remove();
     // A09: there is no outside
-    if (px <= 1 || px >= innerWidth - 2 || py <= 1 || py >= d.h + 2) {
-      window.dispatchEvent(new CustomEvent('scz-offscreen', { detail: { x: Math.min(Math.max(px, 10), innerWidth - 160), y: Math.min(Math.max(py, 10), d.h - 30) } }));
+    if (px <= 1 || px >= screenW() - 2 || py <= 1 || py >= d.h + 2) {
+      window.dispatchEvent(new CustomEvent('scz-offscreen', { detail: { x: Math.min(Math.max(px, 10), screenW() - 160), y: Math.min(Math.max(py, 10), d.h - 30), local: true } }));
       return;
     }
     w.el.style.left = nr.x + 'px';
@@ -306,8 +307,8 @@ function openSwitcher() {
     el.firstChild.appendChild(c);
   });
   screenEl().appendChild(el);
-  el.style.left = ((innerWidth - el.offsetWidth) >> 1) + 'px';
-  el.style.top = ((innerHeight - el.offsetHeight) >> 1) + 'px';
+  el.style.left = ((screenW() - el.offsetWidth) >> 1) + 'px';
+  el.style.top = ((screenH() - el.offsetHeight) >> 1) + 'px';
   sw = { el, items, idx: 0 };
   return true;
 }

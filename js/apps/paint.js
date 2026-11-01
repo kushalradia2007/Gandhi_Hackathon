@@ -1,4 +1,5 @@
 // Paint (viewer): toolbox, palette, read-only canvas. SEATS.BMP changes after 30 s (H02). Tuesdays IMGs (H09/H10).
+import { ld, sw, sh } from '../screen.js';
 import { createWindow } from '../windowManager.js';
 import { menuBar } from '../menu.js';
 import { messageBox } from '../dialogs.js';
@@ -72,9 +73,9 @@ register('paint', (a = {}) => {
     { label: '&Options', items: [{ label: '&Edit Colors...', disabled: true }] },
     { label: '&Help', items: [{ label: '&Help Topics', action: () => launch('help') }, { sep: true }, { label: '&About Paint', action: () => messageBox({ title: 'About Paint', icon: 'paint', text: 'Paint\nWindows 98\nCopyright (C) 1981-1998 Microsoft Corp.\n\nLicensed to: GUEST\n\nThe logo was never finished.' }) }] },
   ]));
-  const w = createWindow({ title, icon: 'paint', content: body, width: Math.min(innerWidth - 40, Math.max(420, c.width * 2 + 110)), height: Math.min(innerHeight - 60, Math.max(320, c.height * 2 + 130)) });
+  const w = createWindow({ title, icon: 'paint', content: body, width: Math.min(sw() - 40, Math.max(420, c.width * 2 + 110)), height: Math.min(sh() - 60, Math.max(320, c.height * 2 + 130)) });
   body.querySelectorAll('.ptool').forEach(b => b.addEventListener('click', () => { body.querySelectorAll('.ptool').forEach(x => x.classList.toggle('on', x === b)); body.querySelector('.sb').textContent = b.dataset.t + ': this image is read-only.'; }));
-  holder.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); const px = Math.floor((e.clientX - r.left) / zoom), py = Math.floor((e.clientY - r.top) / zoom); body.querySelector('.sb-xy').textContent = px >= 0 && py >= 0 && px < c.width && py < c.height ? `${px},${py}` : ''; });
+  holder.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); const px = Math.floor(ld(e.clientX - r.left) / zoom), py = Math.floor(ld(e.clientY - r.top) / zoom); body.querySelector('.sb-xy').textContent = px >= 0 && py >= 0 && px < c.width && py < c.height ? `${px},${py}` : ''; });
   // B05: Run > tommy changes Bhaiya's expression for 2 s
   if (key === 'bhaiya') { const re = () => { if (w.closed) window.removeEventListener('scz-bhaiya', re); else { c = PICS.bhaiya(); place(); } }; window.addEventListener('scz-bhaiya', re); }
   // H02: the candidate is now present

@@ -1,4 +1,5 @@
 // Taskbar: Start button, Quick Launch, task buttons, tray clock, tooltips.
+import { lx, ly, sw, sh } from './screen.js';
 import { icon } from './icons.js';
 import * as wm from './windowManager.js';
 import { openMenu } from './menu.js';
@@ -12,9 +13,9 @@ let tasksEl, clockEl, desktopStash = null;
 let tipEl = null, tipT = 0, mx = 0, my = 0;
 function hideTip() { clearTimeout(tipT); if (tipEl) { tipEl.remove(); tipEl = null; } }
 export function attachTip(el, text) {
-  el.addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; });
+  el.addEventListener('pointermove', e => { mx = lx(e.clientX); my = ly(e.clientY); });
   el.addEventListener('pointerenter', e => {
-    mx = e.clientX; my = e.clientY;
+    mx = lx(e.clientX); my = ly(e.clientY);
     clearTimeout(tipT);
     tipT = setTimeout(() => {
       hideTip();
@@ -24,8 +25,8 @@ export function attachTip(el, text) {
       if (!tipEl.textContent) { hideTip(); return; }
       document.getElementById('screen').appendChild(tipEl);
       let x = mx, y = my + 20;
-      if (y + tipEl.offsetHeight > innerHeight) y = my - tipEl.offsetHeight - 4;
-      if (x + tipEl.offsetWidth > innerWidth) x = innerWidth - tipEl.offsetWidth - 2;
+      if (y + tipEl.offsetHeight > sh()) y = my - tipEl.offsetHeight - 4;
+      if (x + tipEl.offsetWidth > sw()) x = sw() - tipEl.offsetWidth - 2;
       tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
       tipT = setTimeout(hideTip, 5000);
     }, 500);
@@ -35,13 +36,14 @@ export function attachTip(el, text) {
 }
 
 /** Show a tooltip at a point for 2.5 s (used by eggs). */
-export function showTipAt(x, y, text) {
+export function showTipAt(x, y, text, local = false) {
   hideTip();
   tipEl = document.createElement('div');
   tipEl.className = 'tooltip';
   tipEl.textContent = text;
   document.getElementById('screen').appendChild(tipEl);
-  x = Math.min(x, innerWidth - tipEl.offsetWidth - 2); y = Math.max(0, Math.min(y, innerHeight - tipEl.offsetHeight - 2));
+  if (!local) { x = lx(x); y = ly(y); }
+  x = Math.min(x, sw() - tipEl.offsetWidth - 2); y = Math.max(0, Math.min(y, sh() - tipEl.offsetHeight - 2));
   tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
   tipT = setTimeout(hideTip, 2500);
 }

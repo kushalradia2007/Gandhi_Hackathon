@@ -1,4 +1,5 @@
 // Notepad: the main reading surface. File-specific behaviour per applications.md §2.7.
+import { ld } from '../screen.js';
 import { createWindow } from '../windowManager.js';
 import { menuBar } from '../menu.js';
 import { messageBox } from '../dialogs.js';
@@ -115,7 +116,7 @@ function notepad(args = {}) {
     ta.addEventListener('mousemove', e => {
       const r = ta.getBoundingClientRect(), cs = getComputedStyle(ta);
       const cw = measure(cs.font), lh = parseFloat(cs.lineHeight) || 18;
-      const col = Math.floor((e.clientX - r.left - 2 + ta.scrollLeft) / cw), row = Math.floor((e.clientY - r.top + ta.scrollTop) / lh);
+      const col = Math.floor((ld(e.clientX - r.left) - 2 + ta.scrollLeft) / cw), row = Math.floor((ld(e.clientY - r.top) + ta.scrollTop) / lh);
       const line = (ta.value.split('\n')[row] || '');
       const m = [...line.matchAll(/\bhonest\b/g)].find(x => col >= x.index && col < x.index + 6);
       if (m && !tipShown) { tipShown = true; showTipAt(e.clientX, e.clientY + 20, 'Even this.'); }

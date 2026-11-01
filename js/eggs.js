@@ -98,7 +98,7 @@ function konami() {
 }
 
 /* ---------- A09: there is no outside ---------- */
-window.addEventListener('scz-offscreen', e => showTipAt(e.detail.x, e.detail.y, 'There is no outside.'));
+window.addEventListener('scz-offscreen', e => showTipAt(e.detail.x, e.detail.y, 'There is no outside.', true));
 
 /* ---------- A10: we are watching ---------- */
 function watching() {

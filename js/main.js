@@ -1,4 +1,5 @@
 // Entry point.
+import { initScreen } from './screen.js';
 import { installCursors, icon } from './icons.js';
 import { initDesktop } from './desktop.js';
 import { initTaskbar } from './taskbar.js';
@@ -21,6 +22,7 @@ import './apps/misc.js';
 import { initEggs } from './eggs.js';
 
 installCursors();
+initScreen();
 const fav = document.createElement('link');
 fav.rel = 'icon';
 fav.href = icon('flag', 16);

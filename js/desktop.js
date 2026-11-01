@@ -1,4 +1,5 @@
 // Desktop icons: selection, marquee, drag, open, context menus.
+import { lx, ly, ld, lrect } from './screen.js';
 import { icon } from './icons.js';
 import { openMenu } from './menu.js';
 import { launch } from './apps/index.js';
@@ -136,15 +137,16 @@ function onDown(e) {
 }
 
 function hitRect(el) {
-  const a = el.firstChild.getBoundingClientRect(), b = el.lastChild.getBoundingClientRect();
+  const a = lrect(el.firstChild.getBoundingClientRect()), b = lrect(el.lastChild.getBoundingClientRect());
   return { left: Math.min(a.left, b.left), top: a.top, right: Math.max(a.right, b.right), bottom: b.bottom };
 }
 
 function marquee(e) {
-  const sx = e.clientX, sy = e.clientY, base = new Set(sel);
+  const sx = lx(e.clientX), sy = ly(e.clientY), base = new Set(sel);
   let box = null;
   const move = ev => {
-    const x0 = Math.min(sx, ev.clientX), y0 = Math.min(sy, ev.clientY), x1 = Math.max(sx, ev.clientX), y1 = Math.max(sy, ev.clientY);
+    const cx = lx(ev.clientX), cy = ly(ev.clientY);
+    const x0 = Math.min(sx, cx), y0 = Math.min(sy, cy), x1 = Math.max(sx, cx), y1 = Math.max(sy, cy);
     if (!box) { if (x1 - x0 + y1 - y0 < 3) return; box = document.createElement('div'); box.className = 'marquee'; document.getElementById('screen').appendChild(box); }
     Object.assign(box.style, { left: x0 + 'px', top: y0 + 'px', width: x1 - x0 + 'px', height: y1 - y0 + 'px' });
     const hit = items.filter(it => { const r = hitRect(els.get(it.id)); return !(r.right < x0 || r.left > x1 || r.bottom < y0 || r.top > y1); }).map(it => it.id);
@@ -160,7 +162,7 @@ function startDrag(e) {
   const sx = e.clientX, sy = e.clientY, ids = [...sel];
   let ghosts = null, dx = 0, dy = 0, lastX = sx, lastY = sy;
   const move = ev => {
-    dx = ev.clientX - sx; dy = ev.clientY - sy; lastX = ev.clientX; lastY = ev.clientY;
+    dx = ld(ev.clientX - sx); dy = ld(ev.clientY - sy); lastX = ev.clientX; lastY = ev.clientY;
     if (!ghosts) {
       if (Math.abs(dx) < 4 && Math.abs(dy) < 4) return;
       ghosts = ids.map(id => {

@@ -1,4 +1,5 @@
 // Popup menus: context menus, the Start menu and its cascades, window menus.
+import { lx, ly, lrect, sw, sh } from './screen.js';
 import { icon } from './icons.js';
 
 let stack = [];          // open menu levels, 0 = root
@@ -88,7 +89,8 @@ function build(items, variant, level) {
 }
 
 function place(el, x, y, opts) {
-  const W = el.offsetWidth, H = el.offsetHeight, vw = innerWidth, vh = innerHeight;
+  const W = el.offsetWidth, H = el.offsetHeight, vw = sw(), vh = sh();
+  x = lx(x); y = ly(y);
   if (opts.above) y -= H;
   else if (y + H > vh) y = Math.max(0, y - H);
   if (x + W > vw) x = Math.max(0, x - W);
@@ -96,10 +98,11 @@ function place(el, x, y, opts) {
   el.style.top = Math.round(Math.max(0, y)) + 'px';
 }
 function placeSub(el, r) {
+  r = lrect(r);
   const W = el.offsetWidth, H = el.offsetHeight;
   let x = r.right - 3, y = r.top - 3;
-  if (x + W > innerWidth) x = r.left - W + 3;
-  if (y + H > innerHeight) y = innerHeight - H;
+  if (x + W > sw()) x = r.left - W + 3;
+  if (y + H > sh()) y = sh() - H;
   el.style.left = Math.round(Math.max(0, x)) + 'px';
   el.style.top = Math.round(Math.max(0, y)) + 'px';
 }

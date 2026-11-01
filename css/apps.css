@@ -220,3 +220,5 @@ table.xls td.flash { background: #ffff80; }
 .saver-log .lv { height: 100%; }
 .saver-log td { font-size: 10px; padding: 0 3px; white-space: nowrap; }
 .saver-log tr.eip td { font-weight: bold; color: #800000; }
+
+.mobile-banner { position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 30000; }
