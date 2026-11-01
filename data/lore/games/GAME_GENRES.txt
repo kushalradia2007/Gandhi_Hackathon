@@ -1,0 +1,33 @@
+                      GAME_GENRES.DOC
+            THE QUIET ROOM  -  TECH ARCHIVE  -  REV. 2
+                 Filed under: DISTRACTION PRODUCTS
+
+=====================================================================
+
+Every genre has a function. Every function has a target.
+The player does not choose a genre. The genre chooses the player.
+
+GENRE                     FUNCTION    TARGET
+------------------------  ----------  -----------------------
+Open-world crime          Autonomy    Talented teenagers
+Fantasy violence          Power       Angry teenagers
+Strategy / empire         Control     Ambitious teenagers
+Pastoral / farming        Patience    Escapist teenagers
+Competitive multiplayer   Status      Social teenagers
+Sandbox / creative        Identity    Lonely teenagers
+
+NOTES ON THE INSTALLED GAMES (PC 03)
+- Solitaire: patience. The player moves cards from one place to
+  another until the cards are in order. Then the cards fly away
+  and the player deals again.
+- Minesweeper: control. The player clears a field one square at
+  a time and is rewarded for never making a mistake.
+- Hearts: community. Not available. The player is the only one.
+- FreeCell: hope. Deal #11982 cannot be solved. It is left on the
+  machine as a reminder.
+
+The sandbox is the most dangerous.
+The player who builds a world in a game does not build one
+outside it.
+
+- filed by SEAT_05

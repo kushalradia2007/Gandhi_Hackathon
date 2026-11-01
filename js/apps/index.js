@@ -5,33 +5,19 @@ import { messageBox } from '../dialogs.js';
 const registry = {};
 export function register(id, fn) { registry[id] = fn; }
 
-// [title, icon] for apps that arrive in later build steps
+// Fallback shells for apps provided by other modules (ie, games, settings) if those fail to load.
 const SHELLS = {
-  mycomputer: ['My Computer', 'computer'],
-  mydocs: ['My Documents', 'mydocs'],
-  explorer: ['Exploring - My Computer', 'computer'],
-  ie: ['Shree Cyber Zone - Microsoft Internet Explorer', 'ie'],
-  recycle: ['Recycle Bin', 'recyclefull'],
-  cafe: ['Café Manager 98', 'cafe'],
-  sessionlog: ['Session Log', 'sessionlog'],
-  printq: ['Printer Queue', 'printer'],
-  notepad: ['Untitled - Notepad', 'notepad'],
-  paint: ['untitled - Paint', 'paint'],
-  help: ['Windows Help', 'help'],
-  minesweeper: ['Minesweeper', 'app'],
-  solitaire: ['Solitaire', 'app'],
-  mediaplayer: ['Media Player', 'app'],
-  controlpanel: ['Control Panel', 'settings'],
-  printers: ['Printers', 'printer'],
-  find: ['Find: All Files', 'find'],
+  ie: ['SHREE CYBER ZONE Homepage - Microsoft Internet Explorer', 'ie'],
+  minesweeper: ['Minesweeper', 'mine'],
+  solitaire: ['Solitaire', 'cards'],
 };
+// Control Panel items that live in settings modules
+const SETTINGS = ['controlpanel', 'display', 'datetime', 'folderoptions', 'taskbarprops', 'sysprops', 'dialup'];
 
 // Programs that are no longer on this machine.
 const MISSING = {
-  calc: 'C:\\WINDOWS\\CALC.EXE',
   wordpad: 'C:\\Program Files\\Accessories\\WORDPAD.EXE',
   outlook: 'C:\\Program Files\\Outlook Express\\MSIMN.EXE',
-  msdos: 'C:\\WINDOWS\\COMMAND.COM',
   hyperterminal: 'C:\\Program Files\\Accessories\\HyperTerminal\\HYPERTRM.EXE',
   defrag: 'C:\\WINDOWS\\DEFRAG.EXE',
   scandisk: 'C:\\WINDOWS\\SCANDSKW.EXE',
@@ -44,6 +30,7 @@ export function notFound(path, title = path.split('\\').pop()) {
 export function launch(id, args = {}) {
   if (registry[id]) return registry[id](args);
   if (MISSING[id]) return notFound(MISSING[id]);
+  if (SETTINGS.includes(id)) return messageBox({ title: 'Control Panel', icon: 'settings', text: 'This item is not available on PC 03.' });
   const s = SHELLS[id];
   if (!s) return null;
   const body = document.createElement('div');

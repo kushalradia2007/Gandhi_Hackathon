@@ -4,6 +4,7 @@ import * as wm from './windowManager.js';
 import { openMenu } from './menu.js';
 import { toggleStartMenu } from './startMenu.js';
 import { launch } from './apps/index.js';
+import { isMuted, setMuted } from './sound.js';
 
 let tasksEl, clockEl, desktopStash = null;
 
@@ -20,6 +21,7 @@ export function attachTip(el, text) {
       tipEl = document.createElement('div');
       tipEl.className = 'tooltip';
       tipEl.textContent = typeof text === 'function' ? text() : text;
+      if (!tipEl.textContent) { hideTip(); return; }
       document.getElementById('screen').appendChild(tipEl);
       let x = mx, y = my + 20;
       if (y + tipEl.offsetHeight > innerHeight) y = my - tipEl.offsetHeight - 4;
@@ -30,6 +32,18 @@ export function attachTip(el, text) {
   });
   el.addEventListener('pointerleave', hideTip);
   el.addEventListener('pointerdown', hideTip);
+}
+
+/** Show a tooltip at a point for 2.5 s (used by eggs). */
+export function showTipAt(x, y, text) {
+  hideTip();
+  tipEl = document.createElement('div');
+  tipEl.className = 'tooltip';
+  tipEl.textContent = text;
+  document.getElementById('screen').appendChild(tipEl);
+  x = Math.min(x, innerWidth - tipEl.offsetWidth - 2); y = Math.max(0, Math.min(y, innerHeight - tipEl.offsetHeight - 2));
+  tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
+  tipT = setTimeout(hideTip, 2500);
 }
 
 /* ---------- clock ---------- */
@@ -48,7 +62,7 @@ export function initTaskbar() {
     </div>
     <div class="tb-sep"></div><div class="tb-grip"></div>
     <div class="tasks" id="tasks"></div>
-    <div class="tray"><img class="tray-vol" src="${icon('speaker', 16)}" width="16" height="16" alt="" draggable="false"><span class="clock" id="clock"></span></div>`;
+    <div class="tray"><img class="tray-net" src="${icon('nettray', 16)}" width="16" height="16" alt="" draggable="false"><img class="tray-vol" src="${icon('speaker', 16)}" width="16" height="16" alt="" draggable="false"><span class="clock" id="clock"></span></div>`;
   tasksEl = tb.querySelector('#tasks');
   clockEl = tb.querySelector('#clock');
 
@@ -60,7 +74,12 @@ export function initTaskbar() {
     attachTip(b, tips[b.dataset.act]);
     b.addEventListener('click', () => (b.dataset.act === 'desktop' ? showDesktop() : launch(b.dataset.act)));
   });
-  attachTip(tb.querySelector('.tray-vol'), 'Volume');
+  const vol = tb.querySelector('.tray-vol'), net = tb.querySelector('.tray-net');
+  attachTip(vol, () => isMuted() ? 'Volume: muted' : 'Volume: — (speakers disconnected in 1998)');
+  vol.addEventListener('dblclick', () => launch('volume'));
+  vol.addEventListener('contextmenu', e => { e.preventDefault(); e.stopPropagation(); openMenu([{ label: '&Mute', checked: isMuted(), action: () => setMuted(!isMuted()) }, { label: '&Open Volume Controls', bold: true, action: () => launch('volume') }, { label: '&Adjust Audio Properties' }], e.clientX, e.clientY); });
+  attachTip(net, 'Network: 12 computers connected. 1 unknown device.');
+  net.addEventListener('dblclick', () => launch('network'));
   attachTip(clockEl, () => fmtDate(new Date()));
 
   tb.addEventListener('contextmenu', e => {
@@ -74,7 +93,7 @@ export function initTaskbar() {
       { label: 'Tile Windows V&ertically', action: () => wm.tileAll(false) },
       { label: '&Minimize All Windows', action: wm.minimizeAll },
       { sep: true },
-      { label: 'P&roperties' },
+      { label: 'P&roperties', action: () => launch('taskbarprops') },
     ], e.clientX, e.clientY);
   });
 
@@ -83,7 +102,8 @@ export function initTaskbar() {
 }
 
 function tick() {
-  clockEl.textContent = fmtTime(new Date());
+  clockEl.dataset.real = fmtTime(new Date());
+  if (!clockEl.dataset.egg) clockEl.textContent = clockEl.dataset.real;
   setTimeout(tick, 1000 - (Date.now() % 1000));
 }
 
@@ -102,7 +122,7 @@ function renderTasks() {
     b.className = 'task' + (w === act && !w.minimized ? ' active' : '');
     b.innerHTML = `<img src="${icon(w.iconName, 16)}" width="16" height="16" alt="" draggable="false"><span></span>`;
     b.lastChild.textContent = w.title;
-    b.title = '';
+    attachTip(b, () => (b.lastChild.scrollWidth > b.lastChild.clientWidth ? w.title : ''));
     b.addEventListener('pointerdown', e => { if (e.button === 0) { e.preventDefault(); wm.taskbarClick(w); } });
     b.addEventListener('contextmenu', e => { e.preventDefault(); e.stopPropagation(); wm.focus(w); wm.systemMenu(w, e.clientX, e.clientY); });
     tasksEl.appendChild(b);

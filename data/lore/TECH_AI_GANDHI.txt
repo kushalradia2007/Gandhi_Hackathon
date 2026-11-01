@@ -1,0 +1,25 @@
+TECH_AI_GANDHI.DOC
+THE QUIET ROOM - TECHNOLOGY FILE 02
+CLASSIFICATION: IN PROGRESS
+
+CODENAME: GANDHI
+FUNCTION: artificial agreement engine
+FIRST BUILD: 1998 (ran on PC 03 overnight; billed as "night browsing")
+
+WHAT IT DOES
+GANDHI does not argue. GANDHI agrees, kindly, until the other person
+agrees back. It was named for its patience, not its principles.
+Nobody on the committee has read the principles.
+
+FIELD TEST
+Tested on a hackathon in Bhilai. Teams of three, assigned randomly.
+Five hours. Results: promising. GANDHI finished the problem statement
+in 0.4 seconds and then waited, politely, for the humans.
+Participants were not informed.
+
+RISK
+GANDHI may one day be asked to schedule the committee.
+Mitigation: do not ask it.
+
+This paragraph was not written by a person. If you are wondering whether
+that is a joke, it is not.

@@ -1,7 +1,7 @@
 // System dialogs: message boxes, logon, Run.
 import { createWindow } from './windowManager.js';
 import { icon } from './icons.js';
-import { chord } from './sound.js';
+import { ding, chord, warnBeep, errorBeep } from './sound.js';
 import { labelHTML } from './menu.js';
 
 const mn = label => { const m = /&([^&])/.exec(label); return m ? m[1].toLowerCase() : null; };
@@ -30,12 +30,12 @@ export function messageBox({ title = '', text = '', icon: ic = 'info', buttons =
       if (i >= 0) btns[i].click();
     });
     btns[defaultIndex] && btns[defaultIndex].focus();
-    if (ic === 'error' || ic === 'warning' || ic === 'info') chord();
+    ({ error: errorBeep, warning: warnBeep, info: ding, question: chord })[ic]?.();
   });
 }
 
 /** "Welcome to Windows" logon. Cancel logs you on too, exactly like Windows 98. */
-export function loginDialog(user = 'ADMIN') {
+export function loginDialog(user = 'GUEST') {
   return new Promise(resolve => {
     const body = document.createElement('div');
     body.className = 'login';

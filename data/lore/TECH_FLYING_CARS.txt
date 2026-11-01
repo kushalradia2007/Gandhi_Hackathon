@@ -1,0 +1,27 @@
+TECH_FLYING_CARS.DOC
+THE QUIET ROOM - TECHNOLOGY FILE 01
+CLASSIFICATION: DELAY
+
+SUBJECT: Personal aerial vehicle ("flying car")
+FIRST WORKING PROTOTYPE: 1994, Nagpur. Two seats. One rotor that worked.
+INVENTOR: a retired railway mechanic. Name not required.
+STATUS: DELAYED (1998 -> 2020 -> 2050 -> 2075)
+
+SUMMARY
+The prototype flew for eleven minutes over a mango orchard. It landed
+without incident. It is stored in a shed behind a bicycle repair shop.
+
+The shed does not have a lock, because nobody knows to look.
+
+REASON FOR DELAY
+A person who can fly over traffic does not need the road. A person who
+does not need the road does not need the toll, the fuel pump, the
+insurance office or the traffic camera. Every road is a list.
+
+RELEASE CRITERIA
+Release when movement can be logged from the sky as reliably as from
+the ground. Current estimate: 2075.
+
+NOTE FROM THE FIELD
+The inventor asked twice if his car would be on television. We said
+yes. He waited by the television for three years.

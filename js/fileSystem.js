@@ -15,7 +15,26 @@ export async function loadFS() {
   const t = todayStamp();
   const txt = (await (await fetch('data/filesystem.json')).text()).replaceAll('{TODAYSHORT}', t.short).replaceAll('{TODAY}', t.iso);
   root = JSON.parse(txt);
-  (function link(n, parent) { n.parent = parent; (n.children || []).forEach(c => link(c, n)); })(root, null);
+  const link = (n, parent) => { n.parent = parent; (n.children || []).forEach(c => link(c, n)); };
+  link(root, null);
+  // optional fragments contributed by other docs (games.md file tree)
+  for (const frag of ['data/fs_games.json']) {
+    try {
+      const r = await fetch(frag);
+      if (!r.ok) continue;
+      const j = JSON.parse((await r.text()).replaceAll('{TODAYSHORT}', t.short).replaceAll('{TODAY}', t.iso));
+      for (const [path, nodes] of Object.entries(j)) {
+        let p = resolve(path);
+        if (!p) { // create missing parent folders
+          const segs = path.replace(/\\+$/, '').split('\\');
+          p = resolve(segs[0]);
+          for (const s of segs.slice(1)) { let c = (p.children || []).find(x => x.name.toLowerCase() === s.toLowerCase()); if (!c) { c = { name: s, type: 'folder', date: '03/03/98 03:14 AM', children: [], parent: p }; (p.children = p.children || []).push(c); } p = c; }
+        }
+        p.children = p.children || [];
+        for (const n of nodes) { if (!p.children.some(c => c.name.toLowerCase() === n.name.toLowerCase())) { p.children.push(n); link(n, p); } }
+      }
+    } catch (e) { console.warn('fragment', frag, e); }
+  }
   return root;
 }
 export const getRoot = () => root;
@@ -34,7 +53,8 @@ export function resolve(path) {
   const p = path.trim().replace(/\//g, '\\').replace(/\\+$/, '');
   if (!p || /^my computer$/i.test(p)) return root;
   if (/^my documents$/i.test(p)) return resolve('C:\\My Documents');
-  if (/^recycle bin$/i.test(p)) return resolve('C:\\RECYCLED');
+  if (/^recycle bin$/i.test(p) || /^c:\\recycle bin$/i.test(p)) return resolve('C:\\RECYCLED');
+  if (/^desktop$/i.test(p)) return resolve('C:\\WINDOWS\\Desktop');
   const segs = p.split('\\').filter(Boolean);
   let n = root.children.find(c => c.letter && c.letter.toLowerCase() === segs[0].toLowerCase());
   if (!n && segs.length === 1) n = root.children.find(c => c.name.toLowerCase() === segs[0].toLowerCase());
@@ -43,7 +63,7 @@ export function resolve(path) {
 }
 
 export function children(n, showHidden = false) {
-  const kids = (n.children || []).filter(c => showHidden || !c.hidden);
+  const kids = (n.children || []).filter(c => (showHidden || !c.hidden) && (!c.hiddenUntilLogs || (window.__logsRead || 0) >= 5));
   const rank = c => (c.type === 'drive' ? 0 : c.type === 'folder' || c.type === 'computer' ? 1 : 2);
   return n === root ? kids : kids.slice().sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name));
 }
@@ -55,13 +75,13 @@ export function iconFor(n) {
   if (n.icon) return n.icon;
   if (isContainer(n)) return 'folder';
   if (n.app) return 'app';
-  return ({ txt: 'txtfile', log: 'txtfile', ini: 'sysfile', sys: 'sysfile', bat: 'sysfile', doc: 'docfile', jpg: 'imgfile', bmp: 'imgfile', xls: 'xlsfile', pdf: 'file', img: 'file', exe: 'app' })[ext(n)] || 'file';
+  return ({ txt: 'txtfile', log: 'txtfile', ini: 'sysfile', sys: 'sysfile', bat: 'sysfile', dll: 'sysfile', doc: 'docfile', jpg: 'imgfile', bmp: 'imgfile', png: 'imgfile', xls: 'xlsfile', pdf: 'pdffile', img: 'imgfile', wav: 'media', exe: 'app', csv: 'xlsfile' })[ext(n)] || 'file';
 }
 
 export function typeName(n) {
   if (n.type === 'drive') return n.icon === 'floppy' ? '3½ Inch Floppy Disk' : n.icon === 'cdrom' ? 'CD-ROM Disc' : 'Local Disk';
   if (isContainer(n)) return 'File Folder';
-  return ({ txt: 'Text Document', log: 'Text Document', doc: 'WordPad Document', jpg: 'JPEG Image', bmp: 'Bitmap Image', xls: 'Microsoft Excel Worksheet', exe: 'Application', ini: 'Configuration Settings', sys: 'System file', bat: 'MS-DOS Batch File', pdf: 'Adobe Acrobat Document', img: 'Disk Image' })[ext(n)] || 'File';
+  return ({ txt: 'Text Document', log: 'Text Document', doc: 'WordPad Document', jpg: 'JPEG Image', bmp: 'Bitmap Image', png: 'PNG Image', xls: 'Microsoft Excel Worksheet', csv: 'Microsoft Excel Comma Separated Values File', exe: 'Application', ini: 'Configuration Settings', sys: 'System file', dll: 'Application Extension', bat: 'MS-DOS Batch File', pdf: 'Adobe Acrobat Document', img: 'Disk Image', wav: 'Wave Sound' })[ext(n)] || 'File';
 }
 
 export const sizeKB = n => (n.size == null ? '' : Math.max(n.size ? 1 : 0, Math.ceil(n.size / 1024)).toLocaleString('en-US') + 'KB');

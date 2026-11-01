@@ -6,10 +6,19 @@ import { initKeys } from './windowManager.js';
 import { toggleStartMenu } from './startMenu.js';
 import { boot } from './boot.js';
 import { loadFS } from './fileSystem.js';
+import { flags } from './state.js';
 import './apps/explorer.js';
 import './apps/notepad.js';
-import './apps/extras.js';
-import './apps/eggs.js';
+import './apps/sessionlog.js';
+import './apps/cafe.js';
+import './apps/printing.js';
+import './apps/spreadsheet.js';
+import './apps/mirc.js';
+import './apps/paint.js';
+import './apps/tools.js';
+import './apps/endings.js';
+import './apps/misc.js';
+import { initEggs } from './eggs.js';
 
 installCursors();
 const fav = document.createElement('link');
@@ -20,6 +29,8 @@ document.head.appendChild(fav);
 initDesktop();
 initTaskbar();
 initKeys();
+initEggs();
+window.__logsRead = flags.logsRead.size;
 
 // Windows key / Ctrl+Esc open the Start menu (Win key only reaches the page in fullscreen keyboard-lock)
 let metaAlone = false;

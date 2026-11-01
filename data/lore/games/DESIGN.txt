@@ -1,0 +1,41 @@
+GTA 3 - DESIGN DOCUMENT
+Project: Generational Trajectory Adjustment
+Phase 3: Capture
+
+STATUS: IN PROGRESS (0%)
+
+OBJECTIVE
+The player is a young person in a city. They are given
+freedom. They are given goals. They are given a sandbox.
+
+They will not leave the sandbox.
+
+MECHANICS
+- Open world: The player goes where they want.
+- Missions: The player is given objectives.
+- Vehicles: The player steals them. This is rewarded.
+- Time: The player loses track of it.
+- Money: The player accumulates it. It does not matter.
+- Reputation: The player builds it. It means nothing.
+
+The game is designed so that the player cannot "finish" it.
+The player can only stop playing.
+
+When the player stops playing, they will feel empty.
+This is intentional.
+
+When the player feels empty, they will play again.
+
+RECRUITMENT
+The player who finishes all missions is a candidate.
+The player who finds all secrets is a candidate.
+The player who writes about the game is a candidate.
+
+The game is not the goal. The game is the filter.
+
+PHASE 3 GOAL
+Retain 90% of players for 40+ hours.
+Retain 10% of players for 100+ hours.
+Identify the 1% who never stop.
+
+These are SEAT_07.

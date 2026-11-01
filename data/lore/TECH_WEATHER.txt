@@ -1,0 +1,22 @@
+TECH_WEATHER.DOC
+THE QUIET ROOM - TECHNOLOGY FILE 04
+CLASSIFICATION: PARTIAL
+
+OBJECTIVE: weather control
+BUDGET: very large
+RESULT: we can make it rain on exactly one cricket match.
+
+FIELD RESULTS
+Test 1: rain on the cricket match. Successful. Match abandoned at 98/2.
+        (The match has not officially resumed. Check the TV.)
+Test 2: rain on a farmer's field in a drought district. Failed.
+        It rained on a wedding in the next village instead.
+        The wedding was very angry. The farmer was not invited.
+Test 3: rain on the cricket match again. Successful.
+
+ASSESSMENT
+It was enough. One match is all it takes to change a mood, a market,
+and a nation's evening. We have stopped trying to help the farmer.
+
+This is the most honest file in the archive. The rest of the files are
+lying about their progress.

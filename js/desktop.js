@@ -3,6 +3,8 @@ import { icon } from './icons.js';
 import { openMenu } from './menu.js';
 import { launch } from './apps/index.js';
 import { setBusy } from './windowManager.js';
+import { messageBox } from './dialogs.js';
+import { store } from './state.js';
 
 const CELL_W = 75, CELL_H = 75;
 const SYSTEM = ['mycomputer', 'mydocs', 'ie', 'recycle'];
@@ -16,6 +18,9 @@ const items = [
   { id: 'printq', label: 'Printer Queue', icon: 'printer', lnk: true },
   { id: 'notepad', label: 'Notepad', icon: 'notepad', lnk: true },
   { id: 'paint', label: 'Paint', icon: 'paint', lnk: true },
+  { id: 'mediaplayer', label: 'Media Player', icon: 'media', lnk: true },
+  { id: 'minesweeper', label: 'Minesweeper', icon: 'mine', lnk: true },
+  { id: 'solitaire', label: 'Solitaire', icon: 'cards', lnk: true },
 ];
 const els = new Map();
 let sel = new Set(), focusId = null, root;
@@ -32,10 +37,12 @@ export function initDesktop() {
   root.addEventListener('pointerdown', onDown);
   root.addEventListener('contextmenu', onMenu);
   root.addEventListener('keydown', onKey);
+  if (store.get('proprietor')) addIcon({ id: 'proprietor', label: 'PROPRIETOR', icon: 'key' });
 }
 
 /** Public: add an icon at runtime (used by later steps, e.g. PROPRIETOR). */
 export function addIcon(it) {
+  if (items.some(i => i.id === it.id)) return;
   const d = deskSize();
   const rows = Math.max(1, Math.floor(d.h / CELL_H));
   const n = items.length;
@@ -68,7 +75,20 @@ const setSel = ids => { sel = new Set(ids); refreshSel(); };
 
 function open(it) {
   setBusy(true);
-  setTimeout(() => { setBusy(false); launch(it.id); }, 180);
+  setTimeout(() => { setBusy(false); if (it.open) it.open(); else launch(it.id); }, 180);
+}
+
+const UNDELETABLE = ['mycomputer', 'recycle', 'mydocs', 'ie', 'proprietor', 'mirc'];
+async function remove(ids) {
+  const list = ids.map(byId).filter(Boolean);
+  if (!list.length) return;
+  const blocked = list.find(it => UNDELETABLE.includes(it.id));
+  if (blocked) return messageBox({ title: 'Error Deleting File', icon: 'error', text: `Cannot delete ${blocked.label}: Access is denied.
+
+Make sure the disk is not full or write-protected and that the file is not currently in use.` });
+  const r = await messageBox({ title: 'Confirm File Delete', icon: 'question', text: list.length === 1 ? `Are you sure you want to send '${list[0].label}' to the Recycle Bin?` : `Are you sure you want to send these ${list.length} items to the Recycle Bin?`, buttons: ['&Yes', '&No'] });
+  if (r !== 0) return;
+  list.forEach(it => { els.get(it.id).remove(); els.delete(it.id); items.splice(items.indexOf(it), 1); sel.delete(it.id); });
 }
 
 function arrange(order) {
@@ -79,7 +99,9 @@ function arrange(order) {
 function arrangeByName() {
   const sys = SYSTEM.map(byId);
   const rest = items.filter(i => !SYSTEM.includes(i.id)).sort((a, b) => a.label.localeCompare(b.label));
+  const mc = byId('mycomputer'), keep = { x: mc.x, y: mc.y };
   arrange([...sys, ...rest]);
+  mc.x = keep.x; mc.y = keep.y;
   items.forEach(position);
 }
 function lineUp() {
@@ -136,9 +158,9 @@ function marquee(e) {
 
 function startDrag(e) {
   const sx = e.clientX, sy = e.clientY, ids = [...sel];
-  let ghosts = null, dx = 0, dy = 0;
+  let ghosts = null, dx = 0, dy = 0, lastX = sx, lastY = sy;
   const move = ev => {
-    dx = ev.clientX - sx; dy = ev.clientY - sy;
+    dx = ev.clientX - sx; dy = ev.clientY - sy; lastX = ev.clientX; lastY = ev.clientY;
     if (!ghosts) {
       if (Math.abs(dx) < 4 && Math.abs(dy) < 4) return;
       ghosts = ids.map(id => {
@@ -155,6 +177,8 @@ function startDrag(e) {
     window.removeEventListener('pointerup', up);
     if (!ghosts) return;
     const d = deskSize();
+    const target = document.elementsFromPoint(lastX, lastY).map(e => e.closest && e.closest('.icon:not(.ghost)')).find(Boolean);
+    if (target && target.dataset.id === 'recycle' && !ids.includes('recycle')) { ghosts.forEach(({ g }) => g.remove()); remove(ids); return; }
     ghosts.forEach(({ g, it }) => {
       g.remove();
       it.x = Math.min(Math.max(it.x + dx, 0), d.w - CELL_W);
@@ -169,6 +193,7 @@ function startDrag(e) {
 function onKey(e) {
   if (e.key === 'Enter') [...sel].forEach(id => open(byId(id)));
   if (e.key === 'a' && e.ctrlKey) { e.preventDefault(); setSel(items.map(i => i.id)); }
+  if (e.key === 'Delete') remove([...sel]);
 }
 
 function onMenu(e) {
@@ -208,14 +233,24 @@ function iconMenu(it) {
   ];
   if (it.kind === 'recycle') return [
     { label: '&Open', bold: true, action: openIt }, { label: 'E&xplore', action: openIt }, { label: 'Empty Recycle &Bin', action: () => launch('emptybin') },
-    { sep: true }, { label: 'Create &Shortcut' }, { sep: true }, { label: 'P&roperties' },
+    { sep: true }, { label: 'Create &Shortcut' }, { sep: true }, { label: 'P&roperties', action: () => messageBox({ title: 'Recycle Bin Properties', icon: 'recyclefull', text: `Maximum size of Recycle Bin: 10% of each drive
+
+Display delete confirmation dialog: on
+Do not move files to the Recycle Bin: not available
+
+The Recycle Bin does not let go.` }) },
   ];
   return [
     { label: '&Open', bold: true, action: openIt },
     { sep: true },
     { label: 'Se&nd To', submenu: [{ label: '3½ Floppy (A)' }, { label: 'Desktop (create shortcut)' }, { label: 'Mail Recipient' }, { label: 'My Documents' }] },
     { sep: true }, { label: 'Cu&t' }, { label: '&Copy' },
-    { sep: true }, { label: 'Create &Shortcut' }, { label: '&Delete' }, { label: 'Rena&me' },
-    { sep: true }, { label: 'P&roperties' },
+    { sep: true }, { label: 'Create &Shortcut' }, { label: '&Delete', action: () => remove([...sel]) }, { label: 'Rena&me' },
+    { sep: true }, { label: 'P&roperties', action: () => messageBox({ title: `${it.label} Properties`, icon: it.icon, text: `${it.label}
+
+Type: ${it.lnk ? 'Shortcut' : 'System Folder'}
+Location: Desktop
+Owner: GUEST
+Created: 03/03/98 3:14 AM` }) },
   ];
 }

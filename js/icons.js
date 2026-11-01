@@ -238,10 +238,53 @@ const ICONS = {
   imgfile(g) { page(g, 6, 2, 20, 28); g.box('c', 'k', 9, 9, 14, 13); g.rect('g', 10, 17, 12, 4); g.disc('y', 19, 13, 2); g.line('g', 10, 17, 14, 14); g.line('g', 14, 14, 18, 17); },
   xlsfile(g) { page(g, 6, 2, 20, 28); for (let y = 9; y <= 25; y += 4) g.rect('g', 9, y, 14, 1); for (let x = 9; x <= 23; x += 5) g.rect('g', x, 9, 1, 17); },
   sysfile(g) { page(g, 6, 2, 20, 28); g.disc('k', 16, 18, 6); g.disc('d', 16, 18, 5); g.disc('w', 16, 18, 2); g.rect('k', 15, 10, 3, 3); g.rect('k', 15, 24, 3, 3); g.rect('k', 8, 17, 3, 3); g.rect('k', 22, 17, 3, 3); },
+  mirc(g) {
+    g.box('w', 'k', 3, 4, 26, 18); g.rect('n', 4, 5, 24, 3);
+    g.rect('k', 6, 10, 14, 1); g.rect('k', 6, 13, 18, 1); g.rect('k', 6, 16, 10, 1);
+    g.grid(6, 22, ['kk......', 'kwk.....', 'kwwk....', 'kkkk....']);
+    g.disc('k', 24, 24, 6); g.disc('g', 24, 24, 5); g.disc('l', 22, 22, 2);
+  },
+  media(g) {
+    g.box('s', 'k', 2, 6, 28, 20); g.rect('w', 3, 7, 26, 1); g.rect('d', 3, 24, 26, 1);
+    g.box('k', 'd', 5, 9, 22, 10);
+    for (let i = 0; i < 9; i++) { const h = [3, 6, 8, 5, 7, 4, 8, 6, 3][i]; g.rect('l', 7 + i * 2, 18 - h, 1, h); }
+    g.grid(6, 20, ['k.....kk.kk..k...', 'kk....kk.kk..kk..', 'k.....kk.kk..k...']);
+  },
+  calc(g) {
+    g.box('s', 'k', 6, 2, 20, 28); g.rect('w', 7, 3, 18, 1); g.rect('d', 7, 28, 18, 1);
+    g.box('c', 'k', 8, 5, 16, 6); g.rect('k', 19, 7, 3, 2);
+    for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) g.box(c === 3 ? 'r' : 'w', 'k', 8 + c * 4, 13 + r * 4, 4, 4);
+  },
+  msdos(g) {
+    g.box('s', 'k', 2, 4, 28, 24); g.rect('n', 3, 5, 26, 3);
+    g.rect('k', 3, 8, 26, 19);
+    g.grid(5, 11, ['www.w...www', 'w.w.w...w..', 'www.www.w..', 'w.....w.w..', 'w...www.www']);
+    g.rect('s', 5, 20, 4, 1); g.rect('w', 10, 20, 3, 2);
+  },
+  network(g) {
+    ICONS.computer.call(null, { ...g, rect: (c, x, y, w, h) => g.rect(c, (x >> 1) + 1, (y >> 1) + 2, Math.max(1, w >> 1), Math.max(1, h >> 1)), px: (c, x, y) => g.px(c, (x >> 1) + 1, (y >> 1) + 2), frame: (c, x, y, w, h) => g.frame(c, (x >> 1) + 1, (y >> 1) + 2, Math.max(1, w >> 1), Math.max(1, h >> 1)), box: (f, l, x, y, w, h) => g.box(f, l, (x >> 1) + 1, (y >> 1) + 2, Math.max(1, w >> 1), Math.max(1, h >> 1)) });
+    g.box('s', 'k', 17, 14, 13, 9); g.rect('t', 19, 16, 9, 5); g.box('s', 'k', 19, 23, 9, 3);
+    g.rect('k', 9, 18, 1, 9); g.rect('k', 9, 27, 15, 1); g.rect('k', 23, 26, 1, 2);
+  },
+  pdffile(g) { page(g, 6, 2, 20, 28); g.rect('r', 9, 9, 9, 7); g.grid(10, 10, ['www.ww', 'w.w.w.', 'www.ww']); lines(g, 9, 19, 13, 5); },
+  mine(g) {
+    g.box('s', 'k', 2, 2, 28, 28); g.rect('w', 3, 3, 26, 1); g.rect('w', 3, 3, 1, 26);
+    g.rect('k', 15, 6, 2, 20); g.rect('k', 6, 15, 20, 2); g.line('k', 9, 9, 23, 23, 2); g.line('k', 23, 9, 9, 23, 2);
+    g.disc('k', 16, 16, 7); g.rect('w', 12, 12, 3, 3);
+  },
+  cards(g) {
+    g.box('w', 'k', 3, 6, 16, 22); g.grid(5, 8, ['.r.r.', 'rrrrr', '.rrr.', '..r..']);
+    g.box('w', 'k', 13, 3, 16, 22); g.grid(15, 5, ['..k..', '.kkk.', 'kkkkk', '..k..']); g.rect('k', 19, 13, 3, 4);
+    g.grid(19, 11, ['.k.', 'kkk', '.k.']);
+  },
 };
 
 /* ---------- hand-drawn 16x16 icons ---------- */
 const SMALL = {
+  nettray(g) {
+    g.box('s', 'k', 0, 1, 9, 7); g.rect('t', 1, 2, 7, 5); g.rect('k', 3, 8, 3, 2);
+    g.box('s', 'k', 7, 6, 9, 7); g.rect('t', 8, 7, 7, 5); g.rect('k', 10, 13, 3, 2);
+  },
   back(g) { g.grid(0, 2, ['......k.........', '.....kk.........', '....kgk.........', '...kggkkkkkkkk..', '..kgggggggggggk.', '.kgggggggggggggk', '..kgggggggggggk.', '...kggkkkkkkkk..', '....kgk.........', '.....kk.........', '......k.........']); },
   forward(g) { g.grid(0, 2, ['.........k......', '.........kk.....', '.........kgk....', '..kkkkkkkkggk...', '.kgggggggggggk..', 'kgggggggggggggk.', '.kgggggggggggk..', '..kkkkkkkkggk...', '.........kgk....', '.........kk.....', '.........k......']); },
   up(g) { g.box('y', 'k', 1, 5, 14, 10); g.box('y', 'k', 2, 3, 6, 3); g.rect('y', 3, 5, 4, 1); g.grid(4, 6, ['...k...', '..kkk..', '.kkkkk.', '...k...', '...k...', '...kkkk']); },

@@ -1,0 +1,28 @@
+{
+  "C:\\BACKROOM$\\TECH": [
+    { "name": "GAMING_INDUSTRY.DOC", "type": "file", "size": 22528, "date": "03/03/98 03:14 AM", "src": "lore/games/GAMING_INDUSTRY.txt" },
+    { "name": "TECH_GTA_PROTOCOL.DOC", "type": "file", "size": 25600, "date": "03/03/98 03:14 AM", "src": "lore/games/TECH_GTA_PROTOCOL.txt" },
+    { "name": "GAME_GENRES.DOC", "type": "file", "size": 19456, "date": "03/03/98 03:14 AM", "src": "lore/games/GAME_GENRES.txt", "egg": "sandbox" },
+    { "name": "GAMING_CALENDAR.XLS", "type": "file", "size": 13824, "date": "{TODAYSHORT} 12:00 AM", "src": "lore/games/GAMING_CALENDAR.csv", "egg": "calendar" }
+  ],
+  "C:\\My Documents": [
+    { "name": "Game Studio", "type": "folder", "date": "03/03/98 10:40 PM", "children": [
+      { "name": "README.TXT", "type": "file", "size": 219, "date": "03/03/98 10:40 PM", "src": "lore/games/README.txt" },
+      { "name": "GTA_3", "type": "folder", "date": "03/03/98 10:40 PM", "children": [
+        { "name": "GTA3.EXE", "type": "file", "size": 0, "date": "03/03/98 10:40 PM", "app": "gta3" },
+        { "name": "DESIGN.DOC", "type": "file", "size": 11264, "date": "03/03/98 10:41 PM", "src": "lore/games/DESIGN.txt" },
+        { "name": "ASSETS", "type": "folder", "date": "03/03/98 10:41 PM", "children": [
+          { "name": "player_sprite.bmp", "type": "file", "size": 1024, "date": "03/03/98 10:41 PM", "icon": "imgfile", "app": "gta_player_sprite" },
+          { "name": "car_sprite.bmp", "type": "file", "size": 1024, "date": "03/03/98 10:41 PM", "icon": "imgfile", "app": "gta_car_sprite" },
+          { "name": "city_map.bmp", "type": "file", "size": 8192, "date": "03/03/98 10:41 PM", "icon": "imgfile", "app": "gta_city_map" },
+          { "name": "font_8px.bmp", "type": "file", "size": 2048, "date": "03/03/98 10:41 PM", "icon": "imgfile", "app": "gta_font_8px" }
+        ] },
+        { "name": "BUILD_LOG.TXT", "type": "file", "size": 61477, "date": "{TODAYSHORT} 03:14 AM", "src": "lore/games/BUILD_LOG.txt" }
+      ] },
+      { "name": "GTA_4", "type": "folder", "date": "03/03/98 03:14 AM", "children": [] },
+      { "name": "GTA_5", "type": "folder", "date": "03/03/98 03:14 AM", "children": [] },
+      { "name": "GTA_6", "type": "folder", "date": "03/03/98 03:14 AM", "children": [] },
+      { "name": "GTA_7", "type": "folder", "date": "03/03/98 03:14 AM", "children": [] }
+    ] }
+  ]
+}

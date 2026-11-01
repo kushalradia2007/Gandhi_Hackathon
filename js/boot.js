@@ -1,96 +1,97 @@
 // Boot: BIOS POST (gives us the user gesture audio needs) -> cloud splash -> logon -> desktop + startup sound.
 import { initAudio, startup } from './sound.js';
-import { loginDialog } from './dialogs.js';
 import { closeAll, setBusy } from './windowManager.js';
+import { sess } from './state.js';
 
 const params = new URLSearchParams(location.search);
 const wait = ms => new Promise(r => setTimeout(r, ms));
 const screen = () => document.getElementById('screen');
 const overlay = () => document.getElementById('overlay');
-export const session = { user: 'ADMIN' };
+export const session = { user: 'GUEST' };
 
 const POST = [
-  'Modular BIOS v4.51PG, An Energy Star Ally',
-  'Copyright (C) 1984-98, Shree Computers & Xerox, Nehru Nagar, Bhilai',
+  'Award Modular BIOS v4.51PG, An Energy Star Ally',
+  'Copyright (C) 1984-98, Award Software, Inc.',
   '',
-  'PENTIUM-MMX CPU at 233MHz',
-  'Memory Test :  32768K OK',
+  'Pentium II 350 MHz',
+  'Memory Test: 65536K OK',
   '',
-  'Detecting IDE Primary Master   ... IDE HDD 4.3GB',
-  'Detecting IDE Primary Slave    ... None',
-  'Detecting IDE Secondary Master ... CD-ROM 24X (tray sticks)',
+  'Award Plug and Play BIOS Extension v1.0A',
+  'Copyright (C) 1998, Award Software, Inc.',
+  '',
+  'Detecting IDE Primary Master  ... None',
+  'Detecting IDE Primary Slave   ... None',
+  'Detecting IDE Secondary Master ... CD-ROM',
   'Detecting IDE Secondary Slave  ... None',
   '',
-  'Floppy Drive A: 1.44M, 3.5 in.',
-  'Keyboard ........ Detected (Enter key loose)',
-  'Mouse ........... Detected (ball needs cleaning)',
-  'Network Card .... PC 03 [ADMIN]  Session: ACTIVE',
-  '',
-  'CMOS battery low. Date/Time not set.',
-  '',
-  'Press F1 to continue, DEL to enter SETUP',
+  'Press DEL to enter SETUP',
+  '03/03/98-i440BX-8671-2A69KA1AC-00',
 ];
 
+let skipped = false, onSkip = null;
+function armSkip() {
+  const go = e => {
+    if (e.type === 'keydown' && ['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) return;
+    if (e.type === 'keydown' && (e.key === 'Delete' || e.key === 'Del') && document.getElementById('overlay').classList.contains('post')) { biosSetup(); return; }
+    initAudio();
+    if (!skipped) { skipped = true; onSkip && onSkip(); }
+  };
+  window.addEventListener('keydown', go, true);
+  window.addEventListener('pointerdown', go, true);
+  return () => { window.removeEventListener('keydown', go, true); window.removeEventListener('pointerdown', go, true); };
+}
+const step = ms => new Promise(r => { const t = setTimeout(r, ms); onSkip = () => { clearTimeout(t); r(); }; });
+
 export async function boot() {
+  const first = () => initAudio();
+  window.addEventListener('pointerdown', first, { once: true, capture: true });
+  window.addEventListener('keydown', first, { once: true, capture: true });
+  if (params.has('skipboot') || sess.get('booted')) { desktopUp(false); return; }
+  sess.set('booted', true);
   screen().classList.add('booting');
-  if (params.has('skipboot')) {
-    screen().classList.remove('booting');
-    window.addEventListener('pointerdown', initAudio, { once: true });
-    return;
-  }
-  await post();
-  await splash();
-  overlay().className = 'on';
-  await wait(500);
-  overlay().className = '';
-  setBusy(true); await wait(700); setBusy(false);
-  await logon();
+  const disarm = armSkip();
+  const ov = overlay();
+  const seq = async () => {
+    ov.className = 'on'; ov.innerHTML = ''; if (await stepOr(500)) return;
+    ov.className = 'on post'; ov.innerHTML = '<pre></pre><div class="energy"><b>EPA</b> POLLUTION PREVENTER</div>';
+    const pre = ov.querySelector('pre');
+    for (let i = 0; i < POST.length; i++) { pre.textContent += POST[i] + '\n'; if (await stepOr(1000 / POST.length)) return; }
+    ov.className = 'on post star'; if (await stepOr(400)) return;
+    ov.className = 'on'; ov.innerHTML = ''; if (await stepOr(200)) return;
+    if (await splash()) return;
+    ov.className = 'on'; ov.innerHTML = ''; if (await stepOr(300)) return;
+    return true;
+  };
+  const completed = await seq();
+  disarm();
+  desktopUp(!!completed && !skipped);
+}
+async function stepOr(ms) { await step(ms); return skipped; }
+
+function desktopUp(chime) {
+  const ov = overlay(); ov.className = ''; ov.innerHTML = '';
+  screen().classList.remove('booting');
+  session.user = 'GUEST';
+  if (chime) setTimeout(() => startup(), 500);
 }
 
-async function logon() {
-  const { user } = await loginDialog(session.user);
-  session.user = user.toUpperCase();
-  screen().classList.remove('booting');
-  setBusy(true);
-  startup();
-  setTimeout(() => setBusy(false), 1400);
+function biosSetup() {
+  const ov = overlay();
+  const keep = ov.innerHTML, cls = ov.className;
+  ov.className = 'on bios-setup';
+  ov.innerHTML = '<pre>               CMOS SETUP UTILITY\n            AWARD SOFTWARE, INC.\n\n  STANDARD CMOS SETUP        INTEGRATED PERIPHERALS\n  BIOS FEATURES SETUP        SUPERVISOR PASSWORD\n  CHIPSET FEATURES SETUP     USER PASSWORD\n  POWER MANAGEMENT SETUP     IDE HDD AUTO DETECTION\n  PNP/PCI CONFIGURATION      SAVE &amp; EXIT SETUP\n  LOAD BIOS DEFAULTS         EXIT WITHOUT SAVING\n\n  Session lock (PC 03) ..... Enabled  [cannot change]\n\n  Esc : Quit        F10 : Save &amp; Exit Setup</pre>';
+  setTimeout(() => { if (ov.classList.contains('bios-setup')) { ov.className = cls; ov.innerHTML = keep; } }, 1000);
 }
 
 export async function logOff() {
   closeAll();
-  screen().classList.add('booting');
-  setBusy(true); await wait(900); setBusy(false);
-  await logon();
-}
-
-function post() {
-  return new Promise(resolve => {
-    const ov = overlay();
-    ov.className = 'on post';
-    ov.innerHTML = '<pre></pre>';
-    const pre = ov.firstChild;
-    let i = 0;
-    const t = setInterval(() => { if (i < POST.length) pre.textContent += POST[i++] + '\n'; else clearInterval(t); }, 70);
-    const go = e => {
-      if (e.type === 'keydown') { if (['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) return; e.preventDefault(); }
-      window.removeEventListener('keydown', go);
-      window.removeEventListener('pointerdown', go);
-      clearInterval(t);
-      initAudio();
-      fullscreen();
-      ov.className = 'on'; ov.innerHTML = '';
-      resolve();
-    };
-    window.addEventListener('keydown', go);
-    window.addEventListener('pointerdown', go);
-  });
-}
-
-function fullscreen() {
-  if (params.has('nofs') || !document.documentElement.requestFullscreen) return;
-  document.documentElement.requestFullscreen()
-    .then(() => navigator.keyboard && navigator.keyboard.lock && navigator.keyboard.lock(['Tab', 'MetaLeft', 'MetaRight', 'Escape', 'F4']))
-    .catch(() => {});
+  const ov = overlay(); ov.className = 'on shut1'; ov.innerHTML = '<div class="shut-box"><p>Windows is logging off...</p></div>';
+  setBusy(true); await wait(1200); setBusy(false);
+  ov.className = ''; ov.innerHTML = '';
+  const { addLog } = await import('./apps/sessionlog.js');
+  const d = new Date();
+  addLog({ date: d.toLocaleDateString('en-GB'), time: d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }), cust: 'GUEST', pc: 'PC 03', dur: 'LOGGED OFF \u2014 IMMEDIATELY LOGGED BACK IN' });
+  startup();
 }
 
 /* ---------- Cloud splash: 320x400 bitmap stretched to 4:3, like LOGO.SYS ---------- */
@@ -98,13 +99,15 @@ function splash() {
   return new Promise(resolve => {
     const ov = overlay();
     ov.className = 'on splash';
-    ov.innerHTML = '<canvas width="320" height="400"></canvas>';
+    ov.innerHTML = '<canvas width="320" height="400"></canvas><div class="splash-copy">Copyright © 1981-1998 Microsoft Corporation</div><div class="splash-oem">SHREE CYBER ZONE — PC 03 (ADMIN)</div>';
     const ctx = ov.firstChild.getContext('2d');
     drawSky(ctx);
     drawLogo(ctx);
     const t0 = performance.now();
     let raf = requestAnimationFrame(function frame(now) { drawBar(ctx, (now - t0) / 1000); raf = requestAnimationFrame(frame); });
-    setTimeout(() => { cancelAnimationFrame(raf); ov.innerHTML = ''; ov.className = 'on'; resolve(); }, 3200);
+    const t = setTimeout(done, 1600);
+    function done() { clearTimeout(t); cancelAnimationFrame(raf); ov.innerHTML = ''; ov.className = 'on'; resolve(skipped); }
+    onSkip = done;
   });
 }
 

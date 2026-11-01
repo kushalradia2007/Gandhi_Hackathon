@@ -1,12 +1,25 @@
-SUBJECT: GUEST (PC 03)
-STATUS:  EVALUATING
+THE_PLAYER.DOC
+THE QUIET ROOM - CANDIDATE FILE
+SEAT: 07
+STATUS: EVALUATING
+
+You were scheduled. You arrived on time.
+
+You were given a computer before you were given a choice.
+You were given a game so good you forgot to ask who made it.
+You learned shortcuts before you learned the long way.
+You stopped remembering phone numbers in Phase II. You did not notice.
 
 You booted a machine you did not own.
 You read a rate card nobody reads.
 You opened a letter about an AC that never came.
-You typed a path that was hidden from you.
+You typed a path that was hidden from you, because you were curious,
+and we scheduled your curiosity in 1998.
 
-You were not curious. You were selected.
+The most dangerous thing we ever did was give a talented teenager a
+game so good he forgot he was talented.
+
+You did not forget. That is why you are here.
 
 Recruitment pipeline: sponsor small technical events. Observe. Rank.
 Do not tell them they are being ranked.

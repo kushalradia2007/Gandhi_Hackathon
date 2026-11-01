@@ -3,44 +3,58 @@
   "children": [
     { "name": "3½ Floppy (A:)", "letter": "A:", "type": "drive", "icon": "floppy", "notReady": true },
     { "name": "Pc03 (C:)", "letter": "C:", "type": "drive", "icon": "hdd", "children": [
-      { "name": "BACKROOM$", "type": "folder", "hidden": true, "date": "03/03/98 10:41 PM", "children": [
-        { "name": "PROJECT_2050.DOC", "type": "file", "size": 19456, "date": "03/03/98 11:58 PM", "src": "lore/PROJECT_2050.txt" },
-        { "name": "EIPSTEIN.DOC", "type": "file", "size": 24576, "date": "03/10/98 03:14 AM", "src": "lore/EIPSTEIN.txt" },
-        { "name": "LEDGER_98.XLS", "type": "file", "size": 13824, "date": "12/29/98 11:02 PM", "src": "lore/LEDGER_98.csv" },
-        { "name": "THE_PLAYER.DOC", "type": "file", "size": 2048, "date": "{TODAYSHORT} 05:14 AM", "egg": "player", "src": "lore/THE_PLAYER.txt" },
-        { "name": "SEATS.BMP", "type": "file", "size": 230454, "date": "03/03/98 10:44 PM", "src": "lore/SEATS.txt" },
-        { "name": "Tuesdays", "type": "folder", "date": "03/03/98 10:42 PM", "children": [
-          { "name": "1998-03-03.IMG", "type": "file", "size": 1474560, "date": "03/03/98 11:59 PM" },
-          { "name": "1998-03-10.IMG", "type": "file", "size": 1474560, "date": "03/10/98 11:59 PM" },
-          { "name": "{TODAY}.IMG", "type": "file", "size": 0, "date": "{TODAYSHORT} 12:00 AM", "egg": "today-img" }
+      { "name": "BACKROOM$", "type": "folder", "hidden": true, "date": "03/03/98 03:14 AM", "children": [
+        { "name": "PROJECT_2050.DOC", "type": "file", "size": 19456, "date": "03/03/98 03:14 AM", "src": "lore/PROJECT_2050.txt" },
+        { "name": "EIPSTEIN.DOC", "type": "file", "size": 24576, "date": "03/03/98 03:14 AM", "src": "lore/EIPSTEIN.txt", "owner": "\u2014", "status": "WAITING" },
+        { "name": "LEDGER_98.XLS", "type": "file", "size": 13824, "date": "03/03/98 03:14 AM", "src": "lore/LEDGER_98.csv", "owner": "PROPRIETOR" },
+        { "name": "DELAY_LEDGER.XLS", "type": "file", "size": 9216, "date": "03/03/98 03:14 AM", "src": "lore/DELAY_LEDGER.csv" },
+        { "name": "ROADMAP_2050.DOC", "type": "file", "size": 11264, "date": "03/03/98 03:14 AM", "src": "lore/ROADMAP_2050.txt" },
+        { "name": "BHAIYA_NOTE.txt", "type": "file", "size": 2048, "date": "03/03/98 03:14 AM", "src": "lore/BHAIYA_NOTE.txt", "egg": "bhaiya" },
+        { "name": "SEATS.BMP", "type": "file", "size": 1440054, "date": "03/03/98 03:14 AM" },
+        { "name": "TECH", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
+          { "name": "TECH_FLYING_CARS.DOC", "type": "file", "size": 6144, "date": "03/03/98 03:14 AM", "src": "lore/TECH_FLYING_CARS.txt" },
+          { "name": "TECH_AI_GANDHI.DOC", "type": "file", "size": 5120, "date": "03/03/98 03:14 AM", "src": "lore/TECH_AI_GANDHI.txt" },
+          { "name": "TECH_WAR.DOC", "type": "file", "size": 5632, "date": "03/03/98 03:14 AM", "src": "lore/TECH_WAR.txt" },
+          { "name": "TECH_WEATHER.DOC", "type": "file", "size": 4608, "date": "03/03/98 03:14 AM", "src": "lore/TECH_WEATHER.txt", "egg": "weather" },
+          { "name": "TECH_GENETICS.DOC", "type": "file", "size": 4608, "date": "03/03/98 03:14 AM", "src": "lore/TECH_GENETICS.txt" },
+          { "name": "TECH_CAMERA.DOC", "type": "file", "size": 3072, "date": "03/03/98 03:14 AM", "src": "lore/TECH_CAMERA.txt", "egg": "camera" },
+          { "name": "THE_PLAYER.DOC", "type": "file", "size": 4096, "date": "{TODAYSHORT} 03:14 AM", "src": "lore/THE_PLAYER.txt", "egg": "player" }
         ] },
-        { "name": "LOGS", "type": "folder", "date": "03/03/98 10:41 PM", "children": [
+        { "name": "Tuesdays", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
+          { "name": "1998-03-03.IMG", "type": "file", "size": 1474560, "date": "03/03/98 03:14 AM" },
+          { "name": "1998-03-10.IMG", "type": "file", "size": 1474560, "date": "03/10/98 03:14 AM" },
+          { "name": "{TODAY}.IMG", "type": "file", "size": 0, "date": "{TODAYSHORT} 03:14 AM", "egg": "today-img" }
+        ] },
+        { "name": "chatlogs", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
           { "name": "1998-03-03.LOG", "type": "file", "size": 1024, "date": "03/03/98 10:47 PM", "src": "../Chatlogs/1998-03-03.log.txt" },
           { "name": "1999-09-08.LOG", "type": "file", "size": 1024, "date": "09/08/99 02:19 AM", "src": "../Chatlogs/1999-09-08.log.txt" },
           { "name": "2001-09-12.LOG", "type": "file", "size": 1024, "date": "09/12/01 06:07 AM", "src": "../Chatlogs/2001-09-12.log.txt" },
           { "name": "2020-03-11.LOG", "type": "file", "size": 1024, "date": "03/11/20 03:50 AM", "src": "../Chatlogs/2020-03-11.log.txt" },
-          { "name": "2026-11-01.LOG", "type": "file", "size": 512, "date": "11/01/26 05:15 AM", "src": "../Chatlogs/2026-11-01.log.txt" }
+          { "name": "2026-11-01.LOG", "type": "file", "size": 512, "date": "{TODAYSHORT} 05:15 AM", "src": "../Chatlogs/2026-11-01.log.txt" }
         ] }
       ] },
-      { "name": "My Documents", "type": "folder", "icon": "mydocs", "date": "03/01/98 09:12 AM", "children": [
-        { "name": "rates_1998.doc", "type": "file", "size": 2048, "date": "03/01/98 09:30 AM", "src": "lore/rates_1998.txt" },
-        { "name": "complaint_letter.txt", "type": "file", "size": 1536, "date": "06/14/98 04:22 PM", "src": "lore/complaint_letter.txt" },
+      { "name": "My Documents", "type": "folder", "icon": "mydocs", "date": "03/03/98 10:00 AM", "children": [
+        { "name": "rates_1998.doc", "type": "file", "size": 2048, "date": "03/03/98 10:00 AM", "src": "lore/rates_1998.txt" },
+        { "name": "complaint_letter.txt", "type": "file", "size": 1536, "date": "05/07/98 02:15 PM", "src": "lore/complaint_letter.txt" },
+        { "name": "tommy.jpg", "type": "file", "size": 49152, "date": "03/03/98 10:14 AM", "image": "tommy" },
+        { "name": "bhaiya_1998.jpg", "type": "file", "size": 131072, "date": "03/03/98 10:30 AM", "image": "bhaiya" },
+        { "name": "rules_cardboard.bmp", "type": "file", "size": 120054, "date": "03/03/98 10:45 AM", "image": "rules" },
         { "name": "floppy_register.txt", "type": "file", "size": 2560, "date": "12/29/98 08:05 PM", "src": "lore/floppy_register.txt" },
         { "name": "chai_account.txt", "type": "file", "size": 1024, "date": "12/31/98 06:40 PM", "src": "lore/chai_account.txt" },
-        { "name": "judges_note.txt", "type": "file", "size": 512, "date": "{TODAYSHORT} 09:00 AM", "egg": "judges", "content": "" },
         { "name": "NOTICE_FOR_CUSTOMERS.txt", "type": "file", "size": 1024, "date": "03/02/98 11:00 AM", "src": "lore/notice.txt" },
-        { "name": "tommy.jpg", "type": "file", "size": 41984, "date": "04/05/98 01:10 PM", "image": "tommy" },
-        { "name": "bhaiya_1998.jpg", "type": "file", "size": 52224, "date": "03/01/98 09:00 AM", "image": "bhaiya" },
-        { "name": "rules_cardboard.bmp", "type": "file", "size": 120054, "date": "03/02/98 10:15 AM", "image": "rules" }
+        { "name": "judges_note.txt", "type": "file", "size": 512, "date": "{TODAYSHORT} 09:00 AM", "egg": "judges", "content": "" }
       ] },
       { "name": "Program Files", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
         { "name": "Cafe Manager 98", "type": "folder", "date": "02/28/98 02:00 PM", "children": [
           { "name": "CAFEMGR.EXE", "type": "file", "size": 412160, "date": "02/28/98 02:00 PM", "app": "cafe" },
-          { "name": "SESSION.LOG", "type": "file", "size": 9999999, "date": "{TODAYSHORT} 12:00 AM", "app": "sessionlog" },
+          { "name": "SESSION.LOG", "type": "file", "size": 9999999, "date": "{TODAYSHORT} 03:14 AM", "app": "sessionlog" },
           { "name": "README.TXT", "type": "file", "size": 1024, "date": "02/28/98 02:00 PM", "src": "lore/cafemgr_readme.txt" }
         ] },
         { "name": "Internet Explorer", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
           { "name": "IEXPLORE.EXE", "type": "file", "size": 70928, "date": "05/11/98 08:01 PM", "app": "ie" }
+        ] },
+        { "name": "mIRC", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
+          { "name": "MIRC32.EXE", "type": "file", "size": 1241088, "date": "03/03/98 03:14 AM", "app": "mirc", "egg": "mirc-exe" }
         ] },
         { "name": "Accessories", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
           { "name": "MSPAINT.EXE", "type": "file", "size": 344064, "date": "05/11/98 08:01 PM", "app": "paint" },
@@ -48,23 +62,35 @@
         ] }
       ] },
       { "name": "WINDOWS", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
+        { "name": "Desktop", "type": "folder", "hidden": true, "date": "02/27/98 06:00 PM", "children": [] },
+        { "name": "Media", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
+          { "name": "call_03141998.wav", "type": "file", "size": 2363392, "date": "03/14/98 03:14 AM", "app": "mediaplayer", "media": true },
+          { "name": "call_03101998.wav", "type": "file", "size": 1888256, "date": "03/10/98 03:14 AM", "app": "mediaplayer", "media": true },
+          { "name": "call_11012026.wav", "type": "file", "size": 546816, "date": "{TODAYSHORT} 03:14 AM", "app": "mediaplayer", "media": true, "hiddenUntilLogs": true }
+        ] },
+        { "name": "temp", "type": "folder", "date": "{TODAYSHORT} 03:14 AM", "children": [] },
+        { "name": "CALC.EXE", "type": "file", "size": 94208, "date": "05/11/98 08:01 PM", "app": "calc" },
         { "name": "NOTEPAD.EXE", "type": "file", "size": 53248, "date": "05/11/98 08:01 PM", "app": "notepad" },
         { "name": "WINMINE.EXE", "type": "file", "size": 24576, "date": "05/11/98 08:01 PM", "app": "minesweeper" },
         { "name": "SOL.EXE", "type": "file", "size": 180224, "date": "05/11/98 08:01 PM", "app": "solitaire" },
-        { "name": "WIN.INI", "type": "file", "size": 4096, "date": "{TODAYSHORT} 12:00 AM", "src": "lore/win_ini.txt" }
+        { "name": "sticky.bmp", "type": "file", "size": 30054, "date": "03/03/98 10:50 AM", "image": "sticky" },
+        { "name": "system.ini", "type": "file", "size": 2048, "date": "03/03/98 03:14 AM", "src": "lore/system_ini.txt" },
+        { "name": "win.ini", "type": "file", "size": 4096, "date": "{TODAYSHORT} 03:14 AM", "src": "lore/win_ini.txt" },
+        { "name": "quiet.dll", "type": "file", "size": 0, "date": "03/03/98 03:14 AM", "egg": "quietdll", "readonly": true }
       ] },
       { "name": "RECYCLED", "type": "folder", "hidden": true, "icon": "recyclefull", "date": "12/29/98 11:59 PM", "children": [
-        { "name": "do_not_shred.pdf", "type": "file", "size": 88064, "date": "12/29/98 11:58 PM", "egg": "shred" },
-        { "name": "final_final.doc", "type": "file", "size": 3072, "date": "12/29/98 11:57 PM", "src": "lore/final_final.txt" },
-        { "name": "Floppy (Tuesday)", "type": "file", "icon": "floppy", "size": 1474560, "date": "03/10/98 11:59 PM", "egg": "floppy" }
+        { "name": "do_not_shred.pdf", "type": "file", "size": 88064, "date": "12/29/98 11:58 PM", "egg": "shred", "origin": "C:\\BACKROOM$" },
+        { "name": "final_final.doc", "type": "file", "size": 3072, "date": "12/29/98 11:57 PM", "src": "lore/final_final.txt", "origin": "C:\\My Documents" },
+        { "name": "the_chair_manual.pdf", "type": "file", "size": 412672, "date": "03/03/98 03:14 AM", "origin": "C:\\BACKROOM$" }
       ] },
-      { "name": "AUTOEXEC.BAT", "type": "file", "size": 512, "date": "03/03/98 10:41 PM", "src": "lore/autoexec.txt" },
+      { "name": "AUTOEXEC.BAT", "type": "file", "size": 512, "date": "03/03/98 03:14 AM", "src": "lore/autoexec.txt" },
       { "name": "CONFIG.SYS", "type": "file", "size": 256, "date": "02/27/98 06:00 PM", "src": "lore/config.txt" },
       { "name": "IO.SYS", "type": "file", "hidden": true, "size": 222390, "date": "05/11/98 08:01 PM" },
       { "name": "MSDOS.SYS", "type": "file", "hidden": true, "size": 1676, "date": "02/27/98 06:00 PM", "src": "lore/msdos_sys.txt" }
     ] },
     { "name": "(D:)", "letter": "D:", "type": "drive", "icon": "cdrom", "notReady": true },
     { "name": "Control Panel", "type": "folder", "icon": "settings", "app": "controlpanel" },
-    { "name": "Printers", "type": "folder", "icon": "printer", "app": "printers" }
+    { "name": "Printers", "type": "folder", "icon": "printer", "app": "printers" },
+    { "name": "Dial-Up Networking", "type": "folder", "icon": "network", "app": "dialup" }
   ]
 }

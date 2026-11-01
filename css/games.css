@@ -1,0 +1,112 @@
+/* Games: Minesweeper, Solitaire, Hearts, FreeCell, Game Studio asset viewer. Win98 bevels only. */
+
+.ms-best fieldset, .sol-opts fieldset { border: 2px groove #fff; padding: 6px 10px 8px; margin-bottom: 10px; }
+.ms-best legend, .sol-opts legend { padding: 0 3px; }
+.sol-opts label.chk { display: block; margin: 4px 0; }
+
+/* ---------- Minesweeper ---------- */
+.ms-wrap { display: flex; flex-direction: column; }
+.ms { background: var(--face); border-left: 3px solid #fff; border-top: 3px solid #fff; padding: 6px; }
+.ms-top {
+  display: flex; justify-content: space-between; align-items: center;
+  height: 37px; padding: 0 5px; margin-bottom: 6px;
+  border: 2px solid; border-color: #808080 #fff #fff #808080;
+}
+.ms-led { display: block; width: 41px; height: 25px; border: 1px solid; border-color: #808080 #fff #fff #808080; }
+.ms-face {
+  min-width: 0; min-height: 0; width: 26px; height: 26px; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid #808080; box-shadow: inset 2px 2px #fff, inset -2px -2px #808080;
+}
+.ms-face:focus { outline: none; }
+.ms-face:not(:disabled):active, .ms-face.down { box-shadow: inset 1px 1px #808080; padding: 2px 0 0 2px; }
+.ms-face img { display: block; }
+.ms-grid { display: grid; border: 3px solid; border-color: #808080 #fff #fff #808080; width: max-content; }
+.ms-c {
+  width: 16px; height: 16px;
+  background-color: var(--face); background-repeat: no-repeat;
+  box-shadow: inset 2px 2px #fff, inset -2px -2px #808080;
+}
+.ms-c.o, .ms-c.p { box-shadow: inset 1px 1px #808080; }
+.ms-c.p { background-image: none !important; }
+.ms-c.boom { background-color: #f00; }
+.ms.mono { filter: grayscale(1); }
+.ms-best table { border-collapse: collapse; }
+.ms-best td { padding: 2px 8px 2px 0; white-space: nowrap; }
+.ms-best td.r { text-align: right; }
+.ms-hr { border: 0; border-top: 1px solid #808080; border-bottom: 1px solid #fff; margin: 6px 0 4px; }
+.ms-custom { display: flex; gap: 14px; align-items: flex-start; }
+.ms-cf .field input { width: 50px; flex: none; }
+.ms-cf .field label { width: 56px; }
+
+/* ---------- Cards (shared) ---------- */
+.card {
+  position: absolute; width: 71px; height: 96px;
+  background: #fff; border: 1px solid #000; color: #000;
+  font-family: Arial, Helvetica, sans-serif; cursor: inherit;
+}
+.card.red { color: #f00; }
+.card.down { background: var(--sol-back) 0 0 / 71px 96px; border: 0; }
+.card.down .face { display: none; }
+.card .face { position: absolute; inset: 0; }
+.card .ci { position: absolute; left: 1px; top: 2px; width: 15px; text-align: center; font: bold 12px/12px Arial, Helvetica, sans-serif; letter-spacing: -1px; }
+.card .ci-b { left: auto; top: auto; right: 1px; bottom: 2px; transform: rotate(180deg); }
+.card .pip { position: absolute; transform: translate(-50%, -50%); font: 16px/16px Arial, Helvetica, sans-serif; }
+.card .pip.flip { transform: translate(-50%, -50%) rotate(180deg); }
+.card .pip.ace { font-size: 34px; line-height: 34px; }
+.card .cf { position: absolute; left: 13px; top: 12px; width: 43px; height: 70px; border: 1px solid currentColor; }
+.card .cf-l { position: absolute; left: 0; right: 0; top: 18px; text-align: center; font: bold 30px/30px "Times New Roman", Times, serif; }
+.card .cf-s { position: absolute; font: 12px/12px Arial, Helvetica, sans-serif; }
+.card .cf-tl { left: 3px; top: 3px; }
+.card .cf-br { right: 3px; bottom: 3px; transform: rotate(180deg); }
+
+/* ---------- Solitaire ---------- */
+.sol { position: relative; flex: 1; min-height: 0; overflow: hidden; background: #008000; }
+.sol-slot {
+  position: absolute; width: 71px; height: 96px; border: 1px solid #004000;
+  display: flex; align-items: center; justify-content: center;
+  font: bold 44px/44px Arial, Helvetica, sans-serif; color: #00ff00;
+}
+.sol-slot.nomore { color: #ff0000; }
+.sol-cascade { position: fixed; left: 0; top: 0; z-index: 99990; cursor: inherit; }
+.sol-win { min-width: 240px; }
+.sol-win-text { padding: 4px 8px; }
+.sol-opts-row { display: flex; gap: 10px; }
+.sol-opts-row fieldset { flex: 1; }
+.sol-backs { display: flex; gap: 8px; padding: 4px; background: #fff; box-shadow: var(--sunken); }
+.sol-back { padding: 3px; border: 2px solid transparent; }
+.sol-back.sel { border-color: var(--navy); }
+.sol-back img { display: block; }
+
+/* ---------- Hearts ---------- */
+.hx-table {
+  flex: 1; min-height: 0; position: relative; background: #008000; color: #fff;
+  display: grid; grid-template: "n n n" auto "w t e" 1fr "s s s" auto "sc sc sc" auto / 1fr 2fr 1fr;
+  padding: 8px; gap: 6px; overflow: hidden;
+}
+.hx-seat { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.hx-seat.n { grid-area: n; } .hx-seat.w { grid-area: w; justify-content: center; } .hx-seat.e { grid-area: e; justify-content: center; } .hx-seat.s { grid-area: s; }
+.hx-cards { display: flex; }
+.hx-cards.v { flex-direction: column; }
+.hx-cards .hx-slot { width: 14px; height: 50px; margin-right: -2px; }
+.hx-cards.v .hx-slot { width: 50px; height: 9px; margin: 0 0 -2px; }
+.hx-slot { width: 40px; height: 54px; border: 1px dotted #c0ffc0; }
+.hx-trick { grid-area: t; display: grid; grid-template-columns: repeat(2, 40px); gap: 6px; place-content: center; }
+.hx-score { grid-area: sc; text-align: center; }
+
+/* ---------- FreeCell ---------- */
+.fc-table { flex: 1; min-height: 0; background: #008000; color: #fff; padding: 8px; overflow: hidden; }
+.fc-top { display: flex; align-items: center; justify-content: space-between; }
+.fc-cells { display: flex; }
+.fc-slot { width: 71px; height: 96px; border: 1px solid #000; box-shadow: inset -1px -1px #00c000; }
+.fc-king { width: 48px; height: 36px; display: flex; align-items: center; justify-content: center; }
+.fc-king-img { width: 48px; height: 36px; }
+.fc-labels { display: flex; justify-content: space-between; padding: 2px 4px 10px; }
+.fc-tab { display: flex; justify-content: space-between; padding: 0 4px; }
+.fc-col .fc-slot { width: 64px; height: 90px; border-color: #004000; box-shadow: none; }
+.fc-dlg { min-width: 260px; }
+.fc-dlg .field label { width: 52px; }
+
+/* ---------- Game Studio asset viewer (Paint look) ---------- */
+.gs-paint { flex: 1; min-height: 0; overflow: auto; background: #808080; padding: 4px; box-shadow: var(--sunken); }
+.gs-canvas { display: block; }

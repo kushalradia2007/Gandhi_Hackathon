@@ -229,14 +229,20 @@ function drag(e, onMove, onDone) {
 function startMove(e, w) {
   if (e.button !== 0 || w.maximized) return;
   const r = rectOf(w), d = desk();
-  let o = null, nr = r;
+  let o = null, nr = r, px = e.clientX, py = e.clientY;
   drag(e, (dx, dy) => {
+    px = e.clientX + dx; py = e.clientY + dy;
     if (!o) { if (Math.abs(dx) + Math.abs(dy) < 2) return; o = outline(r); }
     nr = { ...r, x: Math.min(Math.max(r.x + dx, 40 - r.w), d.w - 40), y: Math.min(Math.max(r.y + dy, 0), d.h - 20) };
     placeOutline(o, nr);
   }, () => {
     if (!o) return;
     o.remove();
+    // A09: there is no outside
+    if (px <= 1 || px >= innerWidth - 2 || py <= 1 || py >= d.h + 2) {
+      window.dispatchEvent(new CustomEvent('scz-offscreen', { detail: { x: Math.min(Math.max(px, 10), innerWidth - 160), y: Math.min(Math.max(py, 10), d.h - 30) } }));
+      return;
+    }
     w.el.style.left = nr.x + 'px';
     w.el.style.top = nr.y + 'px';
   });

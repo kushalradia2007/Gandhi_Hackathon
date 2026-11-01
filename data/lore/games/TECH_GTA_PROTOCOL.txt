@@ -1,0 +1,49 @@
+                    TECH_GTA_PROTOCOL.DOC
+            THE QUIET ROOM  -  TECH ARCHIVE  -  REV. 7
+                 Distribution: SEATS 01-09 only
+
+=====================================================================
+
+GTA = GENERATIONAL TRAJECTORY ADJUSTMENT.
+
+Not Grand Theft Auto. The game was a cover story. The protocol was
+formalized in 1998 under the cover name, because nobody audits a
+video game.
+
+G - GENERATIONAL
+    Each generation is captured by a different product. What works
+    on one generation is embarrassing to the next. This is fine.
+    We make the next one too.
+
+T - TRAJECTORY
+    The product directs the player's life path. Not by force. By
+    scheduling. The player decides what to do with their evenings
+    for ten years and believes the decision was theirs.
+
+A - ADJUSTMENT
+    The path is adjusted to match the committee's needs. Most
+    players are adjusted toward comfort. A few are adjusted toward
+    the room.
+
+THE FIVE PHASES
+
+1. AWARENESS.  The player hears about the game.
+2. DESIRE.     The player wants the game.
+3. CAPTURE.    The player buys the game.
+4. RETENTION.  The player cannot stop playing.
+5. SUCCESSION. The player becomes the next generation.
+
+Phase 5 is the only phase that matters. Phases 1 through 4 are
+marketing.
+
+FIELD NOTES
+- Phase 3 work-in-progress is kept in C:\My Documents\Game Studio.
+  It is 0% complete. It will always be 0% complete. The folder is
+  the point, not the game.
+- Progress reports are filed every Tuesday.
+- Folders GTA_4 through GTA_7 were created on 3/3/1998. They will
+  be filled in order.
+
+They thought they were escaping. They were arriving.
+
+- s00
