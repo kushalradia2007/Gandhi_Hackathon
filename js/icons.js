@@ -219,10 +219,32 @@ const ICONS = {
     g.disc('d', 17, 17, 14); g.disc('k', 16, 16, 14); g.disc('r', 16, 16, 13);
     g.line('w', 11, 11, 21, 21, 3); g.line('w', 21, 11, 11, 21, 3);
   },
+  hdd(g) {
+    g.box('s', 'k', 2, 11, 28, 12); g.rect('w', 3, 12, 26, 1); g.rect('w', 3, 12, 1, 10);
+    g.rect('d', 3, 21, 26, 1); g.rect('d', 28, 12, 1, 10);
+    g.rect('d', 6, 19, 14, 1); g.rect('l', 24, 18, 3, 2);
+  },
+  floppy(g) {
+    g.box('n', 'k', 5, 3, 22, 24); g.box('s', 'k', 10, 3, 12, 8); g.rect('n', 17, 4, 3, 6);
+    g.box('w', 'k', 8, 15, 16, 11); g.rect('d', 10, 18, 12, 1); g.rect('d', 10, 21, 9, 1);
+    g.clear(5, 3); g.px('k', 6, 3);
+  },
+  cdrom(g) {
+    ICONS.hdd(g);
+    g.disc('k', 16, 10, 9.5); g.disc('s', 16, 10, 8.5); g.disc('c', 13, 7, 3); g.disc('f', 19, 13, 2); g.disc('w', 16, 10, 2.5); g.disc('k', 16, 10, 1.2);
+  },
+  txtfile(g) { page(g, 6, 2, 20, 28); lines(g, 9, 9, 13, 9); },
+  docfile(g) { page(g, 6, 2, 20, 28); g.rect('n', 9, 8, 10, 3); lines(g, 9, 14, 13, 7, 'k'); },
+  imgfile(g) { page(g, 6, 2, 20, 28); g.box('c', 'k', 9, 9, 14, 13); g.rect('g', 10, 17, 12, 4); g.disc('y', 19, 13, 2); g.line('g', 10, 17, 14, 14); g.line('g', 14, 14, 18, 17); },
+  xlsfile(g) { page(g, 6, 2, 20, 28); for (let y = 9; y <= 25; y += 4) g.rect('g', 9, y, 14, 1); for (let x = 9; x <= 23; x += 5) g.rect('g', x, 9, 1, 17); },
+  sysfile(g) { page(g, 6, 2, 20, 28); g.disc('k', 16, 18, 6); g.disc('d', 16, 18, 5); g.disc('w', 16, 18, 2); g.rect('k', 15, 10, 3, 3); g.rect('k', 15, 24, 3, 3); g.rect('k', 8, 17, 3, 3); g.rect('k', 22, 17, 3, 3); },
 };
 
 /* ---------- hand-drawn 16x16 icons ---------- */
 const SMALL = {
+  back(g) { g.grid(0, 2, ['......k.........', '.....kk.........', '....kgk.........', '...kggkkkkkkkk..', '..kgggggggggggk.', '.kgggggggggggggk', '..kgggggggggggk.', '...kggkkkkkkkk..', '....kgk.........', '.....kk.........', '......k.........']); },
+  forward(g) { g.grid(0, 2, ['.........k......', '.........kk.....', '.........kgk....', '..kkkkkkkkggk...', '.kgggggggggggk..', 'kgggggggggggggk.', '.kgggggggggggk..', '..kkkkkkkkggk...', '.........kgk....', '.........kk.....', '.........k......']); },
+  up(g) { g.box('y', 'k', 1, 5, 14, 10); g.box('y', 'k', 2, 3, 6, 3); g.rect('y', 3, 5, 4, 1); g.grid(4, 6, ['...k...', '..kkk..', '.kkkkk.', '...k...', '...k...', '...kkkk']); },
   flag(g) {
     g.grid(0, 1, [
       '.....k..........',

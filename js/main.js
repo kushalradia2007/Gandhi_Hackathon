@@ -5,6 +5,9 @@ import { initTaskbar } from './taskbar.js';
 import { initKeys } from './windowManager.js';
 import { toggleStartMenu } from './startMenu.js';
 import { boot } from './boot.js';
+import { loadFS } from './fileSystem.js';
+import './apps/explorer.js';
+import './apps/notepad.js';
 
 installCursors();
 const fav = document.createElement('link');
@@ -29,4 +32,5 @@ document.addEventListener('keyup', e => {
 // The browser's own context menu never appears; Win98 menus are opened by their own handlers.
 document.addEventListener('contextmenu', e => e.preventDefault());
 
+loadFS().catch(e => console.error('filesystem.json failed to load', e));
 boot();

@@ -172,3 +172,25 @@ function onKey(e) {
     if (i >= 0) { stop(); select(m, i); if (m.items[i].submenu) openSub(m, i, true); else activate(m, i); }
   }
 }
+
+/** Window menu bar. defs: [{ label: '&File', items: [...] | () => [...] }]. flat = Explorer-style raised/sunken hover. */
+export function menuBar(defs, flat = false) {
+  const bar = document.createElement('div');
+  bar.className = 'menubar' + (flat ? ' flat' : '');
+  let openIdx = -1;
+  const show = i => {
+    const b = bar.children[i], r = b.getBoundingClientRect();
+    openMenu(defs[i].items, r.left, r.bottom, { owner: bar, onClose: () => { b.classList.remove('open'); if (openIdx === i) openIdx = -1; } });
+    b.classList.add('open');
+    openIdx = i;
+  };
+  defs.forEach((d, i) => {
+    const b = document.createElement('div');
+    b.className = 'mb-item';
+    b.innerHTML = labelHTML(d.label);
+    b.addEventListener('pointerdown', e => { e.preventDefault(); if (openIdx === i) closeMenus(); else show(i); });
+    b.addEventListener('pointerenter', () => { if (openIdx >= 0 && openIdx !== i) show(i); });
+    bar.appendChild(b);
+  });
+  return bar;
+}

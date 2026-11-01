@@ -140,3 +140,25 @@
 .at-cell { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border: 2px solid transparent; }
 .at-cell.sel { border-color: var(--navy); }
 .at-title { margin-top: 8px; box-shadow: var(--thin-sunken); padding: 3px 6px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 220px; }
+
+/* ---------- Explorer ---------- */
+.explorer { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.addr { gap: 4px; }
+.addr > span { padding: 0 2px; }
+.addr-box { flex: 1; display: flex; align-items: center; gap: 3px; height: 22px; padding: 0 2px 0 4px; background: #fff; box-shadow: var(--sunken); }
+.addr-box input { flex: 1; min-width: 0; height: 18px; padding: 0 2px; box-shadow: none; }
+.fv { flex: 1; min-height: 0; overflow: auto; background: #fff; box-shadow: var(--sunken); padding: 4px 2px; display: flex; flex-wrap: wrap; align-content: flex-start; outline: none; }
+.fv .icon { position: static; margin: 0 0 8px; }
+.fv .icon .label { color: #000; background: transparent; }
+.fv .icon.selected .label { background: var(--navy); color: #fff; }
+.fv .icon.focused .label { outline-color: #000; }
+.fv .icon.selected.focused .label { outline-color: #ffff7f; }
+
+/* ---------- Notepad ---------- */
+.notepad { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.np-text {
+  flex: 1; min-height: 0;
+  font: 13px/15px "Fixedsys Excelsior 3.01", "Lucida Console", "Courier New", monospace;
+  white-space: pre; overflow: auto; padding: 0 2px;
+}
+.np-text.wrap { white-space: pre-wrap; }
