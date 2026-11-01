@@ -3,7 +3,7 @@ import { icon } from './icons.js';
 import { onRun } from './startMenu.js';
 import { launch } from './apps/index.js';
 import { messageBox } from './dialogs.js';
-import { bark } from './sound.js';
+import { bark, click } from './sound.js';
 import * as fs from './fileSystem.js';
 import * as wm from './windowManager.js';
 import { showTipAt } from './taskbar.js';
@@ -187,6 +187,8 @@ document.addEventListener('keydown', e => {
   if (e.ctrlKey && e.key === 'F6') { e.preventDefault(); const ws = wm.list().filter(w => w.taskbar); if (ws.length) { const i = ws.indexOf(wm.getActive()); wm.focus(ws[(i + 1) % ws.length]); } }
   if (e.altKey && e.code === 'Space') { const a = wm.getActive(); if (a) { e.preventDefault(); const r = a.el.getBoundingClientRect(); wm.systemMenu(a, r.left + 4, r.top + 22); } }
 });
+
+document.addEventListener('pointerdown', e => { if (e.button === 0 && e.target.closest && e.target.closest('button, .menu-item, .mb-item, .tbtn, .task, .ql, .ptool, .ck')) click(); }, true);
 
 export function initEggs() {
   clockEgg(); taskbarEgg(); shutdownHover(); konami(); watching(); cricketTV();

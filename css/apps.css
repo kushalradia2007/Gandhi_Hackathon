@@ -222,3 +222,13 @@ table.xls td.flash { background: #ffff80; }
 .saver-log tr.eip td { font-weight: bold; color: #800000; }
 
 .mobile-banner { position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 30000; }
+
+/* uiux.md 4.2 cursor set */
+.rh-n, .rh-s { cursor: var(--cur-ns, ns-resize); }
+.rh-e, .rh-w { cursor: var(--cur-ew, ew-resize); }
+.rh-nw, .rh-se { cursor: var(--cur-nwse, nwse-resize); }
+.rh-ne, .rh-sw { cursor: var(--cur-nesw, nesw-resize); }
+a, .ie-page a, [data-go] { cursor: var(--cur-hand, pointer); }
+.paint-canvas { cursor: var(--cur-cross, crosshair); }
+button:disabled, .menu-item.disabled { cursor: var(--cur-no, not-allowed); }
+html.busy, html.busy * { cursor: var(--cur-wait, wait) !important; }

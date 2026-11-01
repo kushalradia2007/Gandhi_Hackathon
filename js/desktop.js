@@ -76,7 +76,7 @@ const setSel = ids => { sel = new Set(ids); refreshSel(); };
 
 function open(it) {
   setBusy(true);
-  setTimeout(() => { setBusy(false); if (it.open) it.open(); else launch(it.id); }, 180);
+  setTimeout(() => { setBusy(false); if (it.open) it.open(); else launch(it.id); }, 300);
 }
 
 const UNDELETABLE = ['mycomputer', 'recycle', 'mydocs', 'ie', 'proprietor', 'mirc'];

@@ -1,0 +1,59 @@
+SHREE CYBER ZONE - PC 03 : OPTIONAL MEDIA TO DOWNLOAD
+=========================================================
+
+Everything in the build already works with NO external media: icons, photos,
+cursors and sounds are generated in code (js/icons.js, js/pictures.js, js/sound.js).
+The files below would only make it richer. Download ONLY items whose licence is
+CC0 / public domain (or CC-BY, then credit it in README). Do not use Microsoft's
+own sounds, wallpapers, fonts or the "Bliss" photo - they are copyrighted.
+
+Put each file at the path shown; tell me when they are in and I will wire them up.
+
+---------------------------------------------------------------------
+AUDIO  (put in  assets/audio/ , .mp3 or .ogg, keep each under ~200 KB)
+---------------------------------------------------------------------
+startup_chime.mp3   ~3 s warm 90s synth pad chime (NOT the real Win98 sound)
+                    search: freesound.org  "synth chime pad"  licence: CC0
+modem_handshake.mp3 real 56k dial-up handshake, ~20 s
+                    search: archive.org "dial up modem sound" (public domain recordings)
+dog_bark.mp3        ONE short bark of a medium dog (Tommy)    freesound.org CC0
+ceiling_fan.mp3     seamless loop, slow old ceiling fan whir   freesound.org CC0
+crt_hum.mp3         seamless loop, tube TV / CRT 15 kHz hum    freesound.org CC0
+cricket_crowd.mp3   distant stadium crowd murmur, loop         freesound.org CC0
+laserjet_print.mp3  laser printer printing one page, ~3 s      freesound.org CC0
+paper_jam.mp3       printer grinding / jamming, ~1 s           freesound.org CC0
+keyboard_clack.mp3  single mechanical key press (short)        freesound.org CC0
+mouse_click.mp3     single ball-mouse click                    freesound.org CC0
+phone_call_hiss.mp3 telephone line hiss / static loop (Media Player calls)  CC0
+
+---------------------------------------------------------------------
+IMAGES  (put in  assets/img/ ; any size, I will downsample to 16-colour pixel art)
+---------------------------------------------------------------------
+tommy.jpg           a brown-and-white Indian street dog (mutt) sitting, tongue out
+                    search: unsplash.com / pexels.com "indian dog"  (free licence)
+cafe_counter_night.jpg  dim shop counter at night with an old CRT monitor, empty chair,
+                    NO people   search: pexels "old computer night", "cyber cafe"
+cafe_1998.jpg       old cyber cafe interior with rows of beige CRT PCs, no faces visible
+                    search: Wikimedia Commons "internet cafe 1990s" (CC-BY/CC0)
+cardboard.jpg       plain brown cardboard texture (for rules_cardboard.bmp)   CC0
+sky_clouds.jpg      plain blue sky with white clouds (boot splash / "Clouds" wallpaper) CC0
+grass_field.jpg     generic rolling green field (optional extra wallpaper) CC0
+                    (use a free photo instead of the copyrighted Bliss image)
+
+Do NOT download: photos of real people (story rule: no likenesses), any image of
+Jeffrey Epstein or anyone real, any Windows logos/screenshots.
+
+---------------------------------------------------------------------
+FONTS  (put in  assets/fonts/ ; only if the licence allows web embedding)
+---------------------------------------------------------------------
+A pixel "MS Sans Serif"-style bitmap font (makes text identical on Mac/Linux).
+   Options: "W95FA" by Alina Sava (check licence), or the MIT-licensed
+   "Pixelated MS Sans Serif" woff2 shipped with the 98.css project (github.com/jdan/98.css).
+"Perfect DOS VGA 437" (free) - for BIOS / MS-DOS / BSOD text.
+"Fixedsys Excelsior" (public domain) - for Notepad, exactly like Win98.
+
+---------------------------------------------------------------------
+VIDEO
+---------------------------------------------------------------------
+None needed. (A 5-10 s grainy CCTV-style loop of an empty shop doorway, no people,
+CC0, could be used for the TECH_CAMERA egg - optional.)
