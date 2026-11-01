@@ -2,6 +2,7 @@
 import { launch } from './index.js';
 import { messageBox } from '../dialogs.js';
 import * as fs from '../fileSystem.js';
+import { restoreEgg } from './extras.js';
 
 const TEXT = ['txt', 'doc', 'log', 'ini', 'sys', 'bat', 'csv'];
 
@@ -9,6 +10,8 @@ export function openFile(n) {
   fs.emitOpen(n);
   if (n.app) return launch(n.app);
   if (n.egg === 'today-img') return todayImg(n);
+  if (n.egg === 'shred') return messageBox({ title: 'Recycle Bin', icon: 'question', text: `Restore '${n.name}' to its original location?`, buttons: ['&Yes', '&No'] }).then(r => r === 0 && restoreEgg(n));
+  if (n.egg === 'floppy') return messageBox({ title: 'Floppy (Tuesday)', icon: 'warning', text: 'Bhaiya says do not open the floppy.\n\nYou do not open the floppy.' });
   const e = fs.ext(n);
   if (e === 'xls') return launch('spreadsheet', { node: n }) || launch('notepad', { node: n });
   if (n.image || e === 'jpg' || e === 'bmp') return launch('paint', { node: n });

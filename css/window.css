@@ -162,3 +162,59 @@
   white-space: pre; overflow: auto; padding: 0 2px;
 }
 .np-text.wrap { white-space: pre-wrap; }
+
+/* ---------- Apps (step 3/4) ---------- */
+.app-col { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.lv { flex: 1; min-height: 0; overflow: auto; background: #fff; box-shadow: var(--sunken); padding: 2px; }
+table.grid { border-collapse: collapse; width: 100%; }
+table.grid th { background: var(--face); box-shadow: var(--raised); font-weight: normal; text-align: left; padding: 2px 6px; white-space: nowrap; position: sticky; top: 0; }
+table.grid td { padding: 1px 6px; white-space: nowrap; }
+table.grid tr.hot td { color: #800000; font-weight: bold; }
+table.xls td { border: 1px solid #c0c0c0; }
+table.xls td.hdr { font-weight: bold; }
+table.xls td.red { color: #800000; font-weight: bold; }
+table.xls th { text-align: center; }
+.cafe-head { padding: 4px; font-weight: bold; }
+.tiles { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 6px; background: #fff; box-shadow: var(--sunken); overflow: auto; }
+.tile { box-shadow: var(--raised-win); background: var(--face); padding: 6px; display: flex; flex-direction: column; gap: 2px; }
+.tile.on b { color: #008000; }
+.tile.pc03 b, .tile.pc03 .bill { color: #800000; }
+.tile.sel { outline: 2px solid var(--navy); outline-offset: -2px; }
+.tile .bill { font-weight: bold; overflow-wrap: anywhere; }
+.cafe-btns { padding: 6px 0; justify-content: flex-start; }
+.cafe-btns button { min-width: 90px; }
+.paint-area { flex: 1; overflow: auto; background: #808080; padding: 4px; box-shadow: var(--sunken); }
+.paint-canvas { display: block; }
+.ie-view { flex: 1; overflow: auto; background: #fff; box-shadow: var(--sunken); }
+.ie-page { padding: 10px; font-family: "Times New Roman", serif; font-size: 14px; line-height: 18px; user-select: text; }
+.ie-page a { color: #00e; text-decoration: underline; cursor: pointer; }
+.ie-page h1 { font-size: 28px; line-height: 34px; } .ie-page h2 { font-size: 20px; margin-bottom: 8px; } .ie-page h3 { margin: 8px 0 4px; }
+.ie-page ul { margin-left: 22px; } .ie-page p { margin-bottom: 8px; }
+.ie-page.dark { background: #000; color: #0f0; min-height: 100%; font-family: "Courier New", monospace; }
+.mine { padding: 6px; } .mine-top { display: flex; justify-content: space-between; align-items: center; box-shadow: var(--sunken); padding: 4px; margin-bottom: 6px; }
+.led { background: #000; color: #f00; font: bold 18px "Courier New", monospace; padding: 0 2px; }
+.face { min-width: 26px; width: 26px; height: 26px; padding: 0; }
+.mine-grid { display: grid; grid-template-columns: repeat(9, 16px); box-shadow: var(--sunken); padding: 3px; }
+.cell { width: 16px; height: 16px; box-shadow: var(--raised); text-align: center; font-weight: bold; line-height: 16px; }
+.cell.open { box-shadow: none; border: 1px solid #808080; border-width: 0 1px 1px 0; } .cell.boom { background: #f00; }
+.cell[data-n="1"] { color: #00f; } .cell[data-n="2"] { color: #008000; } .cell[data-n="3"] { color: #f00; } .cell[data-n="4"] { color: #000080; }
+.list .li { padding: 1px 4px; } .list .li.sel { background: var(--navy); color: #fff; }
+.help { flex: 1; display: flex; min-height: 0; } .help-toc { width: 180px; background: #fff; box-shadow: var(--sunken); padding: 6px; } .help-toc ul { margin: 6px 0 0 14px; }
+.help-toc li.sel { background: var(--navy); color: #fff; } .help-body { flex: 1; background: #ffffe1; box-shadow: var(--sunken); padding: 10px; } .help-body ol { margin: 8px 0 8px 20px; } .help-body li { margin-bottom: 4px; }
+label.radio { display: block; margin: 3px 0; } label.radio input { margin-right: 4px; vertical-align: middle; }
+#screen.dimmed::after { content: ""; position: absolute; inset: 0; z-index: 5500; background: repeating-conic-gradient(#000 0% 25%, transparent 0% 50%) 0 0 / 2px 2px; pointer-events: none; }
+#screen.glitch { filter: invert(1) hue-rotate(90deg); }
+#screen.y2050 { background: #000 !important; }
+#screen.y2050 #taskbar { background: #202020; }
+#screen.y2050::before { content: "Windows 2050 - Seat 07 - Plan On Schedule"; position: absolute; top: 40%; width: 100%; text-align: center; color: #0f0; font: bold 20px "Courier New", monospace; z-index: 1; }
+#overlay.black { background: #000; }
+#overlay .fullmsg { color: #c0c0c0; font: 16px/24px "Courier New", monospace; padding: 15% 10%; }
+#overlay .fullmsg .big { font-size: 28px; line-height: 40px; color: #fff; margin: 20px 0; }
+#overlay.shut1 { background: #1060c0; display: flex; align-items: center; justify-content: center; }
+#overlay.safe-screen { background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#overlay .safe { color: #ff8000; font: bold 34px/46px Arial, sans-serif; text-align: center; }
+#overlay .tick { color: #181818; font: 12px "Courier New", monospace; margin-top: 60px; }
+#overlay.bsod-screen { background: #0000aa; display: flex; align-items: center; justify-content: center; }
+.bsod { color: #fff; font: 18px/24px "Lucida Console", "Courier New", monospace; max-width: 760px; }
+.bsod p { margin: 18px 0; } .bsod-title { background: #aaa; color: #0000aa; display: block; width: max-content; margin: 0 auto; }
+.dos { color: #aaa; font: 16px/18px "Lucida Console", monospace; padding: 20px; white-space: pre; }

@@ -8,6 +8,7 @@ import { boot } from './boot.js';
 import { loadFS } from './fileSystem.js';
 import './apps/explorer.js';
 import './apps/notepad.js';
+import './apps/extras.js';
 
 installCursors();
 const fav = document.createElement('link');
