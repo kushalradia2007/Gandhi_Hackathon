@@ -1,0 +1,33 @@
+/* Start menu (large icons + "Windows98" banner) and its cascading flyouts */
+
+.menu-start { display: flex; padding: 3px; }
+.start-banner {
+  flex: none;
+  position: relative;
+  width: 21px;
+  /* Win98 sidebar bitmap: navy at the bottom fading to black at the top */
+  background: linear-gradient(to top, #000080, #000000);
+}
+.start-banner span {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 21px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+  white-space: nowrap;
+}
+.start-banner b { font-weight: 900; letter-spacing: -0.5px; }
+.start-items { display: flex; flex-direction: column; min-width: 162px; }
+.menu-start .menu-item { height: 32px; }
+.menu-start .mi-icon { width: 32px; height: 32px; flex: none; margin: 0 6px 0 2px; }
+.menu-start .mi-label { padding-right: 18px; }
+.menu-start .menu-sep { margin: 3px 1px 3px 2px; }
+
+.menu-cascade .menu-item { height: 20px; }
+.menu-cascade .mi-icon { width: 16px; height: 16px; flex: none; margin: 0 6px 0 3px; }
+.menu-cascade .mi-label { padding-right: 18px; }

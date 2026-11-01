@@ -1,0 +1,45 @@
+/* Reset + Win98 system tokens. Colours are the Win98 "Windows Standard" scheme. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --face: #c0c0c0;
+  --light: #dfdfdf;
+  --shadow: #808080;
+  --navy: #000080;
+  --desk: #008080;
+  --tip: #ffffe1;
+  --font: "MS Sans Serif", "Microsoft Sans Serif", Tahoma, Arial, sans-serif;
+
+  /* 4-layer bevels: outer pair first, inner pair second */
+  --raised: inset -1px -1px #000, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  --raised-win: inset -1px -1px #000, inset 1px 1px #dfdfdf, inset -2px -2px #808080, inset 2px 2px #fff;
+  --pressed: inset -1px -1px #fff, inset 1px 1px #000, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  --sunken: inset -1px -1px #fff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #000;
+  --thin-raised: inset -1px -1px #808080, inset 1px 1px #fff;
+  --thin-sunken: inset -1px -1px #fff, inset 1px 1px #808080;
+  /* 50% checkerboard used by Win98 for pressed toggles and scrollbar tracks */
+  --dither: repeating-conic-gradient(#c0c0c0 0% 25%, #fff 0% 50%) 0 0 / 2px 2px;
+}
+
+html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+
+body {
+  font-family: var(--font);
+  font-size: 11px;
+  line-height: 13px;
+  color: #000;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: var(--cur-arrow, default);
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+img, canvas { image-rendering: pixelated; image-rendering: crisp-edges; }
+img { -webkit-user-drag: none; }
+::selection { background: var(--navy); color: #fff; }
+
+/* Hourglass while the system is "busy" */
+html.busy, html.busy * { cursor: var(--cur-wait, wait) !important; }

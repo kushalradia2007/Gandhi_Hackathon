@@ -1,0 +1,123 @@
+/* Desktop, icons, taskbar, tray, boot screens */
+
+#screen { position: fixed; inset: 0; overflow: hidden; background: var(--desk); }
+#desktop { position: absolute; left: 0; top: 0; right: 0; bottom: 28px; }
+#icons { position: absolute; inset: 0; outline: none; }
+#screen.booting #icons, #screen.booting #taskbar { visibility: hidden; }
+
+/* ---------- Desktop icons ---------- */
+.icon {
+  position: absolute;
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2px;
+}
+.icon img { width: 32px; height: 32px; flex: none; margin-bottom: 5px; }
+.icon .label {
+  color: #fff;
+  background: var(--desk);
+  text-align: center;
+  padding: 0 2px 1px;
+  max-width: 73px;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.icon.selected .label { background: var(--navy); -webkit-line-clamp: 6; }
+/* Focus rect is XOR-drawn in Win98: white XOR teal = #ff7f7f, white XOR navy = #ffff7f */
+.icon.focused .label { outline: 1px dotted #ff7f7f; outline-offset: -1px; }
+.icon.selected.focused .label { outline-color: #ffff7f; }
+/* Drag image: 50% dither */
+.icon.ghost {
+  pointer-events: none;
+  z-index: 2;
+  -webkit-mask-image: repeating-conic-gradient(#000 0% 25%, transparent 0% 50%);
+  -webkit-mask-size: 2px 2px;
+  mask-image: repeating-conic-gradient(#000 0% 25%, transparent 0% 50%);
+  mask-size: 2px 2px;
+}
+.icon.ghost .label { background: transparent; }
+
+.marquee { position: fixed; z-index: 9000; pointer-events: none; border: 1px dotted #fff; mix-blend-mode: difference; }
+
+/* ---------- Taskbar ---------- */
+#taskbar {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 28px;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  padding: 2px 2px 0 2px;
+  background: var(--face);
+  box-shadow: inset 0 1px var(--light), inset 0 2px #fff;
+}
+.start-btn {
+  flex: none;
+  min-width: 0;
+  width: 54px;
+  height: 22px;
+  padding: 0 0 0 3px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: bold;
+}
+.start-btn:focus { outline: none; }
+.start-btn.pressed, .start-btn.pressed:active { box-shadow: var(--pressed); padding: 1px 0 0 4px; outline: 1px dotted #000; outline-offset: -4px; }
+.tb-sep { flex: none; width: 2px; height: 20px; margin: 0 2px 0 3px; box-shadow: inset 1px 0 #808080, inset -1px 0 #fff; }
+.tb-grip { flex: none; width: 3px; height: 20px; margin: 0 3px 0 1px; box-shadow: inset 1px 1px #fff, inset -1px -1px #808080; }
+.quick { display: flex; flex: none; }
+.ql {
+  min-width: 0; width: 22px; height: 22px; padding: 0;
+  background: transparent; box-shadow: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.ql:focus { outline: none; }
+.ql:hover { box-shadow: var(--thin-raised); }
+.ql:not(:disabled):active { box-shadow: var(--thin-sunken); padding: 1px 0 0 1px; }
+.tasks { flex: 1; min-width: 0; height: 22px; display: flex; gap: 3px; }
+.task {
+  flex: 0 1 160px;
+  min-width: 0;
+  height: 22px;
+  padding: 0 3px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  text-align: left;
+  overflow: hidden;
+}
+.task:focus { outline: none; }
+.task img { flex: none; }
+.task span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.task.active, .task.active:not(:disabled):active { box-shadow: var(--pressed); background: var(--dither); font-weight: bold; padding: 1px 3px 0 4px; }
+.tray {
+  flex: none;
+  margin-left: 3px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 1px 0 4px;
+  box-shadow: var(--thin-sunken);
+}
+.clock { padding: 0 6px 0 5px; line-height: 20px; }
+
+/* ---------- Boot ---------- */
+#overlay { position: fixed; inset: 0; z-index: 10000; display: none; background: #000; }
+#overlay.on { display: block; }
+#overlay.post { padding: 18px 20px; }
+#overlay.post pre {
+  color: #aaa;
+  font-family: "Perfect DOS VGA 437", "Lucida Console", "Courier New", monospace;
+  font-size: 16px;
+  line-height: 18px;
+  white-space: pre;
+}
+#overlay.splash { display: flex; align-items: center; justify-content: center; }
+#overlay.splash canvas { width: min(100vw, 133.334vh); height: min(75vw, 100vh); }
