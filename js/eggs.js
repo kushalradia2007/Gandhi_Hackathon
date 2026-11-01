@@ -21,7 +21,7 @@ onRun(key => {
     case '2050': ending2050(); return true;
     case 'gandhi': launch('notepad', { node: NOTE('GANDHI.TXT', 'GANDHI: artificial agreement engine.\r\n\r\nTested on a hackathon in Bhilai. Results: promising.\r\nParticipants were not informed.\r\n\r\nThis paragraph was not written by a person. If you are wondering whether that is a joke, it is not.\r\n') }); return true;
     case 'help': case 'winhelp': launch('help'); return true;
-    case 'tommy': bark(); flags.bhaiyaSmiles = true; window.dispatchEvent(new Event('scz-bhaiya')); setTimeout(() => { flags.bhaiyaSmiles = false; window.dispatchEvent(new Event('scz-bhaiya')); }, 2000); return true;
+    case 'tommy': if (!flags.metTommy) return false; bark(); flags.bhaiyaSmiles = true; window.dispatchEvent(new Event('scz-bhaiya')); setTimeout(() => { flags.bhaiyaSmiles = false; window.dispatchEvent(new Event('scz-bhaiya')); }, 2000); return true;
     case 'xyzzy': xyzzyPixel(); return true;
     case 'bhaiya': { const n = fs.resolve('C:\\BACKROOM$\\BHAIYA_NOTE.txt'); if (n) launch('notepad', { node: n, scrollBottom: true }); return true; }
     case 'seat07': case 'seat_07': seat07Ending(); return true;

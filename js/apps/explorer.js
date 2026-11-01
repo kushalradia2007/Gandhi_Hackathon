@@ -16,7 +16,28 @@ const isBackroom = n => { for (let x = n; x; x = x.parent) if (x.name === 'BACKR
 const isBin = n => n && n.name === 'RECYCLED';
 
 const cannotFind = p => messageBox({ title: p, icon: 'error', text: `Cannot find the file '${p}' (or one of its components). Make sure the path and filename are correct and that all required libraries are available.` });
-const notReady = n => messageBox({ title: n.name, icon: 'error', text: `${n.letter}\\ is not accessible.\n\nThe device is not ready.`, buttons: ['&Retry', 'Cancel'], cancelIndex: 1 });
+const notReady = async n => {
+  const text = `${n.letter}\\ is not accessible.\n\nThe device is not ready.` + (n.letter === 'A:' && flags.eipRead ? '\n\nThe device is waiting.' : '');
+  while ((await messageBox({ title: n.name, icon: 'error', text, buttons: ['&Retry', 'Cancel'], cancelIndex: 1 })) === 0) { /* Retry shows the same dialog */ }
+};
+export function lnkProps(c) {
+  const t = c.target || '', dir = t.includes('\\') ? t.slice(0, t.lastIndexOf('\\')) : t;
+  const body = document.createElement('div');
+  body.className = 'msgbox';
+  body.innerHTML = `<div class="msg-main" style="align-items:flex-start"><img src="${icon(c.icon || 'app', 32)}" width="32" height="32" alt=""><b></b></div>
+    <div class="pd-row"><span style="width:90px">Target type:</span><span>Application</span></div>
+    <div class="field"><label style="width:90px">Target:</label><input type="text" readonly></div>
+    <div class="field"><label style="width:90px">Start in:</label><input type="text" readonly></div>
+    <div class="pd-row"><span style="width:90px">Shortcut key:</span><span>None</span></div>
+    <div class="pd-row"><span style="width:90px">Run:</span><span>Normal window</span></div>
+    <div class="dlg-btns" style="margin:10px 0"><button disabled>Change Icon...</button><button class="ft">Find Target...</button></div>
+    <div class="dlg-btns" style="justify-content:flex-end"><button class="default">OK</button><button>Cancel</button></div>`;
+  body.querySelector('b').textContent = c.name.replace(/\.lnk$/i, '');
+  const [tIn, sIn] = body.querySelectorAll('input'); tIn.value = t; sIn.value = dir;
+  const w = createWindow({ title: `${c.name.replace(/\.lnk$/i, '')} Shortcut Properties`, content: body, noIcon: true, help: true, resizable: false, minimizable: false, className: 'dialog', center: true, taskbar: false });
+  body.querySelector('.ft').onclick = () => { if (!fs.resolve(t) && !/^(My Computer|Network Neighborhood|C:\\Recycle Bin)$/i.test(t)) messageBox({ title: 'Shortcut', icon: 'error', text: `Cannot find the file '${t}' (or one of its components).\n\nMake sure the path and filename are correct and that all required libraries are available.` }); else launch('explorer', { path: dir || 'C:\\' }); };
+  body.querySelectorAll('.dlg-btns:last-child button').forEach(b => { b.onclick = () => w.close(); });
+}
 const title = n => (n === fs.getRoot() ? 'My Computer' : isBin(n) ? 'Recycle Bin' : n.type === 'drive' ? n.name : n.name);
 const opensApp = n => n.app && !n.children;
 
@@ -226,11 +247,13 @@ function folderWindow(start) {
     inp.addEventListener('blur', () => done(true));
   }
   async function restore(c) {
-    if (c.egg === 'shred') {
+    if (c.egg === 'shred' || c.egg === 'restorable') {
+      c.restores = (c.restores || 0) + 1;
       flags.restoreCount++;
-      if (flags.restoreCount <= 3) await messageBox({ title: 'Recycle Bin', icon: 'info', text: 'Restored.' });
+      if (c.restores <= 2) await messageBox({ title: 'Recycle Bin', icon: 'info', text: `Restoring ${c.name}...\n\nRestored.` });
+      else if (c.restores === 3) await messageBox({ title: 'Recycle Bin', icon: 'info', text: 'Restored.' });
       render();
-      return; // it goes back to... the Recycle Bin
+      return; // it goes back to... the Recycle Bin. On the fourth attempt Restore does nothing.
     }
     const to = fs.resolve(c.origin || 'C:\\My Documents');
     if (!to || isBackroom(to)) return messageBox({ title: 'Recycle Bin', icon: 'error', text: `Cannot restore ${c.name}: the original folder no longer accepts it.` });
@@ -239,6 +262,8 @@ function folderWindow(start) {
   }
   function props(c) {
     const n = c || cur;
+    if (n.lnk) return lnkProps(n);
+    if (n.props) return messageBox({ title: n.props.split('\n')[0].includes('Properties') ? n.props.split('\n')[0] : `${n.name} Properties`, icon: n.icon || fs.iconFor(n), text: n.props.split('\n')[0].includes('Properties') ? n.props.split('\n').slice(2).join('\n') : n.props });
     const loc = n.parent ? fs.pathOf(n.parent) : '';
     let extra = '';
     if (n.owner || n.status) extra = `\n\nOwner:      ${n.owner || '\u2014'}\nLocation:   ${n.status ? '\u2014' : loc}\nStatus:     ${n.status || 'ACTIVE'}`;

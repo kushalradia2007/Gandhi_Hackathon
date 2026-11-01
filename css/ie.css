@@ -1,0 +1,58 @@
+/* Internet Explorer shell (pages themselves render inside the iframe with browser defaults). */
+
+.iex .iex-mb { position: relative; padding-right: 34px; }
+.iex .iex-mb .menubar { flex: 1; }
+.iex-throb {
+  position: absolute; right: 3px; top: 1px;
+  width: 24px; height: 22px; background-repeat: no-repeat; background-position: 0 0;
+  border: 1px solid; border-color: #808080 #fff #fff #808080;
+}
+.iex-throb.on { animation: iex-throb 0.8s steps(8) infinite; }
+@keyframes iex-throb { to { background-position: -192px 0; } }
+
+.iex-tools { min-height: 40px; }
+.iex-tb { flex-direction: column; justify-content: center; gap: 1px; height: 38px; min-width: 50px; padding: 0 4px; }
+.iex-tb img { filter: grayscale(1); }
+.iex-tb:hover:not(:disabled) img { filter: none; }
+.iex-tb:disabled { color: #808080; text-shadow: 1px 1px 0 #fff; }
+.iex-tb:disabled img { filter: grayscale(1) contrast(0.4) brightness(1.3); }
+.iex-sep { width: 2px; height: 34px; margin: 0 3px; box-shadow: inset 1px 0 #808080, inset -1px 0 #fff; }
+.iex-go { flex: none; }
+.iex-addr .addr-box input:disabled { background: #fff; color: #808080; }
+
+.iex-main { flex: 1; min-height: 0; display: flex; }
+.iex-view { flex: 1; min-width: 0; display: flex; background: #fff; box-shadow: var(--sunken); padding: 2px; }
+.iex-frame { flex: 1; width: 100%; height: 100%; border: 0; background: #fff; display: block; }
+html.iex-nopointer .iex-frame { pointer-events: none; }
+
+.iex-side { width: 180px; flex: none; display: flex; flex-direction: column; margin-right: 2px; }
+.iex-side[hidden] { display: none; }
+.iex-side-h { display: flex; align-items: center; height: 20px; padding: 0 2px 0 4px; box-shadow: var(--thin-raised); }
+.iex-side-h span { flex: 1; }
+.iex-side-x {
+  min-width: 0; min-height: 0; width: 14px; height: 12px; padding: 0;
+  background: var(--face) no-repeat 3px 2px; box-shadow: var(--thin-raised);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h2v1H0zM6 0h2v1H6zM1 1h2v1H1zM5 1h2v1H5zM2 2h4v1H2zM3 3h2v1H3zM2 4h4v1H2zM1 5h2v1H1zM5 5h2v1H5zM0 6h2v1H0zM6 6h2v1H6z'/%3E%3C/svg%3E");
+}
+.iex-side-x:focus { outline: none; }
+.iex-side-list { flex: 1; overflow: auto; background: #fff; box-shadow: var(--sunken); padding: 3px; }
+.iex-side-i { display: flex; align-items: center; gap: 4px; padding: 2px; white-space: nowrap; }
+.iex-side-i:hover { color: #00f; text-decoration: underline; }
+.iex-side-e { color: #808080; padding: 2px; }
+
+.iex-zone { display: flex; align-items: center; gap: 2px; }
+.iex-prog { display: flex; gap: 2px; align-items: center; }
+.iex-prog i { display: block; width: 8px; height: 10px; background: var(--navy); }
+
+/* full-screen moments: BSOD (2050.com) and the SAFE shutdown (shutdown.com) */
+.iex-bsod { position: fixed; inset: 0; z-index: 99995; background: #0000aa; color: #fff; display: flex; align-items: flex-start; justify-content: center; padding-top: 22vh; }
+.iex-bsod pre { font: 14px/18px "Fixedsys Excelsior 3.01", "Lucida Console", "Courier New", monospace; margin: 0 80px; }
+.iex-bsod-t { background: #aaa; color: #0000aa; display: block; width: max-content; margin: 0 auto; }
+.iex-safe { position: fixed; inset: 0; z-index: 99996; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.iex-safe.s1 { background: #000080; color: #fff; font: bold 14px Arial, sans-serif; gap: 16px; }
+.iex-safe-bar { display: flex; gap: 2px; width: 242px; height: 14px; padding: 2px; border: 1px solid #fff; }
+.iex-safe-bar i { display: block; width: 10px; height: 8px; background: #fff; }
+.iex-safe.s2, .iex-safe.s3 { background: #000; }
+.iex-safe-orange { color: #ffa500; font: bold 16px Arial, sans-serif; }
+.iex-safe-bill { position: absolute; right: 24px; bottom: 20px; color: #262626; font: 12px "Courier New", monospace; text-align: right; }
+.iex-safe-last { color: #808080; font: 12px "Courier New", monospace; }

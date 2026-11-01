@@ -6,9 +6,10 @@ let S = 1, OX = 0, OY = 0, W = 1024, H = 768;
 
 export function applyScale() {
   const el = document.getElementById('screen');
-  [W, H] = RESOLUTIONS[store.get('res', '1024x768')] || RESOLUTIONS['1024x768'];
-  S = Math.min(innerWidth / W, innerHeight / H);
-  OX = Math.round((innerWidth - W * S) / 2); OY = Math.round((innerHeight - H * S) / 2);
+  // Screen Area fixes the virtual height; width follows the browser's aspect ratio (no letterbox).
+  const [, baseH] = RESOLUTIONS[store.get('res', '1024x768')] || RESOLUTIONS['1024x768'];
+  H = baseH; S = innerHeight / H; W = Math.round(innerWidth / S);
+  OX = 0; OY = 0;
   Object.assign(el.style, { width: W + 'px', height: H + 'px', transformOrigin: '0 0', transform: `translate(${OX}px, ${OY}px) scale(${S})` });
   window.dispatchEvent(new Event('scz-rescale'));
 }

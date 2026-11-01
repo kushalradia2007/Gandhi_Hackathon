@@ -1,22 +1,48 @@
-; for 16-bit app support
 [windows]
 load=
-run=CAFEMGR.EXE /silent
+run=
 NullPort=None
-device=Generic / Text Only,TTY,LPT1:
+device=HP LaserJet 6L,LPT1:
 
 [Desktop]
 Wallpaper=(None)
 TileWallpaper=0
-WallpaperStyle=0
-;Wallpaper=C:\BACKROOM$\SEATS.BMP   <- do not use (Bhaiya)
+WallpaperStyle=2
+
+[colors]
+Background=0 128 128
 
 [intl]
 sCountry=India
 iCountry=91
 sCurrency=Rs.
 
-[Session]
-PC03_Login=03/03/98 03:14
-PC03_Logout=
-PC03_NextUser=GUEST
+[fonts]
+
+[extensions]
+txt=notepad.exe ^.txt
+doc=notepad.exe ^.doc
+log=notepad.exe ^.log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[quiet]
+session=active
+seat=07

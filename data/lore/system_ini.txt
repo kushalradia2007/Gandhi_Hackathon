@@ -1,16 +1,19 @@
 [boot]
 shell=Explorer.exe
 system.drv=system.drv
-drivers=mmsystem.dll power.drv
-user.exe=user.exe
-gdi.exe=gdi.exe
-sound.drv=mmsound.drv
-display.drv=pnpdrvr.drv
 
 [386Enh]
+woafont=dosapp.fon
+EMMExclude=A000-FFFF
+device=*vxd
 device=*vshare
-device=C:\WINDOWS\SYSTEM\QUIET.DLL   ; do not remove
+device=*vmcpd
 
 [drivers]
-wave=mmsystem.dll
+wave=mmdrv.dll
 timer=timer.drv
+
+[mci]
+cdaudio=mcicda.drv
+sequencer=mciseq.drv
+waveaudio=mciwave.drv

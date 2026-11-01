@@ -56,8 +56,10 @@ export const PICS = {
     x.fillStyle = '#b08850'; x.fillRect(0, 0, w, h);
     x.fillStyle = '#9a7440'; for (let i = 0; i < w; i += 6) x.fillRect(i, 0, 1, h);
     x.fillStyle = '#7a5428'; x.fillRect(0, 0, w, 3); x.fillRect(0, h - 3, w, 3);
-    const L = ['RULES (NO ARGUMENT)', '1. NO GAMES IN EXAM TIME', '2. DONT TOUCH MONITOR', '3. PAY BEFORE YOU GO', '4. NO CHATTING ON UDHAAR', '5. PC 03 IS NOT FOR YOU', '6. TUESDAY CLOSED (PC 03)'];
-    L.forEach((t, i) => T(x, t, i ? 10 : 34, 22 + i * 20, (i ? '' : 'bold ') + '12px "Comic Sans MS", cursive', '#111'));
+    const L = ['CYBER ZONE RULES', '1. No smoking', '2. No food', '3. No fighting', '4. No downloading "big" files', '5. No printing without permission', '6. No changing wallpaper'];
+    L.forEach((t, i) => T(x, t, i ? 12 : 44, 16 + i * 15, (i ? '' : 'bold ') + '11px "Comic Sans MS", cursive', '#1838a0'));
+    ['7. Do not touch PC 03', '8. Do not ask about the floppy', '9. Do not ask what is in the back room'].forEach((t, i) => T(x, t, 14, 121 + i * 11, '9px "Courier New", monospace', '#102070'));
+    T(x, '- Bhaiya', 150, 156, '10px "Comic Sans MS", cursive', '#1838a0');
     grain(x, w, h, 14);
   }),
   seats: (present = false) => pic(400, 300, (x, w, h) => {
@@ -98,6 +100,37 @@ export const PICS = {
     T(x, '98/2', 262, 42, '9px monospace', '#3a6a3a');
     grain(x, w, h, 30);
     T(x, 'SHREE CYBER ZONE  03:14 AM', 92, 232, '9px monospace', '#808080');
+  }),
+  bhaiya2026: () => pic(200, 140, (x, w, h) => {
+    x.fillStyle = '#c8c0a8'; x.fillRect(0, 0, w, h);
+    for (let i = 0; i < 6; i++) { x.fillStyle = '#8a8a80'; x.fillRect(8 + i * 32, 30, 24, 18); x.fillStyle = '#2a4050'; x.fillRect(10 + i * 32, 32, 20, 13); }
+    x.fillStyle = '#5a4030'; x.fillRect(0, 96, w, 44);                  // counter
+    x.fillStyle = '#6a4024'; x.fillRect(88, 50, 26, 30);                // same face
+    x.fillStyle = '#222'; x.fillRect(86, 46, 30, 7); x.fillStyle = '#6a4024'; x.fillRect(96, 46, 10, 3);
+    x.fillStyle = '#000'; x.fillRect(94, 61, 3, 3); x.fillRect(105, 61, 3, 3); x.fillRect(95, 72, 13, 2); x.fillRect(93, 70, 2, 2); x.fillRect(108, 70, 2, 2);
+    x.fillStyle = '#f4f4f0'; x.fillRect(78, 80, 46, 16);
+    x.fillStyle = '#7a6a50'; x.fillRect(156, 104, 30, 6); x.fillRect(158, 110, 3, 20); x.fillRect(180, 110, 3, 20);  // broken chair
+    x.fillStyle = '#e8e2d6'; x.fillRect(160, 90, 22, 14); x.fillStyle = '#8a5a2a'; x.fillRect(176, 82, 10, 10); x.fillStyle = '#b0b0b0'; x.fillRect(182, 86, 5, 4); // Tommy, grey muzzle
+    grain(x, w, h, 24);
+    T(x, '01-11-2026', 4, 136, '9px monospace', '#ff8000');
+    if ((flags.b2026 || 0) >= 2) T(x, '— s00', 168, 136, '8px monospace', '#202020');
+  }),
+  scan1: () => pic(220, 160, (x, w, h) => {
+    x.fillStyle = '#e8e8e0'; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#303030'; x.fillRect(40, 20, 140, 110); x.fillStyle = '#0a1a0a'; x.fillRect(52, 30, 116, 84);
+    x.fillStyle = '#2a6a2a'; x.fillRect(52, 84, 116, 30);
+    T(x, 'IND 98/2', 76, 62, 'bold 16px monospace', '#d0ffd0'); T(x, '(34.2 ov)  RAIN', 70, 78, '10px monospace', '#a0d0a0');
+    grain(x, w, h, 40, true);
+  }),
+  scan2: () => pic(220, 160, (x, w, h) => {
+    x.fillStyle = '#e0dcd0'; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#6a5038'; x.fillRect(0, 100, w, 60);                                 // counter
+    x.fillStyle = '#b8b4a8'; x.fillRect(70, 30, 70, 60); x.fillStyle = '#20303a'; x.fillRect(78, 36, 54, 42); // CRT
+    x.fillStyle = '#c8c4b8'; x.fillRect(60, 104, 90, 14);                                // keyboard
+    x.fillStyle = '#d0ccc0'; x.fillRect(160, 106, 14, 20);                               // mouse
+    x.fillStyle = '#e0c040'; x.fillRect(30, 116, 26, 3);                                 // pencil
+    x.fillStyle = '#101820'; x.fillRect(180, 120, 24, 24); x.fillStyle = '#a0a0a0'; x.fillRect(186, 120, 12, 9); x.fillStyle = '#f0f0f0'; x.fillRect(184, 132, 16, 10); // the floppy
+    grain(x, w, h, 40, true);
   }),
   tuesday1: () => courier(false),
   tuesday2: () => courier(true),

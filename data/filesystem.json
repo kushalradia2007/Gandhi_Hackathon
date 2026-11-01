@@ -1,96 +1,1125 @@
 {
-  "name": "My Computer", "type": "computer", "icon": "computer",
-  "children": [
-    { "name": "3½ Floppy (A:)", "letter": "A:", "type": "drive", "icon": "floppy", "notReady": true },
-    { "name": "Pc03 (C:)", "letter": "C:", "type": "drive", "icon": "hdd", "children": [
-      { "name": "BACKROOM$", "type": "folder", "hidden": true, "date": "03/03/98 03:14 AM", "children": [
-        { "name": "PROJECT_2050.DOC", "type": "file", "size": 19456, "date": "03/03/98 03:14 AM", "src": "lore/PROJECT_2050.txt" },
-        { "name": "EIPSTEIN.DOC", "type": "file", "size": 24576, "date": "03/03/98 03:14 AM", "src": "lore/EIPSTEIN.txt", "owner": "\u2014", "status": "WAITING" },
-        { "name": "LEDGER_98.XLS", "type": "file", "size": 13824, "date": "03/03/98 03:14 AM", "src": "lore/LEDGER_98.csv", "owner": "PROPRIETOR" },
-        { "name": "DELAY_LEDGER.XLS", "type": "file", "size": 9216, "date": "03/03/98 03:14 AM", "src": "lore/DELAY_LEDGER.csv" },
-        { "name": "ROADMAP_2050.DOC", "type": "file", "size": 11264, "date": "03/03/98 03:14 AM", "src": "lore/ROADMAP_2050.txt" },
-        { "name": "BHAIYA_NOTE.txt", "type": "file", "size": 2048, "date": "03/03/98 03:14 AM", "src": "lore/BHAIYA_NOTE.txt", "egg": "bhaiya" },
-        { "name": "SEATS.BMP", "type": "file", "size": 1440054, "date": "03/03/98 03:14 AM" },
-        { "name": "TECH", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
-          { "name": "TECH_FLYING_CARS.DOC", "type": "file", "size": 6144, "date": "03/03/98 03:14 AM", "src": "lore/TECH_FLYING_CARS.txt" },
-          { "name": "TECH_AI_GANDHI.DOC", "type": "file", "size": 5120, "date": "03/03/98 03:14 AM", "src": "lore/TECH_AI_GANDHI.txt" },
-          { "name": "TECH_WAR.DOC", "type": "file", "size": 5632, "date": "03/03/98 03:14 AM", "src": "lore/TECH_WAR.txt" },
-          { "name": "TECH_WEATHER.DOC", "type": "file", "size": 4608, "date": "03/03/98 03:14 AM", "src": "lore/TECH_WEATHER.txt", "egg": "weather" },
-          { "name": "TECH_GENETICS.DOC", "type": "file", "size": 4608, "date": "03/03/98 03:14 AM", "src": "lore/TECH_GENETICS.txt" },
-          { "name": "TECH_CAMERA.DOC", "type": "file", "size": 3072, "date": "03/03/98 03:14 AM", "src": "lore/TECH_CAMERA.txt", "egg": "camera" },
-          { "name": "THE_PLAYER.DOC", "type": "file", "size": 4096, "date": "{TODAYSHORT} 03:14 AM", "src": "lore/THE_PLAYER.txt", "egg": "player" }
-        ] },
-        { "name": "Tuesdays", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
-          { "name": "1998-03-03.IMG", "type": "file", "size": 1474560, "date": "03/03/98 03:14 AM" },
-          { "name": "1998-03-10.IMG", "type": "file", "size": 1474560, "date": "03/10/98 03:14 AM" },
-          { "name": "{TODAY}.IMG", "type": "file", "size": 0, "date": "{TODAYSHORT} 03:14 AM", "egg": "today-img" }
-        ] },
-        { "name": "chatlogs", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
-          { "name": "1998-03-03.LOG", "type": "file", "size": 1024, "date": "03/03/98 10:47 PM", "src": "../Chatlogs/1998-03-03.log.txt" },
-          { "name": "1999-09-08.LOG", "type": "file", "size": 1024, "date": "09/08/99 02:19 AM", "src": "../Chatlogs/1999-09-08.log.txt" },
-          { "name": "2001-09-12.LOG", "type": "file", "size": 1024, "date": "09/12/01 06:07 AM", "src": "../Chatlogs/2001-09-12.log.txt" },
-          { "name": "2020-03-11.LOG", "type": "file", "size": 1024, "date": "03/11/20 03:50 AM", "src": "../Chatlogs/2020-03-11.log.txt" },
-          { "name": "2026-11-01.LOG", "type": "file", "size": 512, "date": "{TODAYSHORT} 05:15 AM", "src": "../Chatlogs/2026-11-01.log.txt" }
-        ] }
-      ] },
-      { "name": "My Documents", "type": "folder", "icon": "mydocs", "date": "03/03/98 10:00 AM", "children": [
-        { "name": "rates_1998.doc", "type": "file", "size": 2048, "date": "03/03/98 10:00 AM", "src": "lore/rates_1998.txt" },
-        { "name": "complaint_letter.txt", "type": "file", "size": 1536, "date": "05/07/98 02:15 PM", "src": "lore/complaint_letter.txt" },
-        { "name": "tommy.jpg", "type": "file", "size": 49152, "date": "03/03/98 10:14 AM", "image": "tommy" },
-        { "name": "bhaiya_1998.jpg", "type": "file", "size": 131072, "date": "03/03/98 10:30 AM", "image": "bhaiya" },
-        { "name": "rules_cardboard.bmp", "type": "file", "size": 120054, "date": "03/03/98 10:45 AM", "image": "rules" },
-        { "name": "floppy_register.txt", "type": "file", "size": 2560, "date": "12/29/98 08:05 PM", "src": "lore/floppy_register.txt" },
-        { "name": "chai_account.txt", "type": "file", "size": 1024, "date": "12/31/98 06:40 PM", "src": "lore/chai_account.txt" },
-        { "name": "NOTICE_FOR_CUSTOMERS.txt", "type": "file", "size": 1024, "date": "03/02/98 11:00 AM", "src": "lore/notice.txt" },
-        { "name": "judges_note.txt", "type": "file", "size": 512, "date": "{TODAYSHORT} 09:00 AM", "egg": "judges", "content": "" }
-      ] },
-      { "name": "Program Files", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
-        { "name": "Cafe Manager 98", "type": "folder", "date": "02/28/98 02:00 PM", "children": [
-          { "name": "CAFEMGR.EXE", "type": "file", "size": 412160, "date": "02/28/98 02:00 PM", "app": "cafe" },
-          { "name": "SESSION.LOG", "type": "file", "size": 9999999, "date": "{TODAYSHORT} 03:14 AM", "app": "sessionlog" },
-          { "name": "README.TXT", "type": "file", "size": 1024, "date": "02/28/98 02:00 PM", "src": "lore/cafemgr_readme.txt" }
-        ] },
-        { "name": "Internet Explorer", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
-          { "name": "IEXPLORE.EXE", "type": "file", "size": 70928, "date": "05/11/98 08:01 PM", "app": "ie" }
-        ] },
-        { "name": "mIRC", "type": "folder", "date": "03/03/98 03:14 AM", "children": [
-          { "name": "MIRC32.EXE", "type": "file", "size": 1241088, "date": "03/03/98 03:14 AM", "app": "mirc", "egg": "mirc-exe" }
-        ] },
-        { "name": "Accessories", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
-          { "name": "MSPAINT.EXE", "type": "file", "size": 344064, "date": "05/11/98 08:01 PM", "app": "paint" },
-          { "name": "WORDPAD.EXE", "type": "file", "size": 0, "date": "03/03/98 10:40 PM", "app": "wordpad" }
-        ] }
-      ] },
-      { "name": "WINDOWS", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
-        { "name": "Desktop", "type": "folder", "hidden": true, "date": "02/27/98 06:00 PM", "children": [] },
-        { "name": "Media", "type": "folder", "date": "02/27/98 06:00 PM", "children": [
-          { "name": "call_03141998.wav", "type": "file", "size": 2363392, "date": "03/14/98 03:14 AM", "app": "mediaplayer", "media": true },
-          { "name": "call_03101998.wav", "type": "file", "size": 1888256, "date": "03/10/98 03:14 AM", "app": "mediaplayer", "media": true },
-          { "name": "call_11012026.wav", "type": "file", "size": 546816, "date": "{TODAYSHORT} 03:14 AM", "app": "mediaplayer", "media": true, "hiddenUntilLogs": true }
-        ] },
-        { "name": "temp", "type": "folder", "date": "{TODAYSHORT} 03:14 AM", "children": [] },
-        { "name": "CALC.EXE", "type": "file", "size": 94208, "date": "05/11/98 08:01 PM", "app": "calc" },
-        { "name": "NOTEPAD.EXE", "type": "file", "size": 53248, "date": "05/11/98 08:01 PM", "app": "notepad" },
-        { "name": "WINMINE.EXE", "type": "file", "size": 24576, "date": "05/11/98 08:01 PM", "app": "minesweeper" },
-        { "name": "SOL.EXE", "type": "file", "size": 180224, "date": "05/11/98 08:01 PM", "app": "solitaire" },
-        { "name": "sticky.bmp", "type": "file", "size": 30054, "date": "03/03/98 10:50 AM", "image": "sticky" },
-        { "name": "system.ini", "type": "file", "size": 2048, "date": "03/03/98 03:14 AM", "src": "lore/system_ini.txt" },
-        { "name": "win.ini", "type": "file", "size": 4096, "date": "{TODAYSHORT} 03:14 AM", "src": "lore/win_ini.txt" },
-        { "name": "quiet.dll", "type": "file", "size": 0, "date": "03/03/98 03:14 AM", "egg": "quietdll", "readonly": true }
-      ] },
-      { "name": "RECYCLED", "type": "folder", "hidden": true, "icon": "recyclefull", "date": "12/29/98 11:59 PM", "children": [
-        { "name": "do_not_shred.pdf", "type": "file", "size": 88064, "date": "12/29/98 11:58 PM", "egg": "shred", "origin": "C:\\BACKROOM$" },
-        { "name": "final_final.doc", "type": "file", "size": 3072, "date": "12/29/98 11:57 PM", "src": "lore/final_final.txt", "origin": "C:\\My Documents" },
-        { "name": "the_chair_manual.pdf", "type": "file", "size": 412672, "date": "03/03/98 03:14 AM", "origin": "C:\\BACKROOM$" }
-      ] },
-      { "name": "AUTOEXEC.BAT", "type": "file", "size": 512, "date": "03/03/98 03:14 AM", "src": "lore/autoexec.txt" },
-      { "name": "CONFIG.SYS", "type": "file", "size": 256, "date": "02/27/98 06:00 PM", "src": "lore/config.txt" },
-      { "name": "IO.SYS", "type": "file", "hidden": true, "size": 222390, "date": "05/11/98 08:01 PM" },
-      { "name": "MSDOS.SYS", "type": "file", "hidden": true, "size": 1676, "date": "02/27/98 06:00 PM", "src": "lore/msdos_sys.txt" }
-    ] },
-    { "name": "(D:)", "letter": "D:", "type": "drive", "icon": "cdrom", "notReady": true },
-    { "name": "Control Panel", "type": "folder", "icon": "settings", "app": "controlpanel" },
-    { "name": "Printers", "type": "folder", "icon": "printer", "app": "printers" },
-    { "name": "Dial-Up Networking", "type": "folder", "icon": "network", "app": "dialup" }
-  ]
+ "name": "My Computer",
+ "type": "computer",
+ "icon": "computer",
+ "children": [
+  {
+   "name": "3½ Floppy (A:)",
+   "letter": "A:",
+   "type": "drive",
+   "icon": "floppy",
+   "notReady": true
+  },
+  {
+   "name": "Pc03 (C:)",
+   "letter": "C:",
+   "type": "drive",
+   "icon": "hdd",
+   "children": [
+    {
+     "name": "BACKROOM$",
+     "type": "folder",
+     "hidden": true,
+     "date": "03/03/98 03:14 AM",
+     "children": [
+      {
+       "name": "PROJECT_2050.DOC",
+       "type": "file",
+       "size": 19456,
+       "date": "03/03/98 03:14 AM",
+       "src": "lore/PROJECT_2050.txt"
+      },
+      {
+       "name": "EIPSTEIN.DOC",
+       "type": "file",
+       "size": 24576,
+       "date": "03/03/98 03:14 AM",
+       "src": "lore/EIPSTEIN.txt",
+       "owner": "—",
+       "status": "WAITING"
+      },
+      {
+       "name": "LEDGER_98.XLS",
+       "type": "file",
+       "size": 13824,
+       "date": "03/03/98 03:14 AM",
+       "src": "lore/LEDGER_98.csv",
+       "owner": "PROPRIETOR"
+      },
+      {
+       "name": "DELAY_LEDGER.XLS",
+       "type": "file",
+       "size": 9216,
+       "date": "03/03/98 03:14 AM",
+       "src": "lore/DELAY_LEDGER.csv"
+      },
+      {
+       "name": "ROADMAP_2050.DOC",
+       "type": "file",
+       "size": 11264,
+       "date": "03/03/98 03:14 AM",
+       "src": "lore/ROADMAP_2050.txt"
+      },
+      {
+       "name": "BHAIYA_NOTE.txt",
+       "type": "file",
+       "size": 2048,
+       "date": "03/03/98 03:14 AM",
+       "src": "lore/BHAIYA_NOTE.txt",
+       "egg": "bhaiya"
+      },
+      {
+       "name": "SEATS.BMP",
+       "type": "file",
+       "size": 1440054,
+       "date": "03/03/98 03:14 AM"
+      },
+      {
+       "name": "TECH",
+       "type": "folder",
+       "date": "03/03/98 03:14 AM",
+       "children": [
+        {
+         "name": "TECH_FLYING_CARS.DOC",
+         "type": "file",
+         "size": 6144,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/TECH_FLYING_CARS.txt"
+        },
+        {
+         "name": "TECH_AI_GANDHI.DOC",
+         "type": "file",
+         "size": 5120,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/TECH_AI_GANDHI.txt"
+        },
+        {
+         "name": "TECH_WAR.DOC",
+         "type": "file",
+         "size": 5632,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/TECH_WAR.txt"
+        },
+        {
+         "name": "TECH_WEATHER.DOC",
+         "type": "file",
+         "size": 4608,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/TECH_WEATHER.txt",
+         "egg": "weather"
+        },
+        {
+         "name": "TECH_GENETICS.DOC",
+         "type": "file",
+         "size": 4608,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/TECH_GENETICS.txt"
+        },
+        {
+         "name": "TECH_CAMERA.DOC",
+         "type": "file",
+         "size": 3072,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/TECH_CAMERA.txt",
+         "egg": "camera"
+        },
+        {
+         "name": "THE_PLAYER.DOC",
+         "type": "file",
+         "size": 4096,
+         "date": "{TODAYSHORT} 03:14 AM",
+         "src": "lore/THE_PLAYER.txt",
+         "egg": "player"
+        }
+       ]
+      },
+      {
+       "name": "Tuesdays",
+       "type": "folder",
+       "date": "03/03/98 03:14 AM",
+       "children": [
+        {
+         "name": "1998-03-03.IMG",
+         "type": "file",
+         "size": 1474560,
+         "date": "03/03/98 03:14 AM"
+        },
+        {
+         "name": "1998-03-10.IMG",
+         "type": "file",
+         "size": 1474560,
+         "date": "03/10/98 03:14 AM"
+        },
+        {
+         "name": "{TODAY}.IMG",
+         "type": "file",
+         "size": 0,
+         "date": "{TODAYSHORT} 03:14 AM",
+         "egg": "today-img"
+        }
+       ]
+      },
+      {
+       "name": "chatlogs",
+       "type": "folder",
+       "date": "03/03/98 03:14 AM",
+       "children": [
+        {
+         "name": "1998-03-03.LOG",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 10:47 PM",
+         "src": "../Chatlogs/1998-03-03.log.txt"
+        },
+        {
+         "name": "1999-09-08.LOG",
+         "type": "file",
+         "size": 1024,
+         "date": "09/08/99 02:19 AM",
+         "src": "../Chatlogs/1999-09-08.log.txt"
+        },
+        {
+         "name": "2001-09-12.LOG",
+         "type": "file",
+         "size": 1024,
+         "date": "09/12/01 06:07 AM",
+         "src": "../Chatlogs/2001-09-12.log.txt"
+        },
+        {
+         "name": "2020-03-11.LOG",
+         "type": "file",
+         "size": 1024,
+         "date": "03/11/20 03:50 AM",
+         "src": "../Chatlogs/2020-03-11.log.txt"
+        },
+        {
+         "name": "2026-11-01.LOG",
+         "type": "file",
+         "size": 512,
+         "date": "{TODAYSHORT} 05:15 AM",
+         "src": "../Chatlogs/2026-11-01.log.txt"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "My Documents",
+     "type": "folder",
+     "icon": "mydocs",
+     "date": "03/03/98 10:00 AM",
+     "children": [
+      {
+       "name": "rates_1998.doc",
+       "type": "file",
+       "size": 2048,
+       "date": "03/03/98 10:00 AM",
+       "src": "lore/rates_1998.txt"
+      },
+      {
+       "name": "complaint_letter.txt",
+       "type": "file",
+       "size": 1024,
+       "date": "05/07/98 02:15 PM",
+       "src": "lore/complaint_letter.txt"
+      },
+      {
+       "name": "tommy.jpg",
+       "type": "file",
+       "size": 49152,
+       "date": "03/03/98 10:14 AM",
+       "image": "tommy"
+      },
+      {
+       "name": "bhaiya_1998.jpg",
+       "type": "file",
+       "size": 131072,
+       "date": "03/03/98 10:45 AM",
+       "image": "bhaiya"
+      },
+      {
+       "name": "rules_cardboard.bmp",
+       "type": "file",
+       "size": 131072,
+       "date": "03/03/98 10:30 AM",
+       "image": "rules",
+       "readonly": true
+      },
+      {
+       "name": "floppy_register.txt",
+       "type": "file",
+       "size": 2560,
+       "date": "12/29/98 08:05 PM",
+       "src": "lore/floppy_register.txt"
+      },
+      {
+       "name": "chai_account.txt",
+       "type": "file",
+       "size": 1024,
+       "date": "12/31/98 06:40 PM",
+       "src": "lore/chai_account.txt"
+      },
+      {
+       "name": "NOTICE_FOR_CUSTOMERS.txt",
+       "type": "file",
+       "size": 1024,
+       "date": "03/02/98 11:00 AM",
+       "src": "lore/notice.txt"
+      },
+      {
+       "name": "bhaiya_2026.jpg",
+       "type": "file",
+       "size": 126976,
+       "date": "{TODAYSHORT} 03:14 AM",
+       "image": "bhaiya2026",
+       "egg": "bhaiya2026"
+      },
+      {
+       "name": "judges_note.txt",
+       "type": "file",
+       "size": 1024,
+       "date": "{TODAYSHORT} 03:14 AM",
+       "egg": "judges",
+       "content": "",
+       "onlyOn": "2026-11-01"
+      },
+      {
+       "name": "visitor_note.txt",
+       "type": "file",
+       "size": 1024,
+       "date": "{TODAYSHORT} 03:14 AM",
+       "src": "lore/visitor_note.txt",
+       "notOn": "2026-11-01"
+      }
+     ],
+     "props": "My Documents Properties\n\nType:        Folder\nLocation:    C:\\My Documents\nSize:        304 KB\nContains:    8 files, 0 folders\n\nAttributes:  Read-only, Archive"
+    },
+    {
+     "name": "Program Files",
+     "type": "folder",
+     "date": "02/27/98 06:00 PM",
+     "children": [
+      {
+       "name": "Internet Explorer",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "IEXPLORE.EXE",
+         "type": "file",
+         "size": 70928,
+         "date": "05/11/98 08:01 PM",
+         "app": "ie"
+        }
+       ]
+      },
+      {
+       "name": "mIRC",
+       "type": "folder",
+       "date": "03/03/98 03:14 AM",
+       "children": [
+        {
+         "name": "MIRC32.EXE",
+         "type": "file",
+         "size": 1241088,
+         "date": "03/03/98 03:14 AM",
+         "app": "mirc",
+         "egg": "mirc-exe"
+        }
+       ]
+      },
+      {
+       "name": "SHREE CYBER ZONE",
+       "type": "folder",
+       "date": "03/03/98 03:14 AM",
+       "children": [
+        {
+         "name": "cafemanager.exe",
+         "type": "file",
+         "size": 3355443,
+         "date": "03/03/98 03:14 AM",
+         "app": "cafe",
+         "props": "cafemanager.exe\n\nCafê Manager 98 · Version 1.0 · 3.2 MB · 3/3/98"
+        },
+        {
+         "name": "sessionlog.exe",
+         "type": "file",
+         "size": 419430,
+         "date": "03/03/98 03:14 AM",
+         "app": "sessionlog",
+         "props": "sessionlog.exe\n\nSession Log · Version 1.0 · 0.4 MB · 3/3/98"
+        },
+        {
+         "name": "printerqueue.exe",
+         "type": "file",
+         "size": 209715,
+         "date": "03/03/98 03:14 AM",
+         "app": "printq",
+         "props": "printerqueue.exe\n\nPrinter Queue · Version 1.0 · 0.2 MB · 3/3/98"
+        },
+        {
+         "name": "scz.ini",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/scz_ini.txt"
+        }
+       ]
+      },
+      {
+       "name": "Accessories",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "Notepad.exe",
+         "type": "file",
+         "size": 53248,
+         "date": "05/11/98 08:01 PM",
+         "app": "notepad"
+        },
+        {
+         "name": "Paint.exe",
+         "type": "file",
+         "size": 344064,
+         "date": "05/11/98 08:01 PM",
+         "app": "paint"
+        },
+        {
+         "name": "Calc.exe",
+         "type": "file",
+         "size": 94208,
+         "date": "05/11/98 08:01 PM",
+         "app": "calc"
+        }
+       ]
+      },
+      {
+       "name": "Windows Media Player",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "mplayer.exe",
+         "type": "file",
+         "size": 165888,
+         "date": "05/11/98 08:01 PM",
+         "app": "mediaplayer"
+        }
+       ]
+      },
+      {
+       "name": "Windows NT",
+       "type": "folder",
+       "date": "03/03/98 03:14 AM",
+       "children": [],
+       "props": "Windows NT Properties\n\nType:        Folder\nLocation:    C:\\Program Files\nSize:        0 bytes\nContains:    0 files, 0 folders\nCreated:     3/3/98 03:14 AM\nModified:    3/3/98 03:14 AM"
+      }
+     ]
+    },
+    {
+     "name": "WINDOWS",
+     "type": "folder",
+     "date": "02/27/98 06:00 PM",
+     "children": [
+      {
+       "name": "Application Data",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "Microsoft",
+         "type": "folder",
+         "date": "03/03/98 03:14 AM",
+         "children": [
+          {
+           "name": "Internet Explorer",
+           "type": "folder",
+           "date": "03/03/98 03:14 AM",
+           "children": [
+            {
+             "name": "Quick Launch",
+             "type": "folder",
+             "date": "03/03/98 03:14 AM",
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "name": "Desktop",
+       "type": "folder",
+       "hidden": false,
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "My Computer.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "mycomputer",
+         "lnk": true,
+         "target": "My Computer"
+        },
+        {
+         "name": "My Documents.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "mydocs",
+         "lnk": true,
+         "target": "C:\\My Documents"
+        },
+        {
+         "name": "Internet Explorer.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "ie",
+         "lnk": true,
+         "target": "C:\\Program Files\\Internet Explorer\\IEXPLORE.EXE"
+        },
+        {
+         "name": "Network Neighborhood.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "network",
+         "lnk": true,
+         "target": "Network Neighborhood"
+        },
+        {
+         "name": "Recycle Bin.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "recycle",
+         "lnk": true,
+         "target": "C:\\Recycle Bin"
+        },
+        {
+         "name": "Cafê Manager 98.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "cafe",
+         "lnk": true,
+         "target": "C:\\Program Files\\SHREE CYBER ZONE\\cafemanager.exe"
+        },
+        {
+         "name": "Session Log.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "sessionlog",
+         "lnk": true,
+         "target": "C:\\Program Files\\SHREE CYBER ZONE\\sessionlog.exe"
+        },
+        {
+         "name": "Printer Queue.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "printq",
+         "lnk": true,
+         "target": "C:\\Program Files\\SHREE CYBER ZONE\\printerqueue.exe"
+        },
+        {
+         "name": "Notepad.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "notepad",
+         "lnk": true,
+         "target": "C:\\WINDOWS\\Notepad.exe"
+        },
+        {
+         "name": "Paint.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "paint",
+         "lnk": true,
+         "target": "C:\\Program Files\\Accessories\\Paint.exe"
+        },
+        {
+         "name": "Media Player.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "mediaplayer",
+         "lnk": true,
+         "target": "C:\\Program Files\\Windows Media Player\\mplayer.exe"
+        },
+        {
+         "name": "Minesweeper.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "minesweeper",
+         "lnk": true,
+         "target": "C:\\WINDOWS\\Winmine.exe"
+        },
+        {
+         "name": "Solitaire.lnk",
+         "type": "file",
+         "size": 1024,
+         "date": "03/03/98 03:14 AM",
+         "app": "solitaire",
+         "lnk": true,
+         "target": "C:\\WINDOWS\\Sol.exe"
+        }
+       ]
+      },
+      {
+       "name": "Favorites",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "SHREE CYBER ZONE.url",
+         "type": "file",
+         "size": 128,
+         "date": "03/03/98 03:14 AM",
+         "src": "lore/favorite_url.txt",
+         "url": "http://shreecyberzone.local/"
+        }
+       ]
+      },
+      {
+       "name": "Fonts",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "MS Sans Serif.fon",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 57936,
+         "egg": "font"
+        },
+        {
+         "name": "Courier New.ttf",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 302688,
+         "egg": "font"
+        },
+        {
+         "name": "Arial.ttf",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 275572,
+         "egg": "font"
+        },
+        {
+         "name": "Times New Roman.ttf",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 330412,
+         "egg": "font"
+        },
+        {
+         "name": "Fixedsys.fon",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 9280,
+         "egg": "font"
+        },
+        {
+         "name": "Marlett.ttf",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 26552,
+         "egg": "font"
+        }
+       ]
+      },
+      {
+       "name": "Help",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "windows.hlp",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 310272,
+         "app": "help"
+        }
+       ]
+      },
+      {
+       "name": "Media",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "call_03141998.wav",
+         "type": "file",
+         "size": 2363392,
+         "date": "03/03/98 03:14 AM",
+         "app": "mediaplayer",
+         "media": true
+        },
+        {
+         "name": "call_03101998.wav",
+         "type": "file",
+         "size": 1888256,
+         "date": "03/10/98 03:14 AM",
+         "app": "mediaplayer",
+         "media": true
+        },
+        {
+         "name": "call_11012026.wav",
+         "type": "file",
+         "size": 546816,
+         "date": "{TODAYSHORT} 03:14 AM",
+         "app": "mediaplayer",
+         "media": true,
+         "hiddenUntilLogs": true
+        },
+        {
+         "name": "The Microsoft Sound.wav",
+         "type": "file",
+         "size": 371782,
+         "date": "05/11/98 08:01 PM",
+         "sound": "startup"
+        },
+        {
+         "name": "ding.wav",
+         "type": "file",
+         "size": 11598,
+         "date": "05/11/98 08:01 PM",
+         "sound": "ding"
+        },
+        {
+         "name": "chord.wav",
+         "type": "file",
+         "size": 24982,
+         "date": "05/11/98 08:01 PM",
+         "sound": "chord"
+        },
+        {
+         "name": "tada.wav",
+         "type": "file",
+         "size": 27804,
+         "date": "05/11/98 08:01 PM",
+         "sound": "chord"
+        },
+        {
+         "name": "chimes.wav",
+         "type": "file",
+         "size": 15920,
+         "date": "05/11/98 08:01 PM",
+         "sound": "ding"
+        }
+       ]
+      },
+      {
+       "name": "Recent",
+       "type": "folder",
+       "date": "03/03/98 03:14 AM",
+       "children": [
+        {
+         "name": "rates_1998.lnk",
+         "type": "file",
+         "size": 512,
+         "date": "03/03/98 10:00 AM",
+         "target": "C:\\My Documents\\rates_1998.doc",
+         "lnk": true,
+         "open": "C:\\My Documents\\rates_1998.doc"
+        },
+        {
+         "name": "tommy.lnk",
+         "type": "file",
+         "size": 512,
+         "date": "03/03/98 10:14 AM",
+         "target": "C:\\My Documents\\tommy.jpg",
+         "lnk": true,
+         "open": "C:\\My Documents\\tommy.jpg"
+        },
+        {
+         "name": "complaint_letter.lnk",
+         "type": "file",
+         "size": 512,
+         "date": "05/07/98 02:15 PM",
+         "target": "C:\\My Documents\\complaint_letter.txt",
+         "lnk": true,
+         "open": "C:\\My Documents\\complaint_letter.txt"
+        }
+       ]
+      },
+      {
+       "name": "Start Menu",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "Programs",
+         "type": "folder",
+         "date": "03/03/98 03:14 AM",
+         "children": [
+          {
+           "name": "Accessories",
+           "type": "folder",
+           "date": "03/03/98 03:14 AM",
+           "children": []
+          },
+          {
+           "name": "Games",
+           "type": "folder",
+           "date": "03/03/98 03:14 AM",
+           "children": []
+          },
+          {
+           "name": "StartUp",
+           "type": "folder",
+           "date": "03/03/98 03:14 AM",
+           "children": []
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "name": "System",
+       "type": "folder",
+       "date": "02/27/98 06:00 PM",
+       "children": [
+        {
+         "name": "quiet.dll",
+         "type": "file",
+         "date": "03/03/98 03:14 AM",
+         "size": 0,
+         "egg": "dll",
+         "hidden": true,
+         "msg": "Cannot open file.\n\nThe file is empty.\n\nThe file is not empty.",
+         "props": "quiet.dll Properties\n\nType:        Application Extension\nLocation:    C:\\WINDOWS\\System\nSize:        0 bytes\nCreated:     3/3/98 03:14 AM\nModified:    3/3/98 03:14 AM\n\nAttributes:  Read-only, Hidden"
+        },
+        {
+         "name": "seat07.dll",
+         "type": "file",
+         "date": "{TODAYSHORT} 03:14 AM",
+         "size": 0,
+         "egg": "dll",
+         "msg": "Cannot open file.\n\nThe file is being written.\n\nPlease do not close the machine.",
+         "props": "seat07.dll Properties\n\nType:        Application Extension\nLocation:    C:\\WINDOWS\\System\nSize:        0 bytes\nCreated:     {TODAYSHORT} 03:14 AM\nModified:    {TODAYSHORT} 03:14 AM\n\nAttributes:  Read-only"
+        },
+        {
+         "name": "eipstein.dll",
+         "type": "file",
+         "date": "{TODAYSHORT} 03:14 AM",
+         "size": 8192,
+         "egg": "dll",
+         "hidden": true,
+         "msg": "Cannot open file.\n\nThe file is a library.\n\nThe library is in use.",
+         "props": "eipstein.dll Properties\n\nType:        Application Extension\nLocation:    C:\\WINDOWS\\System\nSize:        8 KB\nCreated:     3/3/98 03:14 AM\nModified:    {TODAYSHORT} 03:14 AM\n\nAttributes:  Read-only, Hidden"
+        },
+        {
+         "name": "kernel32.dll",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 471040,
+         "egg": "dll",
+         "msg": "Cannot open file.\n\nThis is a system file.\n\nIt is in use by Windows."
+        },
+        {
+         "name": "user32.dll",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 49152,
+         "egg": "dll",
+         "msg": "Cannot open file.\n\nThis is a system file.\n\nIt is in use by Windows."
+        },
+        {
+         "name": "gdi32.dll",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 135168,
+         "egg": "dll",
+         "msg": "Cannot open file.\n\nThis is a system file.\n\nIt is in use by Windows."
+        },
+        {
+         "name": "shell32.dll",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 1355776,
+         "egg": "dll",
+         "msg": "Cannot open file.\n\nThis is a system file.\n\nIt is in use by Windows."
+        },
+        {
+         "name": "comdlg32.dll",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 94208,
+         "egg": "dll",
+         "msg": "Cannot open file.\n\nThis is a system file.\n\nIt is in use by Windows."
+        },
+        {
+         "name": "mmsystem.dll",
+         "type": "file",
+         "date": "05/11/98 08:01 PM",
+         "size": 69632,
+         "egg": "dll",
+         "msg": "Cannot open file.\n\nThis is a system file.\n\nIt is in use by Windows."
+        },
+        {
+         "name": "SCZSTART.BAT",
+         "type": "file",
+         "date": "03/03/98 03:14 AM",
+         "size": 512,
+         "src": "lore/sczstart.txt",
+         "readonly": true
+        },
+        {
+         "name": "SCZSESSION.BAT",
+         "type": "file",
+         "date": "03/03/98 03:14 AM",
+         "size": 256,
+         "src": "lore/sczsession.txt",
+         "readonly": true
+        }
+       ]
+      },
+      {
+       "name": "Calc.exe",
+       "type": "file",
+       "date": "05/11/98 08:01 PM",
+       "size": 94208,
+       "app": "calc"
+      },
+      {
+       "name": "Explorer.exe",
+       "type": "file",
+       "date": "05/11/98 08:01 PM",
+       "size": 204288,
+       "app": "explorer"
+      },
+      {
+       "name": "Notepad.exe",
+       "type": "file",
+       "date": "05/11/98 08:01 PM",
+       "size": 53248,
+       "app": "notepad"
+      },
+      {
+       "name": "Sol.exe",
+       "type": "file",
+       "date": "05/11/98 08:01 PM",
+       "size": 180224,
+       "app": "solitaire"
+      },
+      {
+       "name": "Winmine.exe",
+       "type": "file",
+       "date": "05/11/98 08:01 PM",
+       "size": 24576,
+       "app": "minesweeper"
+      },
+      {
+       "name": "Win.com",
+       "type": "file",
+       "date": "05/11/98 08:01 PM",
+       "size": 24791,
+       "app": "msdos"
+      },
+      {
+       "name": "sticky.bmp",
+       "type": "file",
+       "size": 30054,
+       "date": "03/03/98 10:50 AM",
+       "image": "sticky"
+      },
+      {
+       "name": "System.ini",
+       "type": "file",
+       "date": "03/03/98 03:14 AM",
+       "size": 2048,
+       "src": "lore/system_ini.txt"
+      },
+      {
+       "name": "Win.ini",
+       "type": "file",
+       "date": "{TODAYSHORT} 03:14 AM",
+       "size": 4096,
+       "src": "lore/win_ini.txt"
+      },
+      {
+       "name": "quiet.dll",
+       "type": "file",
+       "date": "03/03/98 03:14 AM",
+       "size": 0,
+       "egg": "dll",
+       "readonly": true,
+       "msg": "Cannot open: access denied.",
+       "props": "Properties are not available for this file."
+      }
+     ]
+    },
+    {
+     "name": "RECYCLED",
+     "type": "folder",
+     "hidden": true,
+     "icon": "recyclefull",
+     "date": "12/29/98 11:59 PM",
+     "children": [
+      {
+       "name": "do_not_shred.pdf",
+       "type": "file",
+       "size": 12288,
+       "date": "03/03/98 03:14 AM",
+       "egg": "shred",
+       "origin": "C:\\BACKROOM$"
+      },
+      {
+       "name": "final_final.doc",
+       "type": "file",
+       "size": 1024,
+       "date": "03/03/98 03:14 AM",
+       "src": "lore/final_final.txt",
+       "origin": "C:\\My Documents",
+       "egg": "restorable"
+      },
+      {
+       "name": "the_chair_manual.pdf",
+       "type": "file",
+       "size": 8192,
+       "date": "03/03/98 03:14 AM",
+       "origin": "C:\\BACKROOM$",
+       "egg": "chair",
+       "props": "the_chair_manual.pdf Properties\n\nType:        PDF Document\nLocation:    C:\\Recycle Bin\nSize:        8 KB\nCreated:     3/3/98 03:14 AM\n\nTitle:       The Chair\nAuthor:      —\nSubject:     Seating\nKeywords:    seat, seven, pending\nComments:    This manual is for the chair you are sitting in."
+      }
+     ]
+    },
+    {
+     "name": "AUTOEXEC.BAT",
+     "type": "file",
+     "size": 1024,
+     "date": "03/03/98 09:00 AM",
+     "src": "lore/autoexec.txt"
+    },
+    {
+     "name": "CONFIG.SYS",
+     "type": "file",
+     "size": 256,
+     "date": "02/27/98 06:00 PM",
+     "src": "lore/config.txt"
+    },
+    {
+     "name": "IO.SYS",
+     "type": "file",
+     "hidden": true,
+     "size": 222390,
+     "date": "05/11/98 08:01 PM"
+    },
+    {
+     "name": "MSDOS.SYS",
+     "type": "file",
+     "hidden": true,
+     "size": 1676,
+     "date": "02/27/98 06:00 PM",
+     "src": "lore/msdos_sys.txt"
+    },
+    {
+     "name": "Temp",
+     "type": "folder",
+     "date": "03/03/98 09:00 AM",
+     "children": [
+      {
+       "name": "download.tmp",
+       "type": "file",
+       "size": 0,
+       "date": "06/12/98 09:02 PM",
+       "egg": "tmp"
+      },
+      {
+       "name": "~tmp0001.tmp",
+       "type": "file",
+       "size": 0,
+       "date": "03/03/98 03:14 AM",
+       "egg": "tmp"
+      },
+      {
+       "name": "~tmp0002.tmp",
+       "type": "file",
+       "size": 0,
+       "date": "03/03/98 03:14 AM",
+       "egg": "tmp"
+      },
+      {
+       "name": "draft.txt",
+       "type": "file",
+       "size": 2048,
+       "date": "06/12/98 09:14 PM",
+       "src": "lore/draft.txt"
+      },
+      {
+       "name": "todo.txt",
+       "type": "file",
+       "size": 1024,
+       "date": "03/03/98 09:00 AM",
+       "src": "lore/todo.txt"
+      },
+      {
+       "name": "scan0001.bmp",
+       "type": "file",
+       "size": 262144,
+       "date": "07/15/98 04:10 PM",
+       "image": "scan1"
+      },
+      {
+       "name": "scan0002.bmp",
+       "type": "file",
+       "size": 262144,
+       "date": "07/15/98 04:12 PM",
+       "image": "scan2"
+      },
+      {
+       "name": "backup_1998.zip",
+       "type": "file",
+       "size": 0,
+       "date": "03/03/98 03:14 AM",
+       "egg": "zip"
+      }
+     ]
+    },
+    {
+     "name": "COMMAND.COM",
+     "type": "file",
+     "size": 93880,
+     "date": "05/11/98 08:01 PM",
+     "app": "msdos"
+    }
+   ]
+  },
+  {
+   "name": "(D:)",
+   "letter": "D:",
+   "type": "drive",
+   "icon": "cdrom",
+   "notReady": true
+  },
+  {
+   "name": "Control Panel",
+   "type": "folder",
+   "icon": "settings",
+   "app": "controlpanel"
+  },
+  {
+   "name": "Printers",
+   "type": "folder",
+   "icon": "printer",
+   "app": "printers"
+  },
+  {
+   "name": "Dial-Up Networking",
+   "type": "folder",
+   "icon": "network",
+   "app": "dialup"
+  }
+ ]
 }

@@ -16,6 +16,8 @@ export async function loadFS() {
   const txt = (await (await fetch('data/filesystem.json')).text()).replaceAll('{TODAYSHORT}', t.short).replaceAll('{TODAY}', t.iso);
   root = JSON.parse(txt);
   const link = (n, parent) => { n.parent = parent; (n.children || []).forEach(c => link(c, n)); };
+  // date-aware files (judges_note only on 1 Nov 2026, visitor_note on every other day)
+  (function prune(n) { if (!n.children) return; n.children = n.children.filter(c => !(c.onlyOn && c.onlyOn !== t.iso) && !(c.notOn && c.notOn === t.iso)); n.children.forEach(prune); })(root);
   link(root, null);
   // optional fragments contributed by other docs (games.md file tree)
   for (const frag of ['data/fs_games.json']) {

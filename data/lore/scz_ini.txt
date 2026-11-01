@@ -1,0 +1,31 @@
+[General]
+Version=1.0
+Installed=3/3/98
+Registered=GUEST
+
+[Session]
+PC03=STILL_RUNNING
+PC03_Start=3/3/98 03:14:00
+PC03_Customer=MR. EIPSTEIN
+PC03_Billing=infinite
+
+[Backroom]
+Path=C:\BACKROOM$
+Hidden=true
+Access=password
+
+[Seats]
+SEAT_00=ACTIVE
+SEAT_01=ACTIVE
+SEAT_02=ACTIVE
+SEAT_03=VACANT
+SEAT_04=ACTIVE
+SEAT_05=NEUTRALIZED
+SEAT_06=ACTIVE
+SEAT_07=CANDIDATE_PENDING
+SEAT_08=ACTIVE
+SEAT_09=ACTIVE
+
+[Phase]
+Current=IV
+Next=V

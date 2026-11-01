@@ -176,7 +176,10 @@ register('emptybin', async () => {
     forYou.content = 'You tried to empty it. It emptied you back.\r\n';
     if (bin && !bin.children.some(c => c.name === forYou.name)) { forYou.parent = bin; bin.children.push(forYou); }
   } else {
-    forYou.content = 'You emptied it. It emptied you back.\r\n';
+    forYou.content = 'You emptied it.\r\n\r\nIt emptied you back.\r\n\r\n\u2014 s00\r\n';
+    if (bin) bin.children = [];
+    const dk = fs.resolve('C:\\WINDOWS\\Desktop');
+    if (dk && !dk.children.some(c => c.name === forYou.name)) { dk.children.push(Object.assign({}, forYou, { parent: dk })); }
     const { addIcon } = await import('../desktop.js');
     if (!document.querySelector('.icon[data-id="for_you"]')) addIcon({ id: 'for_you', label: 'for_you', icon: 'txtfile', open: () => launch('notepad', { node: forYou }) });
     addLogRow({ dur: 'EMPTIED RECYCLE BIN (contents restored)' });

@@ -23,6 +23,12 @@ const items = [
   { id: 'minesweeper', label: 'Minesweeper', icon: 'mine', lnk: true },
   { id: 'solitaire', label: 'Solitaire', icon: 'cards', lnk: true },
 ];
+const TARGETS = {
+  cafe: 'C:\\Program Files\\SHREE CYBER ZONE\\cafemanager.exe', sessionlog: 'C:\\Program Files\\SHREE CYBER ZONE\\sessionlog.exe',
+  printq: 'C:\\Program Files\\SHREE CYBER ZONE\\printerqueue.exe', notepad: 'C:\\WINDOWS\\Notepad.exe', paint: 'C:\\Program Files\\Accessories\\Paint.exe',
+  mediaplayer: 'C:\\Program Files\\Windows Media Player\\mplayer.exe', minesweeper: 'C:\\WINDOWS\\Winmine.exe', solitaire: 'C:\\WINDOWS\\Sol.exe',
+  mirc: 'C:\\Program Files\\mIRC\\MIRC32.EXE', proprietor: 'C:\\WINDOWS\\System\\proprietor.exe',
+};
 const els = new Map();
 let sel = new Set(), focusId = null, root;
 
@@ -248,7 +254,7 @@ The Recycle Bin does not let go.` }) },
     { label: 'Se&nd To', submenu: [{ label: '3½ Floppy (A)' }, { label: 'Desktop (create shortcut)' }, { label: 'Mail Recipient' }, { label: 'My Documents' }] },
     { sep: true }, { label: 'Cu&t' }, { label: '&Copy' },
     { sep: true }, { label: 'Create &Shortcut' }, { label: '&Delete', action: () => remove([...sel]) }, { label: 'Rena&me' },
-    { sep: true }, { label: 'P&roperties', action: () => messageBox({ title: `${it.label} Properties`, icon: it.icon, text: `${it.label}
+    { sep: true }, { label: 'P&roperties', action: () => (it.lnk || it.id === 'proprietor') ? import('./apps/explorer.js').then(m => m.lnkProps({ name: it.label + '.lnk', icon: it.icon, target: TARGETS[it.id] || '' })) : messageBox({ title: `${it.label} Properties`, icon: it.icon, text: `${it.label}
 
 Type: ${it.lnk ? 'Shortcut' : 'System Folder'}
 Location: Desktop

@@ -1,0 +1,10 @@
+@ECHO OFF
+REM SESSION MANAGER
+REM This file starts the session and does not end it
+
+SET SESSION_ID=PC03
+SET SESSION_START=1998-03-03T03:14:00
+SET SESSION_END=NEVER
+
+:loop
+GOTO loop
