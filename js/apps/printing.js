@@ -59,6 +59,7 @@ register('printq', () => {
   return win;
 });
 register('printers', () => launch('printq'));
+register('print', (a = {}) => printDialog({ doc: (a.node && a.node.name) || 'Untitled' }));
 
 /**
  * Win98 Print dialog.

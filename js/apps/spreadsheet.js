@@ -87,8 +87,8 @@ function sheet(node) {
   }
 
   fs.readText(node).then(t => {
-    rows = parseCSV(t || 'A\n');
-    if (isCal) rows.push([dmy(), '?', '?', '?', 'You are almost there.']);
+    rows = parseCSV((t || 'A\n').replaceAll('{TODAY}', dmy()));
+    if (isCal && !rows.some(r => /almost there/i.test(r.join(',')))) rows.push([dmy(), '?', '?', '?', 'You are almost there.']);
     draw();
     if (isLedger) live();
     wrap.focus();

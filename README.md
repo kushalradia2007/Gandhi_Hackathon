@@ -326,136 +326,92 @@ The game has **four endings**. All are cheap to build and high-impact.
 
 ## 🛠️ Tech Stack
 
-- **HTML / CSS / JavaScript** (or **React** — your choice, no heavy frameworks recommended)
-- No UI library. Every pixel is hand-crafted for authenticity.
-- **Deployment:** Vercel or Netlify
-- **Assets:** pixel art, WAV / MP3 sounds, GIF animations (all original or public domain)
-
-> **Why no heavy library?** File-close control over pixels matters more than developer convenience here. A CSS reset plus custom components beats any theme library for a Windows 98 replica.
+- **Vanilla HTML / CSS / JavaScript (ES modules).** No framework, no UI library, no build step.
+- **Every icon, photo and cursor is drawn in code** (`js/icons.js`, `js/pictures.js`): canvas pixel art in the 16-colour VGA palette, rendered `image-rendering: pixelated`.
+- **Every sound is synthesised** with the Web Audio API (`js/sound.js`): startup chime, ding/chord/error beeps, dog bark, modem handshake, printer whir and paper jam, plus optional ceiling-fan and tube-TV ambience. Mute is in the tray (double-click the speaker → Volume Control).
+- **Virtual file system** in `data/filesystem.json` (+ `data/fs_games.json`), lore text in `data/lore/` and `Chatlogs/`.
+- The machine is a fixed-height virtual screen (768 px, or the Screen Area chosen in Display Properties) scaled to fill any browser window.
+- **Deployment:** any static host (Vercel, Netlify, GitHub Pages). No server code.
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Node.js 18+ (if using a build step)
-- Or just a modern browser (if running plain HTML/CSS/JS)
-
-### Install & Run Locally
+It is static files, but ES modules and `fetch()` need an HTTP server (opening `index.html` from disk will not work).
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/shree-cyber-zone.git
-cd shree-cyber-zone
-
-# 2. Install dependencies (if using React / Vite)
-npm install
-
-# 3. Run development server
-npm run dev
+git clone <this repo>
+cd gandhi
+python -m http.server 8000        # or: npx serve .
+# open http://localhost:8000
 ```
 
-If using plain HTML/CSS/JS, simply open `index.html` in a browser, or serve it:
+Useful URL flags:
 
-```bash
-npx serve .
-```
+| Flag | Effect |
+|---|---|
+| `?skipboot` | Skip the BIOS/splash boot sequence |
+
+The boot plays once per browser session (clear session storage or use Start → Shut Down → Restart to see it again). Progress (billing timer, Session Log rows, unlocked mIRC, PROPRIETOR icon) persists in `localStorage`; clear site data to start fresh.
 
 ### Deploy
 
-**Vercel:**
+- **Vercel:** import the repo → Framework preset *Other* → no build command → output directory `.`
+- **Netlify:** drag the folder onto app.netlify.com/drop, or `netlify deploy --prod --dir .`
+- **GitHub Pages:** Settings → Pages → Deploy from branch → `main` / root.
 
-```bash
-npm install -g vercel
-vercel
-```
-
-**Netlify:**
-
-```bash
-npm install -g netlify-cli
-netlify deploy --prod
-```
-
-> ⚠️ **Submission requirement:** A public GitHub repo with intact commit history AND a live working URL a judge can open in a browser. Localhost and screen recordings do not count.
+No environment variables are used.
 
 ---
 
 ## 📁 Project Structure
 
 ```text
-shree-cyber-zone/
-├── public/
-│   ├── favicon.ico
-│   ├── boot/
-│   │   └── boot.mp3
-│   ├── icons/
-│   │   ├── my-computer.png
-│   │   ├── my-documents.png
-│   │   ├── ie.png
-│   │   ├── recycle-bin.png
-│   │   ├── network.png
-│   │   └── ...
-│   ├── sounds/
-│   │   ├── modem.wav
-│   │   ├── click.wav
-│   │   ├── error.wav
-│   │   ├── dog-bark.wav
-│   │   └── tv-hum.wav
-│   ├── wallpapers/
-│   │   ├── teal.bmp
-│   │   └── seats.bmp
-│   └── files/                   ← virtual filesystem sources
-│       ├── rates_1998.txt
-│       ├── complaint_letter.txt
-│       ├── PROJECT_2050.txt
-│       ├── EIPSTEIN.txt
-│       ├── LEDGER_98.csv
-│       └── ...
-├── src/
-│   ├── components/
-│   │   ├── Desktop.jsx
-│   │   ├── Window.jsx
-│   │   ├── Taskbar.jsx
-│   │   ├── StartMenu.jsx
-│   │   ├── Explorer.jsx
-│   │   ├── Notepad.jsx
-│   │   ├── Paint.jsx
-│   │   ├── InternetExplorer.jsx
-│   │   ├── CafeManager.jsx
-│   │   ├── SessionLog.jsx
-│   │   ├── PrinterQueue.jsx
-│   │   ├── Spreadsheet.jsx
-│   │   ├── Minesweeper.jsx
-│   │   ├── Solitaire.jsx
-│   │   ├── MediaPlayer.jsx
-│   │   ├── BSOD.jsx
-│   │   └── Shutdown.jsx
-│   ├── systems/
-│   │   ├── windowManager.js
-│   │   ├── fileSystem.js
-│   │   ├── sessionTracker.js
-│   │   ├── billing.js
-│   │   └── easterEggs.js
-│   ├── styles/
-│   │   ├── reset.css
-│   │   ├── desktop.css
-│   │   ├── window.css
-│   │   ├── startmenu.css
-│   │   └── legacy.css
-│   ├── data/
-│   │   ├── filesystem.json
-│   │   ├── story.json
-│   │   └── easterEggs.json
-│   ├── App.jsx
-│   └── main.jsx
-├── .gitignore
-├── LICENSE
-├── package.json
-├── README.md
-└── vite.config.js
+index.html               the machine
+css/
+  reset.css              Win98 tokens, bevels, font
+  controls.css           buttons, fields, scrollbars, menus, menu bars, toolbars
+  window.css             window chrome, dialogs, Explorer, Notepad
+  desktop.css            desktop icons, taskbar, tray, boot overlay
+  startmenu.css          Start menu + cascades
+  apps.css               app layouts, endings, screensaver, print stylesheet
+  games.css, ie.css      games and Internet Explorer pages
+js/
+  main.js                entry point (imports every app)
+  boot.js                BIOS POST -> cloud splash -> desktop + chime (skippable, once per session)
+  screen.js              virtual-resolution scaling + coordinate helpers
+  windowManager.js       drag/resize (outline), z-order, modality, Alt+Tab, system menu
+  menu.js                context menus, Start menu cascades, window menu bars
+  desktop.js taskbar.js startMenu.js dialogs.js
+  icons.js pictures.js sound.js state.js fileSystem.js
+  eggs.js                shell-level easter eggs + screensaver + global shortcuts
+  apps/
+    index.js             app registry (register / launch)
+    explorer.js notepad.js open.js
+    sessionlog.js cafe.js printing.js spreadsheet.js mirc.js
+    paint.js tools.js (Media Player, Calculator, Find) misc.js (Help, Volume, Network, Ctrl+Alt+Del, MS-DOS)
+    settings.js          Control Panel, Display Properties, Date/Time, Folder Options, Taskbar
+    endings.js           SAFE / THE GUEST / SHRED / 2050 / SEAT_07
+    ie.js sites/         Internet Explorer and its 1998 web
+    games/               Minesweeper, Solitaire, FreeCell, Hearts, Game Studio
+data/
+  filesystem.json        the C: drive
+  fs_games.json          Game Studio + gaming TECH files
+  lore/                  every document the player can open
+Chatlogs/                the Quiet Room's IRC logs (mounted at C:\BACKROOM$\chatlogs)
+docs/                    the design docs this build implements
+.agents/                 build plan + implementation history
 ```
+
+### Where to look first (spoilers)
+
+1. `My Documents` — rates, the complaint letter, Tommy, the two photos of Bhaiya.
+2. **Session Log** — the top row, and then the bottom row.
+3. Explorer address bar → type `C:\BACKROOM$`.
+4. Start → Run → `2050`, `gandhi`, `tommy`, `help`, `quiet`, `seat07`, `exit`, `cmd`.
+5. Café Manager → PC 12 → Print Bill.
+6. Read the chat logs. Something appears on the desktop.
+7. Desktop → right-click → Properties → the last wallpaper.
 
 ---
 

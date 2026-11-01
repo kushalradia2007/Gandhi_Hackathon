@@ -49,6 +49,8 @@ function startItems() {
       { label: 'Games', icon: 'programs', submenu: [
         { label: 'Minesweeper', icon: 'mine', action: L('minesweeper') },
         { label: 'Solitaire', icon: 'cards', action: L('solitaire') },
+        { label: 'FreeCell', icon: 'cards', action: L('freecell') },
+        { label: 'Hearts', icon: 'cards', action: L('hearts') },
       ] },
       { label: 'StartUp', icon: 'programs', submenu: [] },
       { label: 'Shree Cyber Zone', icon: 'programs', submenu: [

@@ -109,7 +109,7 @@ function paintView(a) {
 const read = new Set();
 const pad = n => String(n).padStart(2, '0');
 fs.onOpen(n => {
-  if (!n || !n.parent || n.parent.name !== 'LOGS' || !/\.LOG$/i.test(n.name)) return;
+  if (!n || !n.parent || !/^(LOGS|chatlogs)$/i.test(n.parent.name) || !/\.LOG$/i.test(n.name)) return;
   read.add(n.name);
   const total = n.parent.children.filter(c => /\.LOG$/i.test(c.name)).length;
   if (read.size < total) return;

@@ -48,7 +48,7 @@ function cursorCSS() {
 }
 
 /** Session Log row, if the shell's Session Log is loaded (extras.js exports addLog per the shell contract). */
-function logRow(row) { import('./extras.js').then(m => (m.addLog ? m.addLog(row) : console.warn('ie.js: addLog not exported; Session Log row skipped', row))).catch(() => console.warn('ie.js: Session Log unavailable; row skipped', row)); }
+function logRow(row) { import('./sessionlog.js').then(m => (m.addLog ? m.addLog(row) : console.warn('ie.js: addLog not exported; Session Log row skipped', row))).catch(() => console.warn('ie.js: Session Log unavailable; row skipped', row)); }
 
 /* ---------- full-screen moments ---------- */
 function bsod(msg, done) {
