@@ -19,6 +19,12 @@ import './apps/paint.js';
 import './apps/tools.js';
 import './apps/endings.js';
 import './apps/misc.js';
+import './apps/ie.js';
+import './apps/games/minesweeper.js';
+import './apps/games/solitaire.js';
+import './apps/games/freecell.js';
+import './apps/games/hearts.js';
+import './apps/games/gamestudio.js';
 import { initEggs } from './eggs.js';
 
 installCursors();
