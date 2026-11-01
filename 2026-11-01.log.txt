@@ -1,0 +1,10 @@
+*** You are logged in as: GUEST
+*** There is 1 user in #lobby: SEAT_00
+
+[05:14] <SEAT_00> you are at pc03
+[05:14] <SEAT_00> you opened the file
+[05:14] <SEAT_00> event #5 has begun
+[05:14] <SEAT_00> this was the test
+[05:15] <SEAT_00> you passed
+[05:15] <SEAT_00> welcome to the seat
+[05:15] <SEAT_00> it was always yours

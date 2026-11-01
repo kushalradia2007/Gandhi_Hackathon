@@ -1,0 +1,17 @@
+[02:14] <SEAT_00> drive 04 is in the financial district
+[02:14] <SEAT_00> retrieval is scheduled
+[02:15] <SEAT_04> the building will not survive
+[02:15] <SEAT_00> the building is not the objective
+[02:15] <SEAT_04> it is a very large building
+[02:16] <SEAT_00> it is a distraction
+[02:16] <SEAT_04> how many
+[02:16] <SEAT_00> the file does not say
+[02:16] <SEAT_00> the file does not need to say
+[02:17] <SEAT_04> okay
+[02:17] <SEAT_00> this is event #1
+[02:17] <SEAT_00> we will call it a tragedy
+[02:18] <SEAT_00> they will call it a tragedy
+[02:18] <SEAT_00> nobody will ask what was in the building
+[02:18] <SEAT_04> nobody ever asks
+[02:18] <SEAT_00> that is the point of a tragedy
+[02:19] *** SEAT_04 has quit (Quit: retiring)

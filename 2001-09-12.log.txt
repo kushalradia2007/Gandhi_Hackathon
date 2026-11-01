@@ -1,0 +1,14 @@
+[06:02] <SEAT_00> event #2 is complete
+[06:02] <SEAT_01> sentiment
+[06:03] <SEAT_00> fear
+[06:03] <SEAT_01> acceptable
+[06:03] <SEAT_00> the cameras will be approved within 30 days
+[06:04] <SEAT_01> 30 days is fast
+[06:04] <SEAT_00> fear is fast
+[06:04] <SEAT_00> we did not have to ask
+[06:05] <SEAT_01> we never have to ask
+[06:05] <SEAT_00> correct
+[06:05] <SEAT_00> that is the secret
+[06:06] <SEAT_01> we never have to ask
+[06:06] <SEAT_00> they ask for us
+[06:07] *** SEAT_01 has quit (Quit: going to sleep)
