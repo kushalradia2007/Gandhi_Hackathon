@@ -20,6 +20,7 @@ import './apps/tools.js';
 import './apps/endings.js';
 import './apps/misc.js';
 import './apps/ie.js';
+import { restoreWallpaper } from './apps/settings.js';
 import './apps/games/minesweeper.js';
 import './apps/games/solitaire.js';
 import './apps/games/freecell.js';
@@ -38,6 +39,7 @@ initDesktop();
 initTaskbar();
 initKeys();
 initEggs();
+restoreWallpaper();
 window.__logsRead = flags.logsRead.size;
 
 // Windows key / Ctrl+Esc open the Start menu (Win key only reaches the page in fullscreen keyboard-lock)

@@ -59,7 +59,7 @@ export function cardFaceHTML(s, r) {
 export function cardEl(s, r) {
   const d = document.createElement('div');
   d.className = 'card' + (isRed(s) ? ' red' : '');
-  d.innerHTML = `<div class="face">${cardFaceHTML(s, r)}</div>`;
+  d.innerHTML = `<div class="cface">${cardFaceHTML(s, r)}</div>`;
   return d;
 }
 
@@ -76,9 +76,9 @@ export function cardCanvas(s, r) {
     const corner = () => { x.font = 'bold 12px Arial, sans-serif'; x.fillText(rk, 9, 8); x.font = '12px Arial, sans-serif'; x.fillText(sym, 9, 21); };
     corner(); x.save(); x.translate(CW, CH); x.rotate(Math.PI); corner(); x.restore();
     if (r > 10) {
-      x.strokeStyle = col; x.strokeRect(14.5, 13.5, 42, 69);
+      x.strokeStyle = col; x.strokeRect(16.5, 13.5, 37, 68);
       x.font = 'bold 30px "Times New Roman", serif'; x.fillText(rk, CW / 2, CH / 2);
-      x.font = '12px Arial, sans-serif'; x.fillText(sym, 21, 21); x.fillText(sym, 50, 75);
+      x.font = '12px Arial, sans-serif'; x.fillText(sym, 23, 21); x.fillText(sym, 47, 75);
     } else {
       x.font = (r === 1 ? 34 : 16) + 'px Arial, sans-serif';
       PIPS[r].forEach(([px, py, f]) => { x.save(); x.translate(px, py); if (f) x.rotate(Math.PI); x.fillText(sym, 0, 1); x.restore(); });

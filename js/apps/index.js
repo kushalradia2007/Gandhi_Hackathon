@@ -12,7 +12,7 @@ const SHELLS = {
   solitaire: ['Solitaire', 'cards'],
 };
 // Control Panel items that live in settings modules
-const SETTINGS = ['controlpanel', 'display', 'datetime', 'folderoptions', 'taskbarprops', 'sysprops', 'dialup'];
+const SETTINGS = ['dialup'];
 
 // Programs that are no longer on this machine.
 const MISSING = {

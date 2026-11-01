@@ -232,3 +232,32 @@ a, .ie-page a, [data-go] { cursor: var(--cur-hand, pointer); }
 .paint-canvas { cursor: var(--cur-cross, crosshair); }
 button:disabled, .menu-item.disabled { cursor: var(--cur-no, not-allowed); }
 html.busy, html.busy * { cursor: var(--cur-wait, wait) !important; }
+
+/* ---------- property sheets (settings) ---------- */
+.propsheet { padding: 8px; width: 400px; }
+.ps-tabs { display: flex; position: relative; z-index: 1; }
+.ps-tab { padding: 3px 8px 2px; box-shadow: inset 1px 1px #fff, inset -1px 0 #808080; margin-right: -1px; background: var(--face); }
+.ps-tab.on { padding-bottom: 4px; margin-bottom: -2px; }
+.ps-page { box-shadow: var(--raised-win); padding: 10px; min-height: 290px; margin-bottom: 8px; }
+.dp-monitor { width: 150px; height: 110px; margin: 0 auto 6px; background: #c0c0c0; box-shadow: var(--raised-win); padding: 9px 9px 18px; }
+.dp-screen { width: 100%; height: 100%; box-shadow: var(--sunken); display: flex; align-items: center; justify-content: center; color: #ff0; font: 9px monospace; }
+.dp-row { display: flex; gap: 8px; }
+.dp-list { flex: 1; height: 110px; }
+.dp-list .li { display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+.dp-side { display: flex; flex-direction: column; gap: 5px; width: 92px; }
+.dp-side button { min-width: 0; }
+.dp-preview { background: #808080; padding: 10px; box-shadow: var(--sunken); margin-bottom: 8px; }
+#screen.seat-fade { animation: seatIn 200ms steps(4) 1; }
+@keyframes seatIn { from { filter: brightness(0); } to { filter: none; } }
+#screen.seat-scheme { filter: grayscale(1) contrast(4) invert(1); }
+.dt-wrap { display: flex; gap: 8px; } .dt-wrap fieldset { flex: 1; }
+.dt-sel { display: flex; gap: 4px; margin-bottom: 4px; }
+.dt-cal { background: #fff; box-shadow: var(--sunken); padding: 2px; }
+.dt-head, .dt-days { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }
+.dt-head b { background: #808080; color: #fff; font-weight: normal; }
+.dt-days i { font-style: normal; padding: 1px 0; position: relative; }
+.dt-days i.today { background: var(--navy); color: #fff; }
+.dt-days i.grey { color: #a0a0a0; }
+.dt-days i.hack b { position: absolute; right: 1px; top: -3px; color: #c00000; }
+.dt-clock { font: 14px "Courier New", monospace; text-align: center; padding: 30px 0; box-shadow: var(--sunken); background: #fff; }
+.dt-map { height: 90px; background: #008080; color: #fff; display: flex; align-items: center; justify-content: center; margin: 6px 0; box-shadow: var(--sunken); }

@@ -169,7 +169,7 @@ register('ie', (args = {}) => {
   function render(entry) {
     const r = route(entry);
     page = r.page;
-    if (page.lucky) { revert = null; go(page.lucky.u, { replace: true, variant: page.lucky.variant }); return; }
+    if (page.lucky) { render({ url: parse(page.lucky.u).display, variant: page.lucky.variant || null }); return; }
     revert = null;
     entry.noHistory = !!page.noHistory;
     cur = entry;
