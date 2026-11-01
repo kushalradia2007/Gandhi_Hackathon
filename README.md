@@ -5,8 +5,8 @@
 ### A Windows 98 cyber café admin terminal from Bhilai, 1998.
 ### Someone never logged out.
 
-[![Live Demo](https://img.shields.io/badge/demo-LIVE-brightgreen?style=for-the-badge)](https://your-live-url.vercel.app)
-[![GitHub](https://img.shields.io/badge/source-GitHub-black?style=for-the-badge&logo=github)](https://github.com/your-username/your-repo)
+[![Live Demo](https://img.shields.io/badge/demo-LIVE-brightgreen?style=for-the-badge)](https://gandhihackathon.vercel.app/)
+[![GitHub](https://img.shields.io/badge/source-GitHub-black?style=for-the-badge&logo=github)](https://github.com/kushalradia2007/Gandhi_Hackathon)
 [![Made for Gandhi Hackathon](https://img.shields.io/badge/Gandhi%20Hackathon-2026-orange?style=for-the-badge)](https://github.com/OpenLake)
 [![Windows 98](https://img.shields.io/badge/Windows-98-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/Windows_98)
 
@@ -340,7 +340,7 @@ The game has **four endings**. All are cheap to build and high-impact.
 It is static files, but ES modules and `fetch()` need an HTTP server (opening `index.html` from disk will not work).
 
 ```bash
-git clone <this repo>
+git clone https://github.com/kushalradia2007/Gandhi_Hackathon.git
 cd gandhi
 python -m http.server 8000        # or: npx serve .
 # open http://localhost:8000
