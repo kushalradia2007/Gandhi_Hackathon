@@ -9,6 +9,7 @@ import { onRun } from '../startMenu.js';
 import { addIcon } from '../desktop.js';
 import * as fs from '../fileSystem.js';
 import { ding, chord, click } from '../sound.js';
+import { cancelSlip } from './eggs.js';
 
 /* ================= shared state ================= */
 const PC03_START = new Date(1998, 2, 3, 3, 14, 0);
@@ -149,7 +150,7 @@ function printDialog(doc, fast) {
     <div class="dlg-btns" style="justify-content:flex-end;margin-top:10px"><button class="default">OK</button><button>Cancel</button></div></div>`);
   const w = createWindow({ title: 'Print', content: body, modal: true, noIcon: true, resizable: false, taskbar: false, className: 'dialog' });
   const [ok, cancel] = body.querySelectorAll('button');
-  cancel.onclick = () => w.close();
+  cancel.onclick = () => { w.close(); cancelSlip(); };
   ok.onclick = () => { w.close(); doPrint(doc, fast); };
   ok.focus();
 }
@@ -458,7 +459,7 @@ async function guestEnding() {
 onRun(key => {
   if (key === 'tommy') { bark(); state.bhaiyaSmiles = true; addLog([now(), 'PC 03', 'GUEST', 'Woke the dog', 'WOOF']); return true; }
   if (key === '2050') { ending2050(); return true; }
-  if (key === 'gandhi') { launch('ie', { url: 'gandhi' }); return true; }
+  if (key === 'gandhi') { launch('notepad', { node: { name: 'GANDHI.TXT', content: 'GANDHI: artificial agreement engine.\r\n\r\nTested on a hackathon in Bhilai. Results: promising.\r\nParticipants were not informed.\r\n\r\nThis paragraph was not written by a person.\r\n' } }); return true; }
   if (key === 'help' || key === 'winhelp') { launch('help'); return true; }
   if (key === 'eipstein') { messageBox({ title: 'EIPSTEIN', icon: 'warning', text: 'There is no Mr. Eipstein.\nThere is a procedure.' }); return true; }
   if (key === 'cafe' || key === 'cafemgr') { launch('cafe'); return true; }
@@ -471,7 +472,7 @@ function initEggs() {
   let clicks = [];
   clk.addEventListener('click', () => {
     const t = Date.now(); clicks = clicks.filter(x => t - x < 3000).concat(t);
-    if (clicks.length >= 5) { clicks = []; const real = clk.textContent; clk.textContent = '2050'; setTimeout(() => { clk.textContent = real; }, 900); }
+    if (clicks.length >= 5) { clicks = []; const real = clk.textContent; clk.textContent = '20:50'; setTimeout(() => { clk.textContent = real + ' !'; setTimeout(() => { clk.textContent = real; }, 2000); }, 400); }
   });
   const K = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
   let k = 0;
@@ -491,3 +492,5 @@ function initEggs() {
   tv.addEventListener('click', () => messageBox({ title: 'TV (Doordarshan)', icon: 'info', text: 'IND 98/2 (41.3 ov)\n\nRain stopped play.\nThe score has not changed since 03/03/98.' }));
 }
 if (document.getElementById('clock')) initEggs(); else window.addEventListener('DOMContentLoaded', initEggs);
+
+export { addLog, city, browser, overlay as overlayHTML };

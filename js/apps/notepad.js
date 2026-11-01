@@ -13,7 +13,9 @@ function notepad(args = {}) {
   body.innerHTML = '<div class="np-menu"></div><textarea class="np-text" wrap="off" spellcheck="false"></textarea>';
   const ta = body.querySelector('textarea');
   let wrap = false;
-  const w = createWindow({ title: `${name} - Notepad`, icon: 'notepad', content: body, width: 560, height: 400, minWidth: 200, minHeight: 120 });
+  const lockUntil = node && node.egg === 'player' ? Date.now() + 30000 : 0;
+  const w = createWindow({ title: `${name} - Notepad`, icon: 'notepad', content: body, width: 560, height: 400, minWidth: 200, minHeight: 120, onClose: () => Date.now() >= lockUntil });
+  if (lockUntil) setTimeout(() => { ta.value += '\r\n\r\n                                        Read it. - s00'; }, 3000);
 
   body.firstChild.appendChild(menuBar([
     { label: '&File', items: [

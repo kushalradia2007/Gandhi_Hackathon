@@ -9,6 +9,7 @@ import { loadFS } from './fileSystem.js';
 import './apps/explorer.js';
 import './apps/notepad.js';
 import './apps/extras.js';
+import './apps/eggs.js';
 
 installCursors();
 const fav = document.createElement('link');

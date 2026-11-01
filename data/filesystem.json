@@ -7,6 +7,7 @@
         { "name": "PROJECT_2050.DOC", "type": "file", "size": 19456, "date": "03/03/98 11:58 PM", "src": "lore/PROJECT_2050.txt" },
         { "name": "EIPSTEIN.DOC", "type": "file", "size": 24576, "date": "03/10/98 03:14 AM", "src": "lore/EIPSTEIN.txt" },
         { "name": "LEDGER_98.XLS", "type": "file", "size": 13824, "date": "12/29/98 11:02 PM", "src": "lore/LEDGER_98.csv" },
+        { "name": "THE_PLAYER.DOC", "type": "file", "size": 2048, "date": "{TODAYSHORT} 05:14 AM", "egg": "player", "src": "lore/THE_PLAYER.txt" },
         { "name": "SEATS.BMP", "type": "file", "size": 230454, "date": "03/03/98 10:44 PM", "src": "lore/SEATS.txt" },
         { "name": "Tuesdays", "type": "folder", "date": "03/03/98 10:42 PM", "children": [
           { "name": "1998-03-03.IMG", "type": "file", "size": 1474560, "date": "03/03/98 11:59 PM" },
@@ -26,6 +27,7 @@
         { "name": "complaint_letter.txt", "type": "file", "size": 1536, "date": "06/14/98 04:22 PM", "src": "lore/complaint_letter.txt" },
         { "name": "floppy_register.txt", "type": "file", "size": 2560, "date": "12/29/98 08:05 PM", "src": "lore/floppy_register.txt" },
         { "name": "chai_account.txt", "type": "file", "size": 1024, "date": "12/31/98 06:40 PM", "src": "lore/chai_account.txt" },
+        { "name": "judges_note.txt", "type": "file", "size": 512, "date": "{TODAYSHORT} 09:00 AM", "egg": "judges", "content": "" },
         { "name": "NOTICE_FOR_CUSTOMERS.txt", "type": "file", "size": 1024, "date": "03/02/98 11:00 AM", "src": "lore/notice.txt" },
         { "name": "tommy.jpg", "type": "file", "size": 41984, "date": "04/05/98 01:10 PM", "image": "tommy" },
         { "name": "bhaiya_1998.jpg", "type": "file", "size": 52224, "date": "03/01/98 09:00 AM", "image": "bhaiya" },

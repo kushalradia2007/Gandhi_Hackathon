@@ -218,3 +218,8 @@ label.radio { display: block; margin: 3px 0; } label.radio input { margin-right:
 .bsod { color: #fff; font: 18px/24px "Lucida Console", "Courier New", monospace; max-width: 760px; }
 .bsod p { margin: 18px 0; } .bsod-title { background: #aaa; color: #0000aa; display: block; width: max-content; margin: 0 auto; }
 .dos { color: #aaa; font: 16px/18px "Lucida Console", monospace; padding: 20px; white-space: pre; }
+
+.irc { font: 12px/15px "Courier New", monospace; user-select: text; }
+.irc .sys { color: #008000; }
+.irc .pm { color: #800000; font-weight: bold; }
+.irc-in { flex: none; margin-top: 2px; }

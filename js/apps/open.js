@@ -12,6 +12,7 @@ export function openFile(n) {
   if (n.egg === 'today-img') return todayImg(n);
   if (n.egg === 'shred') return messageBox({ title: 'Recycle Bin', icon: 'question', text: `Restore '${n.name}' to its original location?`, buttons: ['&Yes', '&No'] }).then(r => r === 0 && restoreEgg(n));
   if (n.egg === 'floppy') return messageBox({ title: 'Floppy (Tuesday)', icon: 'warning', text: 'Bhaiya says do not open the floppy.\n\nYou do not open the floppy.' });
+  if (n.egg === 'judges') { let k = 1; try { k = +(localStorage.getItem('judges') || 0) + 1; localStorage.setItem('judges', k); } catch (err) { /* private mode */ } n.content = `You are not the first judge to open this file today.\r\nYou are the ${k + 6}th.\r\n\r\nThe Quiet Room has been expecting you.\r\n`; }
   const e = fs.ext(n);
   if (e === 'xls') return launch('spreadsheet', { node: n }) || launch('notepad', { node: n });
   if (n.image || e === 'jpg' || e === 'bmp') return launch('paint', { node: n });
@@ -22,6 +23,7 @@ export function openFile(n) {
 
 // Easter egg 7: today's Tuesday image. 0 KB, then 1 KB, then never again.
 function todayImg(n) {
+  if (n.size > 0 && (window.__logsRead || 0) >= 5) return messageBox({ title: n.name, icon: 'info', text: 'The seat is warm.' });
   if (n.size > 0) return messageBox({ title: n.name, icon: 'error', text: `Cannot open ${n.name}.\n\nAccess is denied.\nThe file is being written by PC 03.` });
   messageBox({ title: n.name, icon: 'error', text: `Cannot open ${n.name}: file is 0 KB.` });
   if (!n.armed) { n.armed = true; setTimeout(() => { n.size = 1024; n.date = n.date.replace('12:00 AM', new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })); }, 10000); }
