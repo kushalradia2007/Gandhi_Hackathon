@@ -75,6 +75,8 @@ register('paint', (a = {}) => {
   const w = createWindow({ title, icon: 'paint', content: body, width: Math.min(innerWidth - 40, Math.max(420, c.width * 2 + 110)), height: Math.min(innerHeight - 60, Math.max(320, c.height * 2 + 130)) });
   body.querySelectorAll('.ptool').forEach(b => b.addEventListener('click', () => { body.querySelectorAll('.ptool').forEach(x => x.classList.toggle('on', x === b)); body.querySelector('.sb').textContent = b.dataset.t + ': this image is read-only.'; }));
   holder.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); const px = Math.floor((e.clientX - r.left) / zoom), py = Math.floor((e.clientY - r.top) / zoom); body.querySelector('.sb-xy').textContent = px >= 0 && py >= 0 && px < c.width && py < c.height ? `${px},${py}` : ''; });
+  // B05: Run > tommy changes Bhaiya's expression for 2 s
+  if (key === 'bhaiya') { const re = () => { if (w.closed) window.removeEventListener('scz-bhaiya', re); else { c = PICS.bhaiya(); place(); } }; window.addEventListener('scz-bhaiya', re); }
   // H02: the candidate is now present
   if (key === 'seats') setTimeout(() => { if (!w.closed) { c = PICS.seats(true); place(); } }, 30000);
   return w;

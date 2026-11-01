@@ -1,0 +1,222 @@
+/* App layouts (applications.md) and full-screen sequences. Win98 rules: square, bevelled, no easing. */
+
+/* ---------- shared list/table bits ---------- */
+table.grid tr.sel td { background: var(--navy); color: #fff; }
+table.grid tr.flash td { background: #ffff80; }
+fieldset { border: 0; box-shadow: inset -1px -1px #fff, inset 1px 1px #808080, inset -2px -2px #808080, inset 2px 2px #fff; padding: 10px 8px 8px; margin-bottom: 8px; position: relative; }
+legend { padding: 0 3px; margin-left: 4px; }
+select { height: 21px; background: #fff; border: 0; box-shadow: var(--sunken); padding: 0 2px; border-radius: 0; outline: none; }
+label.radio input[type="radio"] { width: 12px; height: 12px; margin: 0 4px 0 0; vertical-align: -2px; accent-color: #000; }
+.tb-sep { flex: none; width: 2px; height: 20px; margin: 0 3px; box-shadow: inset 1px 0 #808080, inset -1px 0 #fff; }
+
+/* ---------- Café Manager ---------- */
+.cafe .cafe-head { display: flex; justify-content: space-between; padding: 4px 4px 6px; font-weight: normal; }
+.cafe-main { flex: 1; display: flex; gap: 6px; min-height: 0; }
+.cafe .tiles { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); grid-auto-rows: 80px; gap: 6px; padding: 6px; background: #fff; box-shadow: var(--sunken); overflow: auto; }
+.cafe .tile { background: var(--face); box-shadow: var(--sunken); padding: 5px 7px; display: flex; flex-direction: column; gap: 3px; outline: none; }
+.cafe .tile .tile-title { font-weight: bold; cursor: var(--cur-arrow, default); }
+.cafe .tile.sel .tile-title { background: var(--navy); color: #fff; margin: -1px -3px; padding: 1px 3px; }
+.cafe .tile.pc03 { box-shadow: inset 0 0 0 1px #800000, var(--sunken); }
+.cafe .tile.pc03 .st, .cafe .tile.pc03 .bill { color: #aa0000; font-weight: bold; }
+.cafe .dot { display: inline-block; width: 7px; height: 7px; margin-right: 4px; background: #808080; box-shadow: inset -1px -1px #fff, inset 1px 1px #404040; }
+.cafe .dot.green { background: #00aa00; } .cafe .dot.red { background: #aa0000; } .cafe .dot.grey { background: #808080; }
+.cafe .time { font-family: "Courier New", monospace; }
+.cafe-side { flex: 0 0 132px; display: flex; flex-direction: column; gap: 6px; padding: 6px; box-shadow: var(--thin-sunken); }
+.cafe-side .side-info { white-space: pre-wrap; min-height: 42px; }
+.cafe-side button { min-width: 0; }
+
+/* ---------- Session Log ---------- */
+.slog tr.eip td { font-weight: bold; }
+.slog tr.me td { color: #808080; }
+.slog td:last-child { white-space: nowrap; }
+
+/* ---------- Printer Queue / Print dialog ---------- */
+.pq-head { padding: 4px 4px 6px; }
+.printdlg { padding: 10px; width: 380px; }
+.printdlg .field label { width: 50px; }
+.printdlg .field input { flex: 1; }
+.printdlg .field button { min-width: 0; margin-left: 6px; }
+.pd-row { display: flex; gap: 8px; margin: 3px 0; } .pd-row > span:first-child { width: 50px; }
+.pd-split { display: flex; gap: 8px; } .pd-split fieldset { flex: 1; }
+.pd-split .field label { width: auto; margin-right: 6px; }
+.pd-ico.spin { transform: scaleX(-1); }
+#print-sheet { display: none; }
+@media print {
+  body > *:not(#print-sheet) { display: none !important; }
+  html, body { overflow: visible; background: #fff; height: auto; }
+  #print-sheet { display: block; color: #000; font: 12pt "Courier New", monospace; padding: 10mm; }
+  #print-sheet h1 { font-size: 16pt; margin-bottom: 4pt; }
+  #print-sheet table { border-collapse: collapse; width: 100%; margin: 10pt 0; }
+  #print-sheet th, #print-sheet td { border: 1px solid #000; padding: 3pt 6pt; text-align: left; }
+  #print-sheet .foot { margin-top: 12pt; font-size: 9pt; }
+}
+
+/* ---------- Spreadsheet ---------- */
+.xls-bar { display: flex; align-items: center; gap: 4px; padding: 3px 2px; }
+.xls-ref { width: 64px; flex: none; }
+.xls-fx { padding: 0 6px; font-style: italic; }
+.xls-formula { flex: 1; }
+.xls-wrap { padding: 0; outline: none; }
+table.xls { width: auto; border-collapse: collapse; table-layout: fixed; }
+table.xls th { background: var(--face); box-shadow: var(--raised-win); text-align: center; padding: 1px 4px; min-width: 30px; position: static; font-weight: normal; }
+table.xls th.corner { width: 30px; }
+table.xls td { border: 1px solid #c0c0c0; border-width: 0 1px 1px 0; height: 17px; padding: 0 3px; overflow: hidden; text-overflow: clip; white-space: nowrap; max-width: 140px; }
+table.xls td.hdr { font-weight: bold; }
+table.xls td.red { color: #800000; font-weight: bold; }
+table.xls td.cur { outline: 2px solid var(--navy); outline-offset: -2px; }
+table.xls td.flash { background: #ffff80; }
+.xls-tabs { display: flex; padding: 0 4px; background: var(--face); }
+.xls-tabs .tab { padding: 1px 10px; box-shadow: inset -1px -1px #808080, inset 1px 0 #fff; margin-right: -1px; }
+.xls-tabs .tab.on { background: #fff; font-weight: bold; }
+
+/* ---------- mIRC ---------- */
+.mirc .irc-chan { padding: 2px 4px; box-shadow: var(--thin-sunken); margin: 2px 0; white-space: nowrap; overflow: hidden; }
+.irc-split { flex: 1; display: flex; gap: 2px; min-height: 0; }
+.irc { flex: 1; font: 12px/15px "Courier New", monospace; user-select: text; -webkit-user-select: text; }
+.irc .sys { color: #008000; } .irc .pm { color: #800000; font-weight: bold; }
+.irc-nicks { flex: 0 0 96px; font: 12px/15px "Courier New", monospace; }
+.irc-input { display: flex; gap: 2px; padding: 2px 0; }
+.irc-input input { flex: 1; font: 12px "Courier New", monospace; }
+.irc-input button { min-width: 60px; }
+.irc-status { cursor: var(--cur-arrow, default); }
+
+/* ---------- Paint ---------- */
+.paint-main { flex: 1; display: flex; min-height: 0; }
+.paint-tools { flex: 0 0 56px; display: grid; grid-template-columns: 25px 25px; grid-auto-rows: 25px; gap: 0; padding: 2px; align-content: start; }
+.ptool { min-width: 0; min-height: 0; width: 25px; height: 25px; padding: 0; display: flex; align-items: center; justify-content: center; }
+.ptool:focus { outline: none; }
+.ptool.on { box-shadow: var(--pressed); background: var(--dither); }
+.ptool-opt { grid-column: span 2; height: 66px; margin-top: 4px; box-shadow: var(--thin-sunken); }
+.paint .paint-area { flex: 1; overflow: auto; background: #808080; box-shadow: var(--sunken); padding: 3px; }
+.paint-holder { display: inline-block; }
+.paint-colors { display: flex; gap: 4px; padding: 4px 2px; }
+.pc-cur { position: relative; width: 30px; height: 30px; box-shadow: var(--sunken); background: var(--dither); }
+.pc-cur .fg, .pc-cur .bg { position: absolute; width: 13px; height: 13px; box-shadow: var(--thin-raised); }
+.pc-cur .fg { left: 5px; top: 5px; background: #000; z-index: 1; } .pc-cur .bg { left: 12px; top: 12px; background: #fff; }
+.pc-grid { display: grid; grid-template-columns: repeat(14, 15px); grid-template-rows: 15px 15px; }
+.pc-grid i { box-shadow: var(--sunken); }
+
+/* ---------- Media Player ---------- */
+.mplayer { padding: 4px; gap: 4px; }
+.mp-screen { height: 64px; background: #000; box-shadow: var(--sunken); padding: 6px; }
+.mp-wave { height: 100%; display: flex; align-items: center; gap: 2px; }
+.mp-wave i { flex: 1; height: 100%; background: #00c000; transform-origin: center; }
+.mp-track { height: 10px; box-shadow: var(--sunken); background: #fff; padding: 2px; }
+.mp-fill { height: 100%; background: var(--navy); width: 0; }
+.mp-time { font-family: "Courier New", monospace; }
+.mp-cap { min-height: 30px; padding: 4px; box-shadow: var(--thin-sunken); background: #ffffe1; font-style: italic; }
+.mp-btns { display: flex; gap: 4px; align-items: center; }
+.mp-btns button { min-width: 0; width: 30px; height: 24px; padding: 0; display: flex; align-items: center; justify-content: center; }
+.mp-btns select { margin-left: auto; }
+.g-play { width: 0; height: 0; border-left: 7px solid #000; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.g-stop { width: 9px; height: 9px; background: #000; }
+.g-rew, .g-ff { width: 12px; height: 9px; background: #000; clip-path: polygon(0 50%, 50% 0, 50% 50%, 100% 0, 100% 100%, 50% 50%, 50% 100%); }
+.g-ff { transform: scaleX(-1); }
+
+/* ---------- Calculator ---------- */
+.calc { padding: 6px; width: 260px; }
+.calc-disp { width: 100%; text-align: right; margin-bottom: 2px; font-size: 13px; }
+.calc-note { height: 14px; text-align: right; color: #800000; font-size: 11px; }
+.calc-top { display: flex; gap: 6px; margin: 4px 0 6px; align-items: center; }
+.calc-mem { width: 34px; height: 26px; box-shadow: var(--sunken); display: flex; align-items: center; justify-content: center; }
+.calc-row { display: grid; grid-template-columns: 34px repeat(5, 1fr); gap: 5px; margin-bottom: 5px; }
+.calc-row .mem { margin-right: 6px; }
+.ck { min-width: 0; height: 28px; padding: 0; }
+.ck.wide { flex: 1; }
+.ck.red { color: #c00000; } .ck:not(.red) { color: #0000c0; }
+
+/* ---------- Find ---------- */
+.find-form { display: flex; gap: 10px; padding: 8px; }
+.find-fields { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.find-fields .field { margin: 0; } .find-fields .field label { width: 100px; }
+.find-fields .field input, .find-fields .field select { flex: 1; }
+.find-btns { display: flex; flex-direction: column; gap: 5px; align-items: stretch; }
+.f-anim { align-self: center; margin-top: 4px; }
+.f-anim.spin { transform: scaleX(-1); }
+.finder tbody tr.sel td { background: var(--navy); color: #fff; }
+
+/* ---------- Help / Volume / DOS / Close Program ---------- */
+.help-bar { display: flex; gap: 2px; padding: 2px; box-shadow: inset 0 -1px #808080; }
+.help-tabs { display: flex; margin-bottom: 4px; } .help-tabs .tab { padding: 1px 6px; box-shadow: var(--thin-raised); } .help-tabs .tab.on { font-weight: bold; }
+.help-tree .ht { display: flex; gap: 4px; align-items: center; padding: 1px 2px; } .help-tree .ht.sel { background: var(--navy); color: #fff; }
+.volume { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.vcols { display: flex; gap: 8px; }
+.vcol { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px; padding: 4px; box-shadow: var(--thin-sunken); color: #808080; text-shadow: 1px 1px #fff; }
+.vcol input.vert { writing-mode: vertical-lr; direction: rtl; height: 80px; width: 20px; }
+.vnote { color: #800000; }
+.doswin .window-body { background: #000; }
+.dosbox { flex: 1; overflow: auto; background: #000; color: #c0c0c0; font: 14px/16px "Lucida Console", "Courier New", monospace; padding: 4px; }
+.dosbox pre { display: inline; white-space: pre-wrap; }
+.dos-in { background: #000 !important; color: #c0c0c0; box-shadow: none !important; font: inherit; height: 16px; padding: 0; width: 60%; caret-color: #c0c0c0; }
+.closeprog { width: 340px; }
+.cp-list { height: 130px; }
+.cp-list .li, .lv.list .li { padding: 1px 4px; } .cp-list .li.sel { background: var(--navy); color: #fff; }
+
+/* ---------- Explorer ---------- */
+.ex-main { flex: 1; display: flex; gap: 2px; min-height: 0; }
+.ex-tree { flex: 0 0 180px; padding: 0; overflow: auto; }
+.tree-head { background: var(--face); padding: 2px 4px; box-shadow: inset 0 -1px #808080; }
+.tnode { display: flex; align-items: center; gap: 4px; height: 18px; white-space: nowrap; }
+.tnode span { padding: 0 2px; }
+.tnode.sel span { background: var(--navy); color: #fff; }
+.fv.small .icon, .fv.list .icon { flex-direction: row; width: 160px; padding: 1px 2px; margin: 0 4px 2px 0; }
+.fv.small .icon img, .fv.list .icon img { width: 16px; height: 16px; margin: 0 4px 0 0; }
+.fv.small .icon .label, .fv.list .icon .label { text-align: left; max-width: 136px; -webkit-line-clamp: 1; white-space: nowrap; }
+.fv.list { flex-direction: column; flex-wrap: wrap; align-content: flex-start; }
+.fv.details { display: block; padding: 0; }
+.fv table.details { width: 100%; }
+.fv table.details td { padding: 1px 6px; }
+.fv table.details td:first-child { display: flex; gap: 4px; align-items: center; }
+.fv table.details tr.selected td:first-child span { background: var(--navy); color: #fff; }
+.rename { height: 18px !important; padding: 1px 2px !important; width: 110px; }
+.addr .go { padding: 0 8px; }
+.addr-box { position: relative; }
+.addr-box .combo-btn { position: static; margin-left: 2px; }
+
+/* ---------- full-screen sequences ---------- */
+#overlay.post { padding: 20vh 8vw 0; }
+#overlay.post pre { color: #fff; font: 14px/18px "Courier New", monospace; }
+#overlay .energy { position: absolute; right: 8vw; top: 20vh; color: #fff; font: bold 14px "Courier New", monospace; box-shadow: inset 0 0 0 2px #fff; padding: 8px 10px; display: none; }
+#overlay.star .energy { display: block; }
+#overlay.bios-setup { background: #0000aa; display: flex; align-items: center; justify-content: center; }
+#overlay.bios-setup pre { color: #fff; font: 15px/20px "Courier New", monospace; }
+#overlay.splash { flex-direction: column; }
+.splash-copy, .splash-oem { position: absolute; bottom: 30px; width: 100%; text-align: center; color: #c0c0c0; font: 12px Arial, sans-serif; }
+.splash-oem { bottom: 12px; color: #808080; }
+#overlay.shut1 { background: #000080; display: flex; align-items: center; justify-content: center; }
+.shut-box { color: #fff; font: bold 14px var(--font); text-align: center; }
+.shut-bar { margin: 14px auto 0; width: 220px; height: 16px; box-shadow: var(--sunken); background: #c0c0c0; padding: 2px; display: flex; gap: 2px; }
+.shut-bar i { width: 7px; background: #000080; }
+#overlay.safe-screen { background: #000; display: flex; align-items: center; justify-content: center; }
+#overlay .safe { color: #ffa500; font: bold 16px var(--font); text-align: center; font-size: 22px; line-height: 30px; }
+#overlay .safe-tick { position: absolute; right: 24px; bottom: 18px; color: #2a2a2a; font: 12px "Courier New", monospace; text-align: right; }
+#overlay.blackout .safe { display: none; }
+#overlay.bsod-screen { background: #0000aa; display: flex; align-items: flex-start; justify-content: flex-start; padding: 28vh 80px 0; }
+.bsod { color: #fff; font: 14px/18px "Courier New", "Lucida Console", monospace; white-space: pre; }
+.bsod-title { background: #aaa; color: #0000aa; }
+.dos { color: #c0c0c0; font: 16px/18px "Lucida Console", "Courier New", monospace; padding: 20px; white-space: pre-wrap; display: inline; }
+#overlay .caret { color: #c0c0c0; font: 16px "Lucida Console", monospace; }
+#overlay.seat-screen { background: #000; display: flex; align-items: center; justify-content: center; }
+.seat07 .s7 { position: static; width: 360px; }
+.seat07 pre { font: 13px/18px "Courier New", monospace; padding: 14px 18px; background: #fff; box-shadow: var(--sunken); margin: 4px; }
+#screen.y2050 { background: #101010 !important; background-image: none !important; }
+#screen.y2050 #icons { visibility: hidden; }
+#screen.y2050::before { content: ""; }
+.icons2050 { position: absolute; inset: 0; z-index: 1; }
+.icons2050 .icon .label { background: #101010; color: #00ff00; }
+
+/* ---------- desktop eggs ---------- */
+.tv-widget { position: absolute; right: 10px; bottom: 10px; width: 120px; height: 80px; background: #2a2a2a; box-shadow: var(--raised-win); padding: 6px; display: flex; gap: 4px; }
+.tv-screen { flex: 1; background: #001800; box-shadow: inset 2px 2px #000, inset -1px -1px #555; color: #33ff33; font: 10px/13px "Courier New", monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; text-shadow: 0 0 1px #33ff33; }
+.tv-screen b { font-size: 13px; }
+.tv-knobs { width: 12px; display: flex; flex-direction: column; gap: 6px; padding-top: 10px; }
+.tv-knobs i { width: 10px; height: 10px; background: #888; box-shadow: var(--thin-raised); }
+.watching { position: absolute; left: 6px; top: 4px; z-index: 6000; color: #00a0a0; font: 11px var(--font); pointer-events: none; }
+.ghost-cursor { position: fixed; z-index: 99998; pointer-events: none; image-rendering: pixelated; }
+#xyzzy { position: fixed; left: 0; top: 0; width: 1px; height: 1px; z-index: 99999; pointer-events: none; background: #000; }
+.saver { position: fixed; inset: 0; z-index: 20000; background: #000; cursor: none; }
+.saver canvas { position: absolute; inset: 0; }
+.saver-log { position: absolute; width: 300px; height: 130px; }
+.saver-log .lv { height: 100%; }
+.saver-log td { font-size: 10px; padding: 0 3px; white-space: nowrap; }
+.saver-log tr.eip td { font-weight: bold; color: #800000; }
